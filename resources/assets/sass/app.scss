@@ -1,0 +1,61 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+img.logofucai {
+  width:300px;
+  height:auto;
+}
+img.logoticai {
+  width:300px;
+  height:auto;
+}
+img.zhongleipic {
+  width:120px;
+  height:auto;
+}
+h3.welcomeword {
+  color:lighten(red,20%);
+}
+div.firstpage {
+  font-size: 20px;
+  color:darken(pink ,60%);
+  span.namedesc {
+      color:lighten(black,20%);
+      font-size: 18px;
+      width:80px;
+    text-align: left;
+  }
+  span.shopownername {
+    color:lighten(black,1%);
+    font-size:20px;
+    font-weight: bold;
+    width:360px;
+    display: inline-block;
+    text-align: left;
+  }
+  div.imgholder {
+    display:inline-block;
+    img {
+      width:90px;
+      height:auto;
+    }
+  }
+
+}
+div.detaillei {
+  margin-top:10px;
+  div.subheader {
+    background-color: transparent;
+  }
+}
