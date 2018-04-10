@@ -75,10 +75,10 @@
                     </div>
                 <div class="header-row row">
                     <div class="col-md-4">
-                        8888
+                        888844444444444444444
                     </div>
                     <div class="col-md-8">
-                        332232
+                        3322322222222222222222
                     </div>
                 </div>
 
