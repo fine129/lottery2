@@ -44,17 +44,44 @@
             </div>
             <div class="card detaillei">
                 <div class="card-header subheader row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <h5 class="text-success">
                             <img src="img/seqiu.jpg" class="zhongleipic" />
                             <span class="picname"> 双色球</span> </h5>
                     </div>
-                    <div class="col-md-7">
-                        fadsf
+                    <div class="col-md-8">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <span  class="text-info">第</span> <span class="label ">432423442</span>
+                                <span class="text-info">期</span>
+                                <p class="seqiuhaoma">
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum blue">3</span>
+
+                                </p>
+                                <span class="text-info"> 下期开奖</span> <span class="label ">年月日</span>
+                            </div>
+                            <div class="list-group-item">
+                                <a class=" btn  btn-success linkhemai">发起合买</a>
+                                <a class="  btn btn-dark  linkhemai danmai">发起单买</a>
+                            </div>
+                        </div>
                     </div>
-
-
+                    </div>
+                <div class="header-row row">
+                    <div class="col-md-4">
+                        8888
+                    </div>
+                    <div class="col-md-8">
+                        332232
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
