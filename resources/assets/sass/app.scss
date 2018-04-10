@@ -24,8 +24,20 @@ img.zhongleipic {
   width:120px;
   height:auto;
 }
-h3.welcomeword {
+span.welcomeword {
   color:lighten(red,20%);
+  font-size:18px;
+  width:38%;
+  text-align: left;
+}
+span.epiece {
+  display: inline-block;
+  width:60%;
+  text-align: right;
+}
+a.imlink {
+  display: block;
+  text-align: center;
 }
 div.firstpage {
   font-size: 20px;
@@ -57,6 +69,13 @@ div.detaillei {
   margin-top:10px;
   div.subheader {
     background-color: transparent;
+  }
+}
+div.emotionpic {
+  img {
+    width:100%;
+    height:auto;
+    display: inline-block;
   }
 }
 

@@ -9,7 +9,9 @@
 
             <div class="card">
                 <div class="card-header ">
-                    <h3 class="welcomeword text-center" >欢迎参观我店</h3>
+                    <span class="welcomeword text-center" >欢迎参观我店</span>
+                    <span class="text-success epiece">我此时的心情话语</span>
+                    <a class="btn-link imlink" href="{!! url('emotions') !!}" >查看更多心情话语</a>
                 </div>
 
                 <div class="card-body"  >
@@ -75,13 +77,64 @@
                     </div>
                 <div class="header-row row">
                     <div class="col-md-4">
-                        888844444444444444444
+                        <h5 class="text-success">
+                            <img src="img/3d2.jpg" class="zhongleipic" />
+                            <span class="picname"> 福彩3D</span> </h5>
                     </div>
                     <div class="col-md-8">
-                        3322322222222222222222
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <span  class="text-info">第</span> <span class="label ">432423442</span>
+                                <span class="text-info">期</span>
+                                <p class="seqiuhaoma">
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum blue">3</span>
+
+                                </p>
+                                <span class="text-info"> 下期开奖</span> <span class="label ">年月日</span>
+                            </div>
+                            <div class="list-group-item">
+                                <a class=" btn  btn-success linkhemai">发起合买</a>
+                                <a class="  btn btn-dark  linkhemai danmai">发起单买</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="header-row row">
+                    <div class="col-md-4">
+                        <h5 class="text-success">
+                            <img src="img/qile.jpg" class="zhongleipic" />
+                            <span class="picname"> 七乐彩</span> </h5>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="list-group">
+                            <div class="list-group-item">
+                                <span  class="text-info">第</span> <span class="label ">432423442</span>
+                                <span class="text-info">期</span>
+                                <p class="seqiuhaoma">
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum">3</span>
+                                    <span class="haomanum blue">3</span>
 
+                                </p>
+                                <span class="text-info"> 下期开奖</span> <span class="label ">年月日</span>
+                            </div>
+                            <div class="list-group-item">
+                                <a class=" btn  btn-success linkhemai">发起合买</a>
+                                <a class="  btn btn-dark  linkhemai danmai">发起单买</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

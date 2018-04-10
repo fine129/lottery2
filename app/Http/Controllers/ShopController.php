@@ -41,5 +41,8 @@ class ShopController extends Controller
     public  function  personalshop(Request $request){
         return view('personalshop');
     }
+    public  function  emotions(Request $request) {
+        return view('emotions');
+    }
 
 }
