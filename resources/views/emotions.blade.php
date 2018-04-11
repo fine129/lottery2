@@ -81,6 +81,30 @@
 
             </div>
         </div>
+        <div class="col-md-3 ">
+            <div class="othercontent">
+             <div class="list-group">
+                 <div class="list-group-item">
+                     <a class="mydream">我的中奖理想内容</a>
+                 </div>
+                 <div class="list-group-item">
+                     <a class="mydream">困难</a>
+                 </div>
+                 <div class="list-group-item">
+                     <a class="mydream">历史家乡</a>
+                 </div>
+                 <div class="list-group-item">
+                     <a class="mydream">亲人朋友</a>
+                 </div>
+                 <div class="list-group-item">
+                     <a class="mydream">用处打算计划</a>
+                 </div>
+
+             </div>
+
+            </div>
+
+        </div>
     </div>
 </div>
 

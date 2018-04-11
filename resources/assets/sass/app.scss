@@ -78,4 +78,45 @@ div.emotionpic {
     display: inline-block;
   }
 }
+div.ballholder div.circlebai{
+  @include border-radius(50%);
 
+  display: inline-block;
+  margin:15px;
+  width:35px;
+  height:35px;
+  border:1px solid lighten(black,20%);
+  &.red {
+    background-color: red;
+  }
+
+}
+div.ballholder span.numnum {
+  color:lighten(red,10%);
+  &.white {
+    color:white;
+  }
+  font-weight: bold;
+
+}
+
+div.blueholder div.circlebai {
+  @include border-radius(50%);
+
+  display: inline-block;
+  margin: 15px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid lighten(black, 20%);
+  &.blue {
+    background-color: blue;
+  }
+}
+div.blueholder span.numnum {
+  color:lighten(blue,10%);
+  &.white {
+    color:white;
+  }
+  font-weight: bold;
+
+}

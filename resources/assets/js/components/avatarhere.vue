@@ -17,7 +17,7 @@
         name: "avatarhere",
         components: { AvatarCropper },
         mounted(){
-            $.ready(function () {
+            $(function () {
                 console.log('  (Croppic);=');
             });
 

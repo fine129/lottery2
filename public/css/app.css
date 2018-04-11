@@ -10077,3 +10077,47 @@ div.emotionpic img {
   display: inline-block;
 }
 
+div.ballholder div.circlebai {
+  border-radius: 50%;
+  display: inline-block;
+  margin: 15px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #333333;
+}
+
+div.ballholder div.circlebai.red {
+  background-color: red;
+}
+
+div.ballholder span.numnum {
+  color: #ff3333;
+  font-weight: bold;
+}
+
+div.ballholder span.numnum.white {
+  color: white;
+}
+
+div.blueholder div.circlebai {
+  border-radius: 50%;
+  display: inline-block;
+  margin: 15px;
+  width: 35px;
+  height: 35px;
+  border: 1px solid #333333;
+}
+
+div.blueholder div.circlebai.blue {
+  background-color: blue;
+}
+
+div.blueholder span.numnum {
+  color: #3333ff;
+  font-weight: bold;
+}
+
+div.blueholder span.numnum.white {
+  color: white;
+}
+

@@ -44,5 +44,8 @@ class ShopController extends Controller
     public  function  emotions(Request $request) {
         return view('emotions');
     }
+    public  function  xuanpiao(Request $request) {
+        return view('xuanpiao');
+    }
 
 }

@@ -25,3 +25,4 @@ Route::post('crop', 'HomeController@postCrop');
 Route::post('postshop', 'ShopController@postShop');
 Route::get('/personalshop', 'ShopController@personalshop')->name('personalshop');
 Route::get('/emotions', 'ShopController@emotions')->name('emotions');
+Route::get('/xuanpiao', 'ShopController@xuanpiao')->name('xuanpiao');
