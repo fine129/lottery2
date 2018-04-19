@@ -69,7 +69,8 @@
                                 <span class="text-info"> 下期开奖</span> <span class="label ">年月日</span>
                             </div>
                             <div class="list-group-item">
-                                <a class=" btn  btn-success linkhemai"  href="{!! url('xuanpiao') !!}">发起合买</a>
+                                <a class=" btn  btn-success linkhemai"
+                                href="{!! url('xuanpiao') !!}">发起合买</a>
                                 <a class="  btn btn-dark  linkhemai danmai">发起单买</a>
                             </div>
                         </div>
