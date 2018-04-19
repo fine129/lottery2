@@ -6,7 +6,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <span class=" valuehere" data-reds='' data-blues='' ></span>
+                    <span class=" valuehere" data-reds='' data-blues='' data-allnum=""></span>
                     <span class=" valuehalf" data-halfred='' data-halfblue='' ></span>
                     <h2 class="alert  text-danger">
                      祝你好运常在！

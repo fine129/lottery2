@@ -40022,7 +40022,7 @@ exports = module.exports = __webpack_require__(4)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40080,11 +40080,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40092,7 +40087,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
     mounted: function mounted() {
         $(function () {
-            console.log('reds====' + $('span.valuehere').data('reds') + '====blues=' + $('span.valuehere').data('blues'));
+            var numhere = $('div.numhere');
+            var allnum = $('span.valuehere').data('allnum');
+            for (var i = 0; i < allnum.length; i++) {
+                var rednum = allnum[i].slice(0, allnum[i].length - 1).sort(function (a, b) {
+                    return a - b;
+                });
+                var bluenum = allnum[i].slice(allnum[i].length - 1, allnum[i].length - 0);
+                console.log('rednum===', rednum, 'bluenum==', bluenum);
+                numhere.append('<div class="list-group-item beats">' + '<label class="imtitle label">第' + (i + 1) + '注</label>' + '<div class="haonum">' + rednum.join(', ') + ', <span class="blueletter">' + bluenum + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + ' </div>' + ' </div>');
+            }
+            console.log('allnum==', allnum);
         });
     },
     data: function data() {
@@ -40100,7 +40105,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
 
-    methods: {}
+    methods: {
+        changeBeishu: function changeBeishu(event) {
+            console.log(222);
+            var tempval = $(event.target).siblings('input').val();
+            var reg = /^[1-9]\d*$|^0$/;
+            if (!reg.test(tempval) && $(event.target).hasClass('glyphicon')) {
+                alert("请输入整数!");
+                return null;
+            }
+            var val = parseInt($(event.target).siblings('input').val());
+
+            if ($(event.target).hasClass('minus')) {
+
+                if (val <= 1) {
+                    alert('最低为1');
+                    return null;
+                } else $(event.target).siblings('input').val(val - 1);
+            } else if ($(event.target).hasClass('plus')) {
+                $(event.target).siblings('input').val(val + 1);
+            }
+        }
+    }
 });
 
 /***/ }),
@@ -40111,26 +40137,16 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "text-left" }, [
+    _c("h4", { staticClass: "alert-info" }, [_vm._v("您选择的号码如下：")]),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "list-group numhere",
+      on: { click: _vm.changeBeishu }
+    })
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "text-center" }, [
-      _c("h4", { staticClass: "alert-info" }, [_vm._v("您选择的号码如下：")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "list-group" }, [
-        _c("div", { staticClass: "list-group-item" }, [
-          _c("label", { staticClass: "imtitle label" }, [_vm._v("第一注")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "haonum" })
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -40437,10 +40453,43 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             console.log('spanblues===' + $('span.valuehere').data('reds'));
         },
-        selectFiveBeats: function selectFiveBeats() {},
+        selectFiveBeats: function selectFiveBeats() {
+            var temptarblue = [parseInt(Math.random() * 16 + 1)];
+            var redall = [];
+            for (var i = 0; i < 5; i++) {
+                var temptarred = [parseInt(Math.random() * 33 + 1)];
+                while (temptarred.length < 6) {
+                    var r = parseInt(Math.random() * 33 + 1); //定义r 随机数的取值与reds一致 用于与reds作比较
+                    for (var j = 0; j < temptarred.length; j++) {
+                        if (temptarred[j] === r) {
+                            break;
+                        } else if (j === temptarred.length - 1) {
+                            temptarred.push(r);
+                        }
+                    }
+                }
+                var ab = parseInt(Math.random() * 16 + 1);
+                while (temptarblue.length <= 5) {
+                    if ($.inArray(ab, temptarblue) > -1) {
+                        ab = parseInt(Math.random() * 16 + 1);
+                    } else {
+
+                        temptarblue.push(ab);
+                        temptarred.push(ab);
+                        break;
+                    }
+                }
+
+                console.log('加入的红球组合', temptarred, '蓝球是', ab);
+                redall.push(temptarred);
+            }
+            console.log('final 五组号码为：', redall);
+            $('span.valuehere').data('allnum', redall);
+            this.$router.push('/confirm');
+        },
 
         confirmSelect: function confirmSelect() {
-            this.$router.push('/confirm', function (onComplete) {
+            this.$router.push('confirm', function (onComplete) {
                 console.log('completeeeeeeeeeeee');
             }, function (onAbort) {
                 console.log('aborttttttttttttt');

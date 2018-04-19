@@ -10121,3 +10121,28 @@ div.blueholder span.numnum.white {
   color: white;
 }
 
+div.beats {
+  font-size: 20px;
+}
+
+div.beats div.haonum {
+  color: red;
+}
+
+div.beats div.haonum span.blueletter {
+  color: blue;
+  margin-right: 18px;
+}
+
+div.beats input.beishu {
+  width: 60px;
+  height: 30px;
+  margin: 0 4px;
+}
+
+div.beats span.glyphicon {
+  font-size: 30px;
+  width: 60px;
+  height: 30px;
+}
+

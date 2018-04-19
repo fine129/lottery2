@@ -1,14 +1,9 @@
 <template>
-    <div class="text-center">
+    <div class="text-left">
 
         <h4 class="alert-info">您选择的号码如下：</h4>
-        <div class="list-group">
-            <div class="list-group-item">
-                <label class="imtitle label">第一注</label>
-                <div class="haonum">
+        <div class="list-group numhere" @click="changeBeishu">
 
-                </div>
-            </div>
         </div>
 
 
@@ -25,8 +20,28 @@
         components: {   },
         mounted(){
             $(function () {
-                console.log('reds===='+ $('span.valuehere').data('reds') +'====blues='
-                    + $('span.valuehere').data('blues'));
+                let numhere = $('div.numhere');
+                let allnum = $('span.valuehere').data('allnum');
+                for(let i =0; i<allnum.length;i++) {
+                   let rednum = allnum[i].slice(0,allnum[i].length - 1).sort(function (a,b) {
+                       return a - b;
+                   });
+                   let bluenum = allnum[i].slice(allnum[i].length - 1,allnum[i].length - 0);
+                   console.log('rednum===',rednum,'bluenum==',bluenum);
+                    numhere.append(  '<div class="list-group-item beats">'+
+                        '<label class="imtitle label">第'+(i+1)+'注</label>'+
+                        '<div class="haonum">'+
+                        rednum.join(', ') +
+                        ', <span class="blueletter">'+bluenum  +'</span>' +
+                            '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
+                        '"></span>' +
+                        '<input type="text" name="beishu"  value=1   class="beishu" /> ' +
+                        '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
+                        '"></span>'+
+                       ' </div>'+
+                       ' </div>')
+                }
+                console.log('allnum==',allnum);
             });
          },
         data() {
@@ -34,10 +49,32 @@
         },
 
         methods: {
+            changeBeishu: function (event) {
+                console.log(222);
+                let tempval = $(event.target).siblings('input').val();
+                let reg=/^[1-9]\d*$|^0$/;
+                if(!reg.test(tempval) && $(event.target).hasClass('glyphicon')) {
+                    alert("请输入整数!");
+                    return null;
+                }
+                let val = parseInt($(event.target).siblings('input').val());
+
+                if($(event.target).hasClass('minus')) {
+
+                    if(val <=1) {
+                        alert('最低为1');
+                        return null;
+                    } else
+                        $(event.target).siblings('input').val(val-1);
+                } else if($(event.target).hasClass('plus')) {
+                    $(event.target).siblings('input').val(val+1);
+                }
+            }
         }
     }
 </script>
 
 <style  scoped>
+
 
 </style>

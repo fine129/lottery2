@@ -34,7 +34,6 @@
 
 <script>
 
-
     export default {
         name: "xuanhao",
         components: {   },
@@ -219,11 +218,48 @@
 
                 },
             selectFiveBeats: function() {
+             let temptarblue = [parseInt(Math.random()*16+1)];
+                let redall = [];
+                for(let i = 0; i < 5 ; i++) {
+                    let temptarred = [parseInt(Math.random()*33+1)];
+                    while(temptarred.length < 6) {
+                        let r=parseInt(Math.random()*33+1); //定义r 随机数的取值与reds一致 用于与reds作比较
+                        for(let j =0 ; j< temptarred.length; j++) {
+                            if(temptarred[j] === r) {
+                                break;
+                            } else if(j === temptarred.length -1 ){
+                                temptarred.push(r);
+                            }
+                        }
 
-            },
+                    }
+                    let ab= parseInt(Math.random()*16+1);
+                    while(temptarblue.length <=5 ) {
+                        if($.inArray(ab,temptarblue) > -1) {
+                            ab= parseInt(Math.random()*16+1)
+                        } else {
+
+                                temptarblue.push(ab);
+                                temptarred.push(ab);
+                                break;
+                            }
+                        }
+
+                    console.log('加入的红球组合',temptarred,'蓝球是',ab);
+                    redall.push(temptarred);
+
+                    }
+                console.log('final 五组号码为：',redall);
+                $('span.valuehere').data('allnum',redall) ;
+                this.$router.push('/confirm');
+
+                }
+
+
+                ,
 
             confirmSelect:function() {
-                this.$router.push('/confirm',onComplete=>{
+                this.$router.push('confirm',onComplete=>{
                     console.log('completeeeeeeeeeeee');
                 },onAbort => {
                     console.log('aborttttttttttttt');

@@ -120,3 +120,24 @@ div.blueholder span.numnum {
   font-weight: bold;
 
 }
+div.beats {
+  font-size:20px;
+  div.haonum {
+    color:red;
+    span.blueletter {
+      color:blue;
+      margin-right:18px;
+    }
+  }
+
+  input.beishu {
+    width:60px;
+    height:30px;
+    margin:0 4px;
+  }
+  span.glyphicon {
+    font-size:30px;
+    width:60px;
+    height:30px;
+  }
+}
