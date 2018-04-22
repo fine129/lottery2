@@ -29,7 +29,7 @@
                    let bluenum = allnum[i].slice(allnum[i].length - 1,allnum[i].length - 0);
                    console.log('rednum===',rednum,'bluenum==',bluenum);
                     numhere.append(  '<div class="list-group-item beats">'+
-                        '<label class="imtitle label">第'+(i+1)+'注</label>'+
+                        '<label class=" label">第'+'<span class="imtitle">'+(i+1)+'</span>注</label>'+
                         '<div class="haonum">'+
                         rednum.join(', ') +
                         ', <span class="blueletter">'+bluenum  +'</span>' +
@@ -49,10 +49,17 @@
         },
 
         methods: {
+            xuliehao: function() {
+              $('div.numhere').find('div.beats').each(function (i,n) {
+                  $(n).find('span.imtitle').text(i+1);
+                  // console.log('i,n=',i,n);
+              })
+            },
             changeBeishu: function (event) {
                 console.log(222);
                 let tempval = $(event.target).siblings('input').val();
                 let reg=/^[1-9]\d*$|^0$/;
+
                 if(!reg.test(tempval) && $(event.target).hasClass('glyphicon')) {
                     alert("请输入整数!");
                     return null;
@@ -60,15 +67,21 @@
                 let val = parseInt($(event.target).siblings('input').val());
 
                 if($(event.target).hasClass('minus')) {
-
                     if(val <=1) {
-                        alert('最低为1');
+                        $(event.target).parents('div.beats').remove();
+                        this.xuliehao();
+                        if($('div.numhere').find('button.btn-addbeat').length < 1)
+                        $('div.numhere').append('<button class="btn btn-success offset-6 ' +
+                            'btn-addbeat" >增加一注</button>');
                         return null;
                     } else
                         $(event.target).siblings('input').val(val-1);
                 } else if($(event.target).hasClass('plus')) {
                     $(event.target).siblings('input').val(val+1);
+                }else if($(event.target).hasClass('btn-addbeat')) {
+                    this.$router.go(-1);
                 }
+
             }
         }
     }

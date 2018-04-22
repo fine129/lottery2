@@ -10146,3 +10146,21 @@ div.beats span.glyphicon {
   height: 30px;
 }
 
+div.beats button.btn-addbeat {
+  width: 50px;
+}
+
+input.bluenum {
+  width: 30px;
+  height: 30px;
+}
+
+div.danused {
+  background-color: grey;
+}
+
+div.danusedall,
+div.waitdan {
+  background-color: #e6e5e5;
+}
+

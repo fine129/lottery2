@@ -131,6 +131,7 @@
               let bluenum = parseInt($('input[name=bluenum]').val());
             if(rednumin === ''||!reg.test(rednumin)|| rednum < 1) {
                 alert('请输入补充机选红球数目大于等于1');
+                return null;
             }
               for(let k=1;k <=33 ; k++) {
                   if(  $('div.ballholder div.cirlbai'+k).hasClass('red')) {

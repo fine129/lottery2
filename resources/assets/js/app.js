@@ -10,6 +10,7 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex'
 import  confirmHao from './components/confirmHao.vue';
 import  xuanhao from './components/xuanhao.vue';
+import  dantuo from './components/dantuo.vue';
 window.Vue = require('vue');
 
 window.Vue.use(VueRouter);
@@ -29,6 +30,7 @@ const router = new VueRouter({
     routes: [
         { path: '/confirm', component: confirmHao,props:true },
         { path: '/', component: xuanhao, props: true},
+        { path: '/dantuo', component: dantuo, props: true},
 
         // { path: '/search', component: SearchUser, props: (route) => ({ query: route.query.q ,secq:route.query.secq}) },
 
