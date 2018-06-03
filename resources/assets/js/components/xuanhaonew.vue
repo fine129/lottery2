@@ -378,7 +378,7 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
             },
             changeSelect: function() {
                 /**
-                 *
+                 *git chuxian cuowu,,xuyaoxiugai yonghuming 
                  */
                //重新编写代码逻辑，重头开始，
 
