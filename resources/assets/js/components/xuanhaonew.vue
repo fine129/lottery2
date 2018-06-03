@@ -13,13 +13,20 @@
             <button class="btn btn-info onebeat" @click="selectOnebeat">机选一注</button>
             <button class="btn btn-info fivebeats" @click="selectFiveBeats">机选五注</button>
 
+            <!--<div class="d-inline">-->
+               <!--<label class="inputlabel">补充机选红球</label> <input class=" rednum" name="rednum" value=""/>个-->
+               <!--<button class="btn btn-info onebeat" title="手选蓝球或者红球后，指定剩余球数目机选"-->
+                        <!--@click="selectRedBuchong">红球机选补充</button>-->
+                <!--<label class="inputlabel">补充机选蓝球</label><input class=" bluenum" name="bluenum" />个-->
+                <!--<button class="btn btn-info onebeat" title="手选蓝球或者红球后，指定剩余球数目机选"-->
+                        <!--@click="selectBlueBuchong">蓝球机选补充</button>-->
+            <!--</div>-->
             <div class="d-inline">
-               <label class="inputlabel">补充机选红球</label> <input class=" rednum" name="rednum" value=""/>个
-               <button class="btn btn-info onebeat" title="手选蓝球或者红球后，指定剩余球数目机选"
-                        @click="selectRedBuchong">红球机选补充</button>
-                <label class="inputlabel">补充机选蓝球</label><input class=" bluenum" name="bluenum" />个
-                <button class="btn btn-info onebeat" title="手选蓝球或者红球后，指定剩余球数目机选"
-                        @click="selectBlueBuchong">蓝球机选补充</button>
+                <label class="inputlabel">机选红球数量</label>
+                <input class="rednum" name="rednum" value="0" />个
+                <label class="d-inline">机选蓝球数量</label>
+                <input class="bluenum" name="bluenum" value="0">个
+                <button class="btn btn-info btn-success" title="开始机选" >开始机选</button>
             </div>
             <button class="btn btn-info confirm btn-block btn-dark"
                     @click="confirmSelect"
@@ -371,140 +378,10 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
             },
             changeSelect: function() {
                 /**
-                 * 第一种情况，直接手选一注，然后确认，等待下一注。A,
-                 * 第二种情况，直接手选加机选补充，然后确认，等待下一注B,
-                 * 第三种情况，直接机选一注，然后手选修改，完善，补充，然后确认，等待下一注C,
-                 * 第四种情况,直接机选补充几个红球，蓝球，然后手动修改，完善，然后确认，等待下一注。D,
-                 * 上述情况都归结为jilei15,等待下一注
-                 * @type {Array}
-                 * jilei15需要改变
+                 *
                  */
                //重新编写代码逻辑，重头开始，
-               let redall = [];
-                let tempall;
 
-               //还是建立存储红球蓝球集体的逻辑
-              if($.isEmptyObject($('span.valuehere').data('reds'))) {
-                    $('span.valuehere').data('reds',{red:[],blue:[]});
-                     tempall = $('span.valuehere').data('reds');
-
-                } else { //开始返回后第二次手选号码
-                    // $('span.valuehere').data('reds',{red:[],blue:[]});
-                    let tempall = $('span.valuehere').data('reds');
-                     redall = tempall.red;
-                    console.log('there');
-
-                }
-                // 如果是第二次增加手选单式球
-                // let jilei15 = new Array(new Array);
-                // if($('span.valuehere').data('jilei15').length>0) {
-                //     jilei15 = $('span.valuehere').data('jilei15');
-                //     let redall = jilei15[jilei15.length -1].splice(6,1);//删除最新一组号码蓝球号码
-                //     let blueall = jilei15[jilei15.length -1].splice(0,5);//删除红球号码
-                //     let tempall ={red:redall,blue:blueall};
-                //
-                // }
-                if($(event.target ).hasClass('circlebai')) {
-                    if($(event.target).hasClass('red')) {//若此球被点击前有色,删除此号码
-                        let rednum = parseInt($(event.target).find('span').text());
-                        let ta = [];
-                       for(let i =0 ;i <redall.length ; i++) {
-                           if(redall[i] !== rednum) {
-                               ta.push(redall[i]);
-                           }
-                       }
-                        $('span.valuehere').data('reds').red = ta;
-                    }else  { //被点击前无色 添加此号码
-                        let rednum = parseInt($(event.target).find('span').text());
-                        $('span.valuehere').data('reds').red.push(rednum);
-                    }
-                    $(event.target).toggleClass('red');
-                    $(event.target).find('span').toggleClass('white');
-
-                }
-                if($(event.target).hasClass('numnum')) {
-                    if($(event.target).hasClass('white')) {
-                        let rednum = parseInt($(event.target).text());
-                        let ta = [];
-                        for(let i =0 ;i <redall.length ; i++) {
-                            if(redall[i] !== rednum) {
-                                ta.push(redall[i]);
-                            }
-                        }
-                        $('span.valuehere').data('reds').red = ta;
-                    } else {
-                        let rednum = parseInt($(event.target).text());
-                        $('span.valuehere').data('reds').red.push(rednum);
-                    }
-                    $(event.target).parent('div').toggleClass('red');
-                    $(event.target).toggleClass('white');
-                }
-                //开始A手选红球一注逻辑不断增加jilei15数组内容，形成[Array(7),Array(7),...]这样
-                let rednow = [];
-                let bluenow = [];
-
-                let rbnow = [];
-                if( $.isEmptyObject( $('span.valuehere').data('jilei15'))) { //如果jilei15为空,充值
-
-                     rednow = $('span.valuehere').data('reds').red;
-                     bluenow = $('span.valuehere').data('reds').blue;
-                    let jilei15 = [];
-                    jilei15.push( rednow.concat(bluenow));
-                    $('span.valuehere').data('jilei15',jilei15);
-                } else { //否则是第二次开始添加字符串数组
-                    let jilei15 =  $('span.valuehere').data('jilei15');
-
-                    rednow = $('span.valuehere').data('reds').red;
-                    bluenow = $('span.valuehere').data('reds').blue;
-                   let temp = rednow.concat(bluenow);
-                   //判断是否在二维数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                    if(jilei15[jilei15.length -1].length <=6) {
-                        jilei15[jilei15.length -1] = temp;
-                    } else {
-                        alert('enough!');
-                    }
-
-                    // for(let i=0;i<jilei15.length ; i++) {
-                    //     if(i ===( jilei15.length -1))
-                    //     jilei15[i] = rednow.concat(bluenow);
-                    // }
-                    // jilei15.push( rednow.concat(bluenow));
-                    $('span.valuehere').data('jilei15',jilei15);
-                    console.log('jilei15原始=',jilei15);
-                    console.log('data.reds==',$('span.valuehere').data('reds'),'jilei15==',jilei15);
-
-                }
-
-                if( $('span.valuehere').data('reds').red.length <6) { //不够数量，继续选择
-                    console.log('不够数量，继续选择');
-                    $('span.valuehere').data('redman','not');
-                    $('button.confirm').removeClass('btn-success');
-                    $('button.confirm').addClass('btn-dark');
-                      rednow = $('span.valuehere').data('reds').red;
-                } else if( $('span.valuehere').data('reds').red.length === 6) { //达到数量，可以蓝球一起确认选择
-                    $('span.valuehere').data('redman','yes');
-                      rednow = $('span.valuehere').data('reds').red;
-                    console.log('change select jilei15==',$('span.valuehere').data('jilei15'),'rednow=',rednow,'bluenow=',bluenow,'rbnow==',rbnow);
-                }else{  //达到数量，可以确认复式号码
-                    $('span.valuehere').data('redman','yes');
-                      rednow = $('span.valuehere').data('reds').red;
-                }
-                if($('span.valuehere').data('redman') === 'yes' &&
-                    $('span.valuehere').data('blueman') === 'yes') {
-                    $('button.confirm').removeClass('btn-dark');
-                    $('button.confirm').addClass('btn-success');
-                    let jilei15 = new Array(new Array);
-                    if($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                         jilei15= new Array(new Array);
-                    } else {
-                         jilei15 = $('span.valuehere').data('jilei15');
-                    }
-                     jilei15[jilei15.length] = rednow.concat(bluenow);
-                        $('span.valuehere').data('jilei15', jilei15);
-
-                }
-
-                console.log('红球数组变为:',$('span.valuehere').data('reds').red);
             },
             changeSelectBlue:function () {
                 let blueall = [];

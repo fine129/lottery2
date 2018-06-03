@@ -156,3 +156,20 @@ div.beats {
   div.danusedall ,div.waitdan{
     background-color: lighten(black,90%);
   }
+  div.ruledesc {
+    min-height:200px;
+    min-width:80%;
+
+  }
+  button.closebtn {
+    //position:relative;
+    left:45%;
+    top:20%;
+  }
+  input.beishufu {
+    width:60px;
+    height:30px;
+    margin:0 5px;
+
+
+  }

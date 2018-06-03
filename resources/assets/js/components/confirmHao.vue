@@ -1,9 +1,19 @@
 <template>
     <div class="text-left">
 
-        <h4 class="alert-info">您选择的号码如下：</h4>
-        <div class="list-group numhere" @click="changeBeishu">
+        <h4 class="alert-info" >您的投注方案如下：</h4>
+        <div class="list-group numhere" @click="changeBeishu" v-if="type === 'five'">
 
+        </div>
+        <div class="list-group fushigroup grouphere" @click="changeBeishu" v-if="type === 'fushi'">
+
+        </div>
+        <div class="list-group danshigroup grouphere" v-if="type === 'danshi'">
+
+        </div>
+        <div class="list-group-item danshinotice">
+            <span class="noticesm">一张订单最多只能有五组单式号码</span>
+            <button class="btn btn-outline-success oneagain"  @click="beatagain">再来一注</button>
         </div>
 
 
@@ -18,8 +28,16 @@
     export default {
         name: "confirmHao",
         components: {   },
+        created: function() {
+
+        },
+        props:['type'],
         mounted(){
             $(function () {
+                // if(type == 'standard') {
+                //     alert(999);
+                // }
+                // else { alert(1111)}
                 let numhere = $('div.numhere');
                 let allnum = $('span.valuehere').data('allnum');
                 for(let i =0; i<allnum.length;i++) {
@@ -42,6 +60,72 @@
                        ' </div>')
                 }
                 console.log('allnum==',allnum);
+                //填充第二个选择
+                let redblue = $('span.valuehere').data('reds');
+                let red = redblue.red;
+                let blue = redblue.blue;
+                $('div.danshinotice').hide();
+                if(!red) {
+                    return  null;
+                }
+
+                if( red.length>6 || blue.length >1) {
+                    $('div.fushigroup').append('' +
+                        '<div class="list-group-item">' +
+                        '<label class="label">红复</label>' +
+                        '<span class="redhere"> '+red.join(", ") +'</span>' +
+                        '</div>' +
+                        '<div class="list-group-item">' +
+                        '<label class="label bluelabel">'+'蓝复'+ '</label> ' +
+                        '<span class="bluehere">'+blue.join(", ")+'</span> ' +
+                        '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
+                        '"></span>' +
+                        '<input type="text" name="beishu"  value=1   class="beishufu" /> ' +
+                        '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
+                        '"></span>'+
+                        '</div> ')
+                } else {
+                    //积累单式五组号码
+
+                    let all = $('span.valuehere').data('reds');
+                    let red = all.red.join(', ');
+                    let blue = all.blue.join(', ');
+                    let jilei15 = $('span.valuehere').data('jilei15');
+                    //处理A手选一注号码
+                    if(jilei15 && jilei15.length >0) {
+                        for(let i =0 ;i <jilei15.length ;i++) {
+                            let rr = ''; let bb = '';
+                            let rb = jilei15[i];
+                            rr = rb.substr(0,5);
+                            bb = rb.substr(5,6);
+
+                            console.log('rr==',rr,'bb==',bb,'jilei15[i]==',jilei15[i],'jilei15==',jilei15);
+                            $('div.danshigroup').append('' +
+                                '<div class="list-group-item" >' +
+                                '<label class="label smlabel">第<span class="smnum">'+i+1+'</span>注 </label>' +
+                                '<span class="=redpart">'+rr+'</span> - <span class="bluepart">'+bb+'</span>' +
+                                '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
+                                '"></span>' +
+                                '<input type="text" name="beishu"  value=1   class="beishufu" /> ' +
+                                '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
+                                '"></span>'+
+                                '</div>' );
+                        }
+
+                    }
+
+                    let num = $('div.danshigroup div.group-list-item').length ;
+                    $('div.danshinotice').show();
+
+                    if( num <=4 && num >=1){
+
+                    }
+                    if(jilei15.length >=5) {
+
+                        $('button.oneagain').hide();
+                    }
+                    console.log('dansih,,,,,,,,,,,,,,,',red,blue,'jilei15.length==',jilei15.length);
+                }
             });
          },
         data() {
@@ -49,6 +133,10 @@
         },
 
         methods: {
+            beatagain: function () {
+                $('span.valuehere').data('reds',{red:[],blue:[]});
+                this.$router.push('/');
+            },
             xuliehao: function() {
               $('div.numhere').find('div.beats').each(function (i,n) {
                   $(n).find('span.imtitle').text(i+1);

@@ -9,7 +9,7 @@ require('./bootstrap');
 import VueRouter from 'vue-router';
 import Vuex from 'vuex'
 import  confirmHao from './components/confirmHao.vue';
-import  xuanhao from './components/xuanhao.vue';
+import  xuanhao from './components/xuanhaonew.vue';
 import  dantuo from './components/dantuo.vue';
 window.Vue = require('vue');
 
@@ -28,7 +28,7 @@ Vue.component('avatarhere', require('./components/avatarhere.vue'));
 const router = new VueRouter({
     // routes // （缩写）相当于 routes: routes
     routes: [
-        { path: '/confirm', component: confirmHao,props:true },
+        { path: '/confirm', component: confirmHao,props: (route) => ({type:route.query.type}) },
         { path: '/', component: xuanhao, props: true},
         { path: '/dantuo', component: dantuo, props: true},
 

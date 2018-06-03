@@ -10164,3 +10164,19 @@ div.waitdan {
   background-color: #e6e5e5;
 }
 
+div.ruledesc {
+  min-height: 200px;
+  min-width: 80%;
+}
+
+button.closebtn {
+  left: 45%;
+  top: 20%;
+}
+
+input.beishufu {
+  width: 60px;
+  height: 30px;
+  margin: 0 5px;
+}
+

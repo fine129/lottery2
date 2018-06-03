@@ -14286,8 +14286,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhaonew_vue__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhaonew_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_xuanhaonew_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue__);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
@@ -14319,7 +14319,9 @@ Vue.component('avatarhere', __webpack_require__(63));
 
 var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     // routes // （缩写）相当于 routes: routes
-    routes: [{ path: '/confirm', component: __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue___default.a, props: true }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue___default.a, props: true }, { path: '/dantuo', component: __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue___default.a, props: true }]
+    routes: [{ path: '/confirm', component: __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue___default.a, props: function props(route) {
+            return { type: route.query.type };
+        } }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_xuanhaonew_vue___default.a, props: true }, { path: '/dantuo', component: __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue___default.a, props: true }]
 });
 
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
@@ -40025,7 +40027,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40083,13 +40085,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     name: "confirmHao",
     components: {},
+    created: function created() {},
+    props: ['type'],
     mounted: function mounted() {
         $(function () {
+            // if(type == 'standard') {
+            //     alert(999);
+            // }
+            // else { alert(1111)}
             var numhere = $('div.numhere');
             var allnum = $('span.valuehere').data('allnum');
             for (var i = 0; i < allnum.length; i++) {
@@ -40101,6 +40119,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 numhere.append('<div class="list-group-item beats">' + '<label class=" label">第' + '<span class="imtitle">' + (i + 1) + '</span>注</label>' + '<div class="haonum">' + rednum.join(', ') + ', <span class="blueletter">' + bluenum + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + ' </div>' + ' </div>');
             }
             console.log('allnum==', allnum);
+            //填充第二个选择
+            var redblue = $('span.valuehere').data('reds');
+            var red = redblue.red;
+            var blue = redblue.blue;
+            $('div.danshinotice').hide();
+            if (!red) {
+                return null;
+            }
+
+            if (red.length > 6 || blue.length > 1) {
+                $('div.fushigroup').append('' + '<div class="list-group-item">' + '<label class="label">红复</label>' + '<span class="redhere"> ' + red.join(", ") + '</span>' + '</div>' + '<div class="list-group-item">' + '<label class="label bluelabel">' + '蓝复' + '</label> ' + '<span class="bluehere">' + blue.join(", ") + '</span> ' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div> ');
+            } else {
+                //积累单式五组号码
+
+                var all = $('span.valuehere').data('reds');
+                var _red = all.red.join(', ');
+                var _blue = all.blue.join(', ');
+                var jilei15 = $('span.valuehere').data('jilei15');
+                //处理A手选一注号码
+                if (jilei15 && jilei15.length > 0) {
+                    for (var _i = 0; _i < jilei15.length; _i++) {
+                        var rr = '';var bb = '';
+                        var rb = jilei15[_i];
+                        rr = rb.substr(0, 5);
+                        bb = rb.substr(5, 6);
+
+                        console.log('rr==', rr, 'bb==', bb, 'jilei15[i]==', jilei15[_i], 'jilei15==', jilei15);
+                        $('div.danshigroup').append('' + '<div class="list-group-item" >' + '<label class="label smlabel">第<span class="smnum">' + _i + 1 + '</span>注 </label>' + '<span class="=redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
+                    }
+                }
+
+                var num = $('div.danshigroup div.group-list-item').length;
+                $('div.danshinotice').show();
+
+                if (num <= 4 && num >= 1) {}
+                if (jilei15.length >= 5) {
+
+                    $('button.oneagain').hide();
+                }
+                console.log('dansih,,,,,,,,,,,,,,,', _red, _blue, 'jilei15.length==', jilei15.length);
+            }
         });
     },
     data: function data() {
@@ -40109,6 +40168,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
+        beatagain: function beatagain() {
+            $('span.valuehere').data('reds', { red: [], blue: [] });
+            this.$router.push('/');
+        },
         xuliehao: function xuliehao() {
             $('div.numhere').find('div.beats').each(function (i, n) {
                 $(n).find('span.imtitle').text(i + 1);
@@ -40151,12 +40214,40 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "text-left" }, [
-    _c("h4", { staticClass: "alert-info" }, [_vm._v("您选择的号码如下：")]),
+    _c("h4", { staticClass: "alert-info" }, [_vm._v("您的投注方案如下：")]),
     _vm._v(" "),
-    _c("div", {
-      staticClass: "list-group numhere",
-      on: { click: _vm.changeBeishu }
-    })
+    _vm.type === "five"
+      ? _c("div", {
+          staticClass: "list-group numhere",
+          on: { click: _vm.changeBeishu }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.type === "fushi"
+      ? _c("div", {
+          staticClass: "list-group fushigroup grouphere",
+          on: { click: _vm.changeBeishu }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.type === "danshi"
+      ? _c("div", { staticClass: "list-group danshigroup grouphere" })
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "list-group-item danshinotice" }, [
+      _c("span", { staticClass: "noticesm" }, [
+        _vm._v("一张订单最多只能有五组单式号码")
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-success oneagain",
+          on: { click: _vm.beatagain }
+        },
+        [_vm._v("再来一注")]
+      )
+    ])
   ])
 }
 var staticRenderFns = []
@@ -40188,7 +40279,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-1fb44b65"
+var __vue_scopeId__ = "data-v-dab9b76a"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -40199,7 +40290,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\xuanhao.vue"
+Component.options.__file = "resources\\assets\\js\\components\\xuanhaonew.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -40208,9 +40299,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1fb44b65", Component.options)
+    hotAPI.createRecord("data-v-dab9b76a", Component.options)
   } else {
-    hotAPI.reload("data-v-1fb44b65", Component.options)
+    hotAPI.reload("data-v-dab9b76a", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -40231,13 +40322,13 @@ var content = __webpack_require__(49);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("206bccbc", content, false, {});
+var update = __webpack_require__(4)("7b085e40", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1fb44b65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhao.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1fb44b65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhao.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-dab9b76a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhaonew.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-dab9b76a\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhaonew.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -40255,7 +40346,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\ninput.rednum[data-v-1fb44b65],input.bluenum[data-v-1fb44b65] {\r\n    width:25px;\n}\r\n", ""]);
+exports.push([module.i, "\ninput.rednum[data-v-dab9b76a],input.bluenum[data-v-dab9b76a] {\r\n    width:25px;\n}\r\n", ""]);
 
 // exports
 
@@ -40266,6 +40357,13 @@ exports.push([module.i, "\ninput.rednum[data-v-1fb44b65],input.bluenum[data-v-1f
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -40334,6 +40432,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     // },
     methods: {
         selectBlueBuchong: function selectBlueBuchong() {
+            var redall = [];
+            if (!$('span.valuehere').data('reds')) {
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                var tempall = $('span.valuehere').data('reds');
+                redall = [];
+                console.log('hhereee');
+            } else {
+                var _tempall = $('span.valuehere').data('reds');
+                redall = _tempall.red;
+                console.log('there');
+            }
             var tempblue = [];
             var bluenum = parseInt($('input[name=bluenum]').val());
             var reg = /^[1-9]\d*$|^0$/; // 注意：故意限制了 0321 这种格式，如不需要，直接reg=/^\d+$/;
@@ -40370,9 +40479,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }
             $('span.valuehere').data('blues', tempblue);
-            console.log(' final   new blues =' + $('span.valuehere').data('blues'));
+            $('span.valuehere').data('reds').blue = tempblue;
+            console.log(' final   new blues =' + $('span.valuehere').data('reds').blue);
         },
         selectRedBuchong: function selectRedBuchong() {
+            var redall = [];
+            if (!$('span.valuehere').data('reds')) {
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                var tempall = $('span.valuehere').data('reds');
+                redall = [];
+                console.log('hhereee');
+            } else {
+                var _tempall2 = $('span.valuehere').data('reds');
+                redall = _tempall2.red;
+                console.log('there');
+            }
             var re = this.reds;
             var bl = this.blues;
             var temp = [];
@@ -40413,8 +40534,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 // this.tempred.concat(temp);
 
-                $('span.valuehere').data('reds', tempred);
-                console.log(' final   new reds =' + $('span.valuehere').data('reds'));
+                $('span.valuehere').data('reds', { red: tempred, blue: [] });
+                console.log(' final   new reds =' + $('span.valuehere').data('reds').red);
             } else {}
         },
         handleUploaded: function handleUploaded(resp) {
@@ -40443,6 +40564,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     }
                 }
             }
+            var jilei15 = [];
+            if (!$('span.valuehere').data('jilei15')) {//如果为空
+
+            } else {
+                jilei15 = $('span.valuehere').data('jilei15');
+            }
+            if (jilei15.length >= 5) {
+                alert('最多只能有五组单选号码！');
+                return null;
+            }
+
             $('div.ballholder div.circlebai').each(function (i, n) {
                 if ($(this).hasClass('red')) {
                     $(this).click();
@@ -40462,10 +40594,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             for (var _i2 = 0; _i2 < this.reds.length; _i2++) {
                 $('div.ballholder div.cirlbai' + this.reds[_i2]).click();
             }
-            $('span.valuehere').data('reds', this.reds);
-            $('span.valuehere').data('blues', this.blues);
+            $('span.valuehere').data('reds', { red: this.reds, blue: this.blues }); //用reds存储所有红球蓝球号码
+            //存储形式，类似五组号码那样
+            var andrb = this.reds.concat(this.blues);
+            // let jilei15 =[];
+            if (!$('span.valuehere').data('jilei15')) {//如果为空
 
-            console.log('spanblues===' + $('span.valuehere').data('reds'));
+            } else {
+                jilei15 = $('span.valuehere').data('jilei15');
+            }
+            // if(jilei15.length >=5) {
+            //     alert('最多只能有五组单选号码！');
+            //     return null;
+            // }
+            jilei15.push(andrb);
+            $('span.valuehere').data('blues', this.blues);
+            $('span.valuehere').data('jilei15', jilei15);
+
+            // let t = {a:[3,4,3,2,3,4],blue:[3,3,3,3,3]};
+            console.log('spanblues===' + $('span.valuehere').data('reds').red, $('span.valuehere').data('reds').blue, '合并后是数组==:', andrb, '积累数组是:', jilei15);
         },
         selectFiveBeats: function selectFiveBeats() {
             var temptarblue = [parseInt(Math.random() * 16 + 1)];
@@ -40499,16 +40646,55 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             console.log('final 五组号码为：', redall);
             $('span.valuehere').data('allnum', redall);
-            this.$router.push('/confirm');
+            this.$router.push('/confirm?type=five');
         },
 
         confirmSelect: function confirmSelect() {
-            this.$router.push('confirm', function (onComplete) {
-                console.log('completeeeeeeeeeeee');
-            }, function (onAbort) {
-                console.log('aborttttttttttttt');
-            });
-            console.log('pusheeeeeeeeeeee');
+            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
+                $(event.target).removeClass('btn-dark');
+                $(event.target).addClass('btn-success');
+                console.log('aaaaa', 'jilei15=', $.isEmptyObject($('span.valuehere').data('jilei15')));
+                var redblue = $('span.valuehere').data('reds');
+                if (redblue.red.length > 6 || redblue.blue.length > 1) {
+                    this.$router.push('confirm?type=fushi', function (onComplete) {
+                        console.log('completeeeeeeeeeeee');
+                    }, function (onAbort) {
+                        console.log('aborttttttttttttt');
+                    });
+                } else if (redblue.red.length === 6 && redblue.blue.length === 1) {
+                    //开始添加到共计五组列表
+                    console.log('if heee');
+                    var jilei15 = $('span.valuehere').data('jilei15');
+                    if (jilei15.length >= 5) {
+                        alert('您最多只能挑选五组号码');
+                        return null;
+                    }
+                    if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
+                        $('span.valuehere').data('jilei15', jilei15);
+                        alert('请选择确认红球蓝球数量');
+                        return null;
+                    } else {
+                        //处理确认手选一注逻辑
+                        //  jilei15.push(redblue.red.concat(redblue.blue));
+                        //  $('span.valuehere').data('jilei15',jilei15);
+                        //  console.log('jilei15',jilei15);
+                        //  let el = redblue.red.concat(redblue.blue);
+                        //  jilei15[jilei15.length] = el;
+                        //  $('span.valuehere').data('jilei15',jilei15);
+                        this.$router.push('confirm?type=danshi');
+                    }
+                } else {
+                    this.$router.push('confirm?type=danshi', function (onComplete) {
+                        console.log('completeeeeeeeeeeee');
+                    }, function (onAbort) {
+                        console.log('aborttttttttttttt');
+                    });
+                }
+            } else {
+                alert('请选择符合数量要求的红球蓝球');
+                return null;
+            }
+
             // 带查询参数，变成 /register?plan=private
             // axios.post('/api/confirmhao', {
             //     'red':this.reds,
@@ -40519,24 +40705,106 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             // })
         },
         changeSelect: function changeSelect() {
-            if ($(event.target).hasClass('circlebai')) {
-                $(event.target).toggleClass('red');
-                $(event.target).find('span').toggleClass('white');
-            }
-            if ($(event.target).hasClass('numnum')) {
-                $(event.target).parent('div').toggleClass('red');
-                $(event.target).toggleClass('white');
-            }
+            /**
+             *
+             */
+            //重新编写代码逻辑，重头开始，
+
         },
         changeSelectBlue: function changeSelectBlue() {
+            var blueall = [];
+            if (!$('span.valuehere').data('reds')) {
+                //判断是否有reds值
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                var tempall = $('span.valuehere').data('reds');
+                blueall = [];
+            } else {
+                var _tempall3 = $('span.valuehere').data('reds');
+                blueall = _tempall3.blue;
+            }
+            var ta = [];
             if ($(event.target).hasClass('circlebai')) {
+                var bluenum = parseInt($(event.target).find('span').text());
+                if ($(event.target).hasClass('blue')) {
+                    //点击div对象，删除blue号码
+
+                    for (var i = 0; i < blueall.length; i++) {
+                        if (bluenum !== blueall[i]) {
+                            ta.push(blueall[i]);
+                        }
+                    }
+                    blueall = ta;
+                    $('span.valuehere').data('reds').blue = blueall;
+                } else {
+                    //点击div对象，增加blue号码
+                    $('span.valuehere').data('reds').blue.push(bluenum);
+                }
                 $(event.target).toggleClass('blue');
                 $(event.target).find('span').toggleClass('white');
             }
             if ($(event.target).hasClass('numnum')) {
+                //若点击对象为span
+                var _bluenum = parseInt($(event.target).text());
+                if ($(event.target).hasClass('white')) {
+
+                    for (var _i3 = 0; _i3 < blueall.length; _i3++) {
+                        if (_bluenum !== blueall[_i3]) {
+                            ta.push(blueall[_i3]);
+                        }
+                    }
+                    blueall = ta;
+                    $('span.valuehere').data('reds').blue = blueall;
+                } else {
+                    var _bluenum2 = parseInt($(event.target).text());
+                    $('span.valuehere').data('reds').blue.push(_bluenum2);
+                }
+                // $('span.valuehere').data('reds').blue =ta;
                 $(event.target).parent('div').toggleClass('blue');
                 $(event.target).toggleClass('white');
             }
+            //开始手选蓝球一注逻辑 A
+            var jilei15 = [];
+            var rednow = [];
+            var bluenow = [];
+            if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
+                //若为空
+                rednow = $('span.valuehere').data('reds').red;
+                bluenow = $('span.valuehere').data('reds').blue;
+                jilei15 = [];
+                jilei15.push(rednow.concat(bluenow));
+                $('span.valuehere').data('jilei15', jilei15);
+            } else {
+                rednow = $('span.valuehere').data('reds').red;
+                bluenow = $('span.valuehere').data('reds').blue;
+                jilei15 = $('span.valuehere').data('jilei15');
+                var temp = rednow.concat(bluenow);
+                //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
+                if (jilei15[jilei15.length - 1].length <= 7) {
+                    jilei15[jilei15.length - 1] = temp;
+                } else {
+                    alert('enough!' + jilei15[jilei15.length - 1]);
+                }
+                $('span.valuehere').data('jilei15', jilei15);
+            }
+
+            if ($('span.valuehere').data('reds').blue.length < 1) {
+                //蓝球不够
+                $('span.valuehere').data('blueman', 'not');
+                $('button.confirm').removeClass('btn-success');
+                $('button.confirm').addClass('btn-dark');
+            } else if ($('span.valuehere').data('reds').blue.length >= 1) {
+                $('span.valuehere').data('blueman', 'yes');
+            } else {
+                $('span.valuehere').data('blueman', 'not');
+                $('button.confirm').removeClass('btn-success');
+                $('button.confirm').addClass('btn-dark');
+            }
+            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
+                $('button.confirm').removeClass('btn-dark');
+                $('button.confirm').addClass('btn-success');
+                console.log('heeeeeeedd');
+            }
+            console.log('jilei15==', jilei15, '蓝球数组变为:', $('span.valuehere').data('reds').blue, '整体变为==', $('span.valuehere').data('reds'), 'redman=', $('span.valuehere').data('redman'), 'blueman=', $('span.valuehere').data('blueman'));
         }
     }
 });
@@ -40584,42 +40852,12 @@ var render = function() {
         [_vm._v("机选五注")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "d-inline" }, [
-        _c("label", { staticClass: "inputlabel" }, [_vm._v("补充机选红球")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: " rednum",
-          attrs: { name: "rednum", value: "" }
-        }),
-        _vm._v("个\n           "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-info onebeat",
-            attrs: { title: "手选蓝球或者红球后，指定剩余球数目机选" },
-            on: { click: _vm.selectRedBuchong }
-          },
-          [_vm._v("红球机选补充")]
-        ),
-        _vm._v(" "),
-        _c("label", { staticClass: "inputlabel" }, [_vm._v("补充机选蓝球")]),
-        _c("input", { staticClass: " bluenum", attrs: { name: "bluenum" } }),
-        _vm._v("个\n            "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-info onebeat",
-            attrs: { title: "手选蓝球或者红球后，指定剩余球数目机选" },
-            on: { click: _vm.selectBlueBuchong }
-          },
-          [_vm._v("蓝球机选补充")]
-        )
-      ]),
+      _vm._m(0),
       _vm._v(" "),
       _c(
         "button",
         {
-          staticClass: "btn btn-info confirm btn-block btn-danger",
+          staticClass: "btn btn-info confirm btn-block btn-dark",
           on: { click: _vm.confirmSelect }
         },
         [_vm._v("确认选择")]
@@ -40627,13 +40865,43 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "d-inline" }, [
+      _c("label", { staticClass: "inputlabel" }, [_vm._v("机选红球数量")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "rednum",
+        attrs: { name: "rednum", value: "0" }
+      }),
+      _vm._v("个\n            "),
+      _c("label", { staticClass: "d-inline" }, [_vm._v("机选蓝球数量")]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "bluenum",
+        attrs: { name: "bluenum", value: "0" }
+      }),
+      _vm._v("个\n            "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info btn-success",
+          attrs: { title: "开始机选" }
+        },
+        [_vm._v("开始机选")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1fb44b65", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-dab9b76a", module.exports)
   }
 }
 
@@ -40778,6 +41046,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40785,6 +41055,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
     mounted: function mounted() {
         $(function () {
+
             console.log('hhhhhhhhhhhhhhhhhhhhhhjjjjjjj');
             for (var i = 1; i <= 33; i++) {
                 if (i % 7 == 0) $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
@@ -40812,6 +41083,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     //     blues:this.blues
     // },
     methods: {
+
         selectDanBuchong: function selectDanBuchong() {
             if ($('span.valuehere').data('danusedall') === 'yes') {
                 alert('您已经使用过胆码功能!');
@@ -41256,7 +41528,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-info confirm btn-block btn-danger",
+          staticClass: "btn btn-info confirm  btn-danger ",
           on: { click: _vm.confirmSelect }
         },
         [_vm._v("确认选择")]

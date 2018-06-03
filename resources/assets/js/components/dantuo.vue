@@ -13,6 +13,7 @@
         <div class="blueholder" @click="changeSelectBlue">
 
         </div>
+
         <div class="btn-block">
             <!--<button class="btn btn-info onebeat" @click="selectOnebeat">机选一注</button>-->
             <!--<button class="btn btn-info fivebeats" @click="selectFiveBeats">机选五注</button>-->
@@ -31,7 +32,8 @@
                 <button class="btn btn-info onebeat" title="手选蓝球或者红球后，指定剩余球数目机选"
                         @click="selectBlueBuchong">蓝球机选补充</button>
             </div>
-            <button class="btn btn-info confirm btn-block btn-danger"
+
+            <button class="btn btn-info confirm  btn-danger "
                     @click="confirmSelect"
             >确认选择</button>
 
@@ -49,6 +51,7 @@
         components: {},
         mounted() {
             $(function () {
+
                 console.log('hhhhhhhhhhhhhhhhhhhhhhjjjjjjj');
                 for (let i = 1; i <= 33; i++) {
                     if (i % 7 == 0)
@@ -87,6 +90,7 @@
         //     blues:this.blues
         // },
         methods: {
+
             selectDanBuchong: function () {
                 if ($('span.valuehere').data('danusedall') === 'yes') {
                     alert('您已经使用过胆码功能!');
