@@ -11,6 +11,24 @@ import Vuex from 'vuex'
 import  confirmHao from './components/confirmHao.vue';
 import  xuanhao from './components/xuanhaonew.vue';
 import  dantuo from './components/dantuo.vue';
+Array.prototype.indexOf = function(val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+    }
+    return -1;
+};
+Array.prototype.remove = function(val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};
+Array.prototype.removeAll = function(arrval) {
+    for(let i = arrval[0];i<arrval.length;i++) {
+        this.remove(arrval[i]);
+    }
+
+};
 window.Vue = require('vue');
 
 window.Vue.use(VueRouter);

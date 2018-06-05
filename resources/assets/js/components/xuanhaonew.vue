@@ -21,12 +21,12 @@
                 <!--<button class="btn btn-info onebeat" title="手选蓝球或者红球后，指定剩余球数目机选"-->
                         <!--@click="selectBlueBuchong">蓝球机选补充</button>-->
             <!--</div>-->
-            <div class="d-inline">
+            <div class="d-inline macompute">
                 <label class="inputlabel">机选红球数量</label>
                 <input class="rednum" name="rednum" value="0" />个
                 <label class="d-inline">机选蓝球数量</label>
                 <input class="bluenum" name="bluenum" value="0">个
-                <button class="btn btn-info btn-success" title="开始机选" >开始机选</button>
+                <button class="btn btn-info btn-success" title="开始机选"  @click="machineSelect">开始机选</button>
             </div>
             <button class="btn btn-info confirm btn-block btn-dark"
                     @click="confirmSelect"
@@ -48,18 +48,18 @@
             $(function () {
                 for(let i = 1;i<=33;i++) {
                     if(i%7 ==0)
-                        $('div.ballholder').append('<div class="circlebai text-center cirlbai'+i +'" '+
+                        $('div.ballholder').append('<div data-numhere="'+i +'" class="circlebai text-center cirlbai'+i +'" '+
                             '  ><span class="numnum"> '+i+'</span></div><br/>');
                     else
-                        $('div.ballholder').append('<div class="circlebai text-center cirlbai'+i+'" ' +
+                        $('div.ballholder').append('<div data-numhere="'+i+'" class="circlebai  text-center cirlbai'+i+'" ' +
                             '  ><span class="numnum">'+i+'</span></div>');
                 }
                 for(let i = 1 ; i <=16; i++){
                     if(i%7 ==0)
-                        $('div.blueholder').append('<div class="circlebai text-center cirlbai'+i +'" '+
+                        $('div.blueholder').append('<div  data-numhere="'+i+'" class="circlebai text-center cirlbai'+i +'" '+
                             '  ><span class="numnumb numnum"> '+i+'</span></div><br/>');
                     else
-                        $('div.blueholder').append('<div class="circlebai text-center cirlbai'+i+'" ' +
+                        $('div.blueholder').append('<div  data-numhere="'+i+'" class="circlebai text-center cirlbai'+i+'" ' +
                             '  ><span class="numnumb numnum">'+i+'</span></div>');
                 }
             });
@@ -73,9 +73,21 @@
             let  reds=[parseInt(Math.random()*33+1)]; //1-33的随机数
             //定义一个数组 用来装蓝色球的随机数
             let blues=[parseInt(Math.random()*16+1)]; //1-16的随机数
+            let tempred = [];
+            let tempblue = [];
+            let tempall = [] ;
+            let confirmedall = [] ;
+            let confirmedred = [] ;
+            let confirmedblue = [] ;
             return {
                 'reds':reds,
-                'blues':blues
+                'blues':blues,
+                'tempred':tempred,
+                'tempblue':tempblue,
+                'tempall':tempall,
+                'confirmedall':confirmedall,
+                'confirmedred':confirmedred,
+                'confirmedblue':confirmedblue
             }
         },
 
@@ -378,10 +390,65 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
             },
             changeSelect: function() {
                 /**
-                 *git chuxian cuowu,,xuyaoxiugai yonghuming 
+                 *
                  */
                //重新编写代码逻辑，重头开始，
 
+                if($(event.target ).hasClass('circlebai')) {
+                    let rednum = parseInt($(event.target).data('numhere'));
+                    if($.inArray(rednum,this.tempred) === -1) {
+                        this.tempred.push(rednum);
+                        console.log(this.tempred);
+                    } else {
+                        this.tempred.remove(rednum);
+                    }
+                    $(event.target).toggleClass('red');
+                    $(event.target).find('span').toggleClass('white');
+                }
+                if($(event.target).hasClass('numnum')) {
+                    let rednum = parseInt($(event.target).text());
+                    if($.inArray(rednum,this.tempred) === -1) {
+                        this.tempred.push(rednum);
+                        console.log(this.tempred);
+                    } else {
+                        this.tempred.remove(rednum);
+                    }
+                    $(event.target).parent('div').toggleClass('red');
+                    $(event.target).toggleClass('white');
+                } //若点击对象为span
+
+
+            },
+            machineSelect:function() {
+                let rednum = parseInt($('div.macompute input.rednum').val());
+                let bluenum = parseInt($('div.macompute input.bluenum').val());
+                let tempredsm = [];
+                if(rednum >=33) {
+                    alert('超出机选限额');
+                    return null;
+                }
+                if(this.reds.length >=33|| this.tempred.length >=33) {
+                    alert('机选已满，无法机选');
+                    return null;
+                } else {
+                    while(tempredsm.length < rednum) {
+                        let randomred = parseInt(Math.random()*33+1);
+                        if($.inArray(randomred,this.tempred) === -1 && $.inArray(randomred,tempredsm)=== -1) {
+                            tempredsm.push(randomred);
+                        }
+                        if((33 - rednum) < this.tempred.length) {
+                            alert('超出限额');
+                            break;
+                        }
+                    }
+
+                }
+                this.tempred = this.tempred.concat(tempredsm);
+                for(let i =0;i<tempredsm.length;i++) {
+                    $('div.cirlbai'+tempredsm[i]).toggleClass('red');
+                    $('div.cirlbai'+tempredsm[i]+' span.numnum').toggleClass('white');
+                }
+                console.log(this.tempred);
             },
             changeSelectBlue:function () {
                 let blueall = [];

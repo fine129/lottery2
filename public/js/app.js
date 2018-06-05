@@ -14304,6 +14304,23 @@ __webpack_require__(16);
 
 
 
+Array.prototype.indexOf = function (val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) return i;
+    }
+    return -1;
+};
+Array.prototype.remove = function (val) {
+    var index = this.indexOf(val);
+    if (index > -1) {
+        this.splice(index, 1);
+    }
+};
+Array.prototype.removeAll = function (arrval) {
+    for (var i = arrval[0]; i < arrval.length; i++) {
+        this.remove(arrval[i]);
+    }
+};
 window.Vue = __webpack_require__(57);
 
 window.Vue.use(__WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]);
@@ -40406,10 +40423,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     mounted: function mounted() {
         $(function () {
             for (var i = 1; i <= 33; i++) {
-                if (i % 7 == 0) $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
+                if (i % 7 == 0) $('div.ballholder').append('<div data-numhere="' + i + '" class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div data-numhere="' + i + '" class="circlebai  text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
             }
             for (var _i = 1; _i <= 16; _i++) {
-                if (_i % 7 == 0) $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum"> ' + _i + '</span></div><br/>');else $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum">' + _i + '</span></div>');
+                if (_i % 7 == 0) $('div.blueholder').append('<div  data-numhere="' + _i + '" class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum"> ' + _i + '</span></div><br/>');else $('div.blueholder').append('<div  data-numhere="' + _i + '" class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum">' + _i + '</span></div>');
             }
         });
 
@@ -40419,9 +40436,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var reds = [parseInt(Math.random() * 33 + 1)]; //1-33的随机数
         //定义一个数组 用来装蓝色球的随机数
         var blues = [parseInt(Math.random() * 16 + 1)]; //1-16的随机数
+        var tempred = [];
+        var tempblue = [];
+        var tempall = [];
+        var confirmedall = [];
+        var confirmedred = [];
+        var confirmedblue = [];
         return {
             'reds': reds,
-            'blues': blues
+            'blues': blues,
+            'tempred': tempred,
+            'tempblue': tempblue,
+            'tempall': tempall,
+            'confirmedall': confirmedall,
+            'confirmedred': confirmedred,
+            'confirmedblue': confirmedblue
         };
     },
 
@@ -40710,6 +40739,59 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
              */
             //重新编写代码逻辑，重头开始，
 
+            if ($(event.target).hasClass('circlebai')) {
+                var rednum = parseInt($(event.target).data('numhere'));
+                if ($.inArray(rednum, this.tempred) === -1) {
+                    this.tempred.push(rednum);
+                    console.log(this.tempred);
+                } else {
+                    this.tempred.remove(rednum);
+                }
+                $(event.target).toggleClass('red');
+                $(event.target).find('span').toggleClass('white');
+            }
+            if ($(event.target).hasClass('numnum')) {
+                var _rednum = parseInt($(event.target).text());
+                if ($.inArray(_rednum, this.tempred) === -1) {
+                    this.tempred.push(_rednum);
+                    console.log(this.tempred);
+                } else {
+                    this.tempred.remove(_rednum);
+                }
+                $(event.target).parent('div').toggleClass('red');
+                $(event.target).toggleClass('white');
+            } //若点击对象为span
+
+        },
+        machineSelect: function machineSelect() {
+            var rednum = parseInt($('div.macompute input.rednum').val());
+            var bluenum = parseInt($('div.macompute input.bluenum').val());
+            var tempredsm = [];
+            if (rednum >= 33) {
+                alert('超出机选限额');
+                return null;
+            }
+            if (this.reds.length >= 33 || this.tempred.length >= 33) {
+                alert('机选已满，无法机选');
+                return null;
+            } else {
+                while (tempredsm.length < rednum) {
+                    var randomred = parseInt(Math.random() * 33 + 1);
+                    if ($.inArray(randomred, this.tempred) === -1 && $.inArray(randomred, tempredsm) === -1) {
+                        tempredsm.push(randomred);
+                    }
+                    if (33 - rednum < this.tempred.length) {
+                        alert('超出限额');
+                        break;
+                    }
+                }
+            }
+            this.tempred = this.tempred.concat(tempredsm);
+            for (var i = 0; i < tempredsm.length; i++) {
+                $('div.cirlbai' + tempredsm[i]).toggleClass('red');
+                $('div.cirlbai' + tempredsm[i] + ' span.numnum').toggleClass('white');
+            }
+            console.log(this.tempred);
         },
         changeSelectBlue: function changeSelectBlue() {
             var blueall = [];
@@ -40852,7 +40934,31 @@ var render = function() {
         [_vm._v("机选五注")]
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "d-inline macompute" }, [
+        _c("label", { staticClass: "inputlabel" }, [_vm._v("机选红球数量")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "rednum",
+          attrs: { name: "rednum", value: "0" }
+        }),
+        _vm._v("个\n            "),
+        _c("label", { staticClass: "d-inline" }, [_vm._v("机选蓝球数量")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: "bluenum",
+          attrs: { name: "bluenum", value: "0" }
+        }),
+        _vm._v("个\n            "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-info btn-success",
+            attrs: { title: "开始机选" },
+            on: { click: _vm.machineSelect }
+          },
+          [_vm._v("开始机选")]
+        )
+      ]),
       _vm._v(" "),
       _c(
         "button",
@@ -40865,37 +40971,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-inline" }, [
-      _c("label", { staticClass: "inputlabel" }, [_vm._v("机选红球数量")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "rednum",
-        attrs: { name: "rednum", value: "0" }
-      }),
-      _vm._v("个\n            "),
-      _c("label", { staticClass: "d-inline" }, [_vm._v("机选蓝球数量")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "bluenum",
-        attrs: { name: "bluenum", value: "0" }
-      }),
-      _vm._v("个\n            "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-info btn-success",
-          attrs: { title: "开始机选" }
-        },
-        [_vm._v("开始机选")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
