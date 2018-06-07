@@ -27,6 +27,7 @@
                 <label class="d-inline">机选蓝球数量</label>
                 <input class="bluenum" name="bluenum" value="0">个
                 <button class="btn btn-info btn-success" title="开始机选"  @click="machineSelect">开始机选</button>
+                <button class="btn btn-info btn-success" title="重新选择"  @click="machineReset">重新选择</button>
             </div>
             <button class="btn btn-info confirm btn-block btn-dark"
                     @click="confirmSelect"
@@ -79,6 +80,10 @@
             let confirmedall = [] ;
             let confirmedred = [] ;
             let confirmedblue = [] ;
+            let onebeatred = [] ;
+            let fivebeatsred = [];
+            let onebeatblue =[];
+            let fivebeatsblue = [];
             return {
                 'reds':reds,
                 'blues':blues,
@@ -87,7 +92,9 @@
                 'tempall':tempall,
                 'confirmedall':confirmedall,
                 'confirmedred':confirmedred,
-                'confirmedblue':confirmedblue
+                'confirmedblue':confirmedblue,
+                'onebeatred':onebeatred,
+                'onebeatblue':onebeatblue
             }
         },
 
@@ -222,30 +229,25 @@
                 // let  reds=[parseInt(Math.random()*33+1)]; //1-33的随机数
                 // //定义一个数组 用来装蓝色球的随机数
                 // let blues=[parseInt(Math.random()*16+1)]; //1-16的随机数
-                this.reds = [parseInt(Math.random()*33+1)];
+                this.reds = [];
                 this.blues =[];
-
-                while(this.reds.length<6){  //双色球是6红1蓝，故长度小于6 说明会循环5次 因为前面reds已经有一次的默认值
-                    let r=parseInt(Math.random()*33+1); //定义r 随机数的取值与reds一致 用于与reds作比较
-                    for (let i = 0; i < this.reds.length; i++) {
-                        if (this.reds[i] === r) {    //若 reds中的随机值与r中的相等，则跳出，继续i++取值
-                            break;        //若reds中的随机值与r中的不相等，则进入else if
-                        } else if (i === this.reds.length - 1) { //reds.length-1 --> 原先的reds.length为5，减1为4，而数组是从0 开始算，所以这里会循环5次，刚好与 reds.length<6 同步；且 i等于reds.length-1，是让随机数循环5次（另外就是让它找到定义中的最后一位数）
-                            this.reds.push(r);        //将r中的值添加到reds中  push()：向数组中添加元素
-//值得注意是！r与reds作比较时，是以reds中现有的数作比较，因为 reds.push(r); 这句代码已经向reds中添加了数值，所以r不是以reds中自身产生的随机数作比较，而是原先r添加到reds中的值作比较
-                            }
-                        }
-                    }
-                let jilei15 =[];
-                if(  !$('span.valuehere').data('jilei15')) { //如果为空
-
-                }else {
-                    jilei15 = $('span.valuehere').data('jilei15');
-                }
-                if(jilei15.length >=5) {
-                    alert('最多只能有五组单选号码！');
+                let onebeatred = $('span.valuehere').data('onebeatred')?$('span.valuehere').data('onebeatred'):[];
+                let onebeatblue = $('span.valuehere').data('onebeatblue')?$('span.valuehere').data('onebeatblue'):[];
+                console.log('lenth =',onebeatred.length);
+                if(this.onebeatred.length >=5) {
+                    alert('最多五注！');
                     return null;
                 }
+                    while(this.reds.length<6){  //双色球是6红1蓝，故长度小于6 说明会循环5次 因为前面reds已经有一次的默认值
+                        let r=parseInt(Math.random()*33+1); //定义r 随机数的取值与reds一致 用于与reds作比较
+                        if($.inArray(r,this.reds) === -1) {
+                            this.reds.push(r);
+                        }else {
+                            // r=parseInt(Math.random()*33+1)
+                        }
+                    }
+
+
 
                 $('div.ballholder div.circlebai').each(function (i,n) {
                     if($(this).hasClass('red')) {
@@ -260,33 +262,18 @@
                 let b= parseInt(Math.random()*16+1);
 
                 $('div.blueholder div.cirlbai'+b).click();
-                this.blues.push(b);
+                this.onebeatblue.push(b);
 
-                    console.log(this.reds,b);
+
                     for(let i =0 ;i < this.reds.length;i++) {
-                        $('div.ballholder div.cirlbai'+this.reds[i]).click();
+                        $('div.ballholder div.cirlbai' + this.reds[i]).click();
                     }
-                    $('span.valuehere').data('reds',{red:this.reds,blue:this.blues}) ; //用reds存储所有红球蓝球号码
-                //存储形式，类似五组号码那样
-                let andrb = this.reds.concat(this.blues);
-                // let jilei15 =[];
-                if(  !$('span.valuehere').data('jilei15')) { //如果为空
-
-                }else {
-                     jilei15 = $('span.valuehere').data('jilei15');
-                }
-                // if(jilei15.length >=5) {
-                //     alert('最多只能有五组单选号码！');
-                //     return null;
-                // }
-                jilei15.push(andrb);
-                $('span.valuehere').data('blues',this.blues) ;
-                    $('span.valuehere').data('jilei15',jilei15) ;
-
-                // let t = {a:[3,4,3,2,3,4],blue:[3,3,3,3,3]};
-                    console.log('spanblues==='+ $('span.valuehere').data('reds').red,
-                        $('span.valuehere').data('reds').blue,'合并后是数组==:',andrb,'积累数组是:',jilei15);
-
+                //存储形式，存储于onebeatred,onebeatblue
+                this.onebeatred.push([this.reds]);
+                $('span.valuehere').data('onebeatred',this.onebeatred);
+                $('span.valuehere').data('onebeatblue',this.onebeatblue);
+                    console.log('onebeatred==='+ $('span.valuehere').data('onebeatred').length);
+                    console.log('onebeatblue==='+ $('span.valuehere').data('onebeatblue'));
                 },
             selectFiveBeats: function() {
              let temptarblue = [parseInt(Math.random()*16+1)];
@@ -423,12 +410,13 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                 let rednum = parseInt($('div.macompute input.rednum').val());
                 let bluenum = parseInt($('div.macompute input.bluenum').val());
                 let tempredsm = [];
+                let tempbluesm = [];
                 if(rednum >=33) {
-                    alert('超出机选限额');
+                    alert('超出红球机选限额');
                     return null;
                 }
                 if(this.reds.length >=33|| this.tempred.length >=33) {
-                    alert('机选已满，无法机选');
+                    alert('机选红球已满，无法机选');
                     return null;
                 } else {
                     while(tempredsm.length < rednum) {
@@ -437,117 +425,102 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                             tempredsm.push(randomred);
                         }
                         if((33 - rednum) < this.tempred.length) {
-                            alert('超出限额');
+                            alert('超出红球限额');
                             break;
+
                         }
                     }
 
                 }
                 this.tempred = this.tempred.concat(tempredsm);
                 for(let i =0;i<tempredsm.length;i++) {
-                    $('div.cirlbai'+tempredsm[i]).toggleClass('red');
-                    $('div.cirlbai'+tempredsm[i]+' span.numnum').toggleClass('white');
+                    $('div.ballholder div.cirlbai'+tempredsm[i]).toggleClass('red');
+                    $('div.ballholder div.cirlbai'+tempredsm[i]+' span.numnum').toggleClass('white');
                 }
                 console.log(this.tempred);
+                //机选蓝球逻辑
+                if(bluenum >=16) {
+                    alert('超出机选限额');
+                    return null;
+                }
+                if(this.blues.length >=16|| this.tempblue.length >=16) {
+                    alert('机选蓝球已满，无法机选');
+                    return null;
+                }  else {
+                    while (tempbluesm.length < bluenum) {
+                        let randomblue = parseInt(Math.random() * 16 + 1);
+                        if ($.inArray(randomblue, this.tempblue) === -1 && $.inArray(randomblue, tempbluesm) === -1) {
+                            tempbluesm.push(randomblue);
+                        }
+                        if ((16 - bluenum) < this.tempblue.length) {
+                            alert('超出蓝球限额');
+                            break;
+
+                        }
+                    }
+                }
+                this.tempblue = this.tempblue.concat(tempbluesm);
+                for(let i =0;i<tempbluesm.length;i++) {
+                    $('div.blueholder div.cirlbai'+tempbluesm[i]).toggleClass('blue');
+                    $('div.blueholder div.cirlbai'+tempbluesm[i]+' span.numnum').toggleClass('white');
+                }
+                console.log("蓝球数组为",this.tempblue);
+            },
+            machineReset: function() {
+                let red = this.tempred;
+                let blue = this.tempblue;
+                for(let i =0 ;i<red.length;i++) {
+                    $('div.ballholder div.cirlbai'+red[i]).toggleClass('red');
+                    $('div.ballholder div.cirlbai'+red[i]+' span.numnum').toggleClass('white');
+                }
+                for(let i =0 ;i <blue.length;i++) {
+                    $('div.blueholder div.cirlbai'+blue[i]).toggleClass('blue');
+                    $('div.blueholder div.cirlbai'+blue[i]+' span.numnum').toggleClass('white');
+                }
+                this.tempred = [];
+                this.tempblue = [];
+                $('div.macompute input.rednum').val(0);
+                $('div.macompute input.bluenum').val(0);
             },
             changeSelectBlue:function () {
                 let blueall = [];
-                if(!$('span.valuehere').data('reds')) { //判断是否有reds值
-                    $('span.valuehere').data('reds',{red:[],blue:[]});
-                    let tempall = $('span.valuehere').data('reds');
-                     blueall = [];
-                } else {
-                    let tempall = $('span.valuehere').data('reds');
-                     blueall = tempall.blue;
-                }
+
                 let ta = [];
                 if($(event.target ).hasClass('circlebai')) {
                     let bluenum = parseInt($(event.target).find('span').text());
-                    if($(event.target).hasClass('blue')) { //点击div对象，删除blue号码
+                    if($.inArray(bluenum,this.tempblue) === -1) {
+                        this.tempblue.push(bluenum);
 
-                        for(let i =0; i < blueall.length; i++) {
-                            if(bluenum !== blueall[i]) {
-                                ta.push(blueall[i]);
-                            }
-                        }
-                        blueall = ta;
-                        $('span.valuehere').data('reds').blue = blueall;
-
-                    } else {//点击div对象，增加blue号码
-                        $('span.valuehere').data('reds').blue.push(bluenum);
+                    } else {
+                        this.tempblue.remove(bluenum);
                     }
+                    console.log('蓝球是：',this.tempblue);
                     $(event.target).toggleClass('blue');
                     $(event.target).find('span').toggleClass('white');
                 }
-                if($(event.target).hasClass('numnum')) { //若点击对象为span
+                else if($(event.target).hasClass('numnum')) { //若点击对象为span
                     let bluenum = parseInt($(event.target).text());
-                    if($(event.target).hasClass('white')) {
 
-                        for(let i = 0 ;i<blueall.length;i++) {
-                            if(bluenum !== blueall[i]) {
-                                ta.push(blueall[i]);
-                            }
-                        }
-                        blueall = ta;
-                        $('span.valuehere').data('reds').blue = blueall;
+                    if($.inArray(bluenum,this.tempblue) === -1) {
+                        this.tempblue.push(bluenum);
+
                     } else {
-                        let bluenum = parseInt($(event.target).text());
-                        $('span.valuehere').data('reds').blue.push(bluenum);
+                        this.tempblue.remove(bluenum);
                     }
-                    // $('span.valuehere').data('reds').blue =ta;
+                    console.log('蓝球是：',this.tempblue);
                     $(event.target).parent('div').toggleClass('blue');
                     $(event.target).toggleClass('white');
                 }
-                //开始手选蓝球一注逻辑 A
-                let jilei15 = [];
-                let rednow =[];
-                let bluenow = [];
-                if( $.isEmptyObject( $('span.valuehere').data('jilei15'))) { //若为空
-                    rednow = $('span.valuehere').data('reds').red;
-                    bluenow = $('span.valuehere').data('reds').blue;
-                    jilei15 = [] ;
-                    jilei15.push(rednow.concat(bluenow));
-                    $('span.valuehere').data('jilei15',jilei15);
 
 
-                } else {
-                    rednow = $('span.valuehere').data('reds').red;
-                    bluenow = $('span.valuehere').data('reds').blue;
-                    jilei15 = $('span.valuehere').data('jilei15');
-                    let temp = rednow.concat(bluenow);
-                    //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                    if(jilei15[jilei15.length -1].length <=7) {
-                        jilei15[jilei15.length -1] = temp;
-                    } else {
-                        alert('enough!'+jilei15[jilei15.length -1]);
-                    }
-                    $('span.valuehere').data('jilei15',jilei15);
-                    }
-
-                if($('span.valuehere').data('reds').blue.length <1) { //蓝球不够
-                    $('span.valuehere').data('blueman', 'not');
-                    $('button.confirm').removeClass('btn-success');
-                    $('button.confirm').addClass('btn-dark');
                 }
-                    else if($('span.valuehere').data('reds').blue.length >=1) {
-                        $('span.valuehere').data('blueman','yes');
 
 
-                    }else {
-                    $('span.valuehere').data('blueman', 'not')
-                    $('button.confirm').removeClass('btn-success');
-                    $('button.confirm').addClass('btn-dark');
-                }
-                if($('span.valuehere').data('redman') === 'yes' &&
-                    $('span.valuehere').data('blueman') === 'yes') {
-                    $('button.confirm').removeClass('btn-dark');
-                    $('button.confirm').addClass('btn-success');
-                    console.log('heeeeeeedd');
-                }
-                console.log('jilei15==',jilei15,'蓝球数组变为:',$('span.valuehere').data('reds').blue,'整体变为==',
-                $('span.valuehere').data('reds'),'redman=',$('span.valuehere').data('redman'),'blueman=',$('span.valuehere').data('blueman'));
 
-            }
+
+
+
+
         }
     }
 </script>
