@@ -8,7 +8,7 @@
         <div class="list-group fushigroup grouphere" @click="changeBeishu" v-if="type === 'fushi'">
 
         </div>
-        <div class="list-group danshigroup grouphere"  @click="changeBeishu" v-if="type === 'danshi'">
+        <div class="list-group danshigroup grouphere" v-if="type === 'danshi'">
 
         </div>
         <div class="list-group-item danshinotice">
@@ -96,16 +96,13 @@
                         for(let i =0 ;i <jilei15.length ;i++) {
                             let rr = ''; let bb = '';
                             let rb = jilei15[i];
-                            // rb = rb.join(',');
-                            console.log('rb[rb.length-1]=',rb[rb.length-1]);
-                            bb = rb[rb.length-1];
-                            rr = rb.slice(0,6);
+                            rr = rb.substr(0,5);
+                            bb = rb.substr(5,6);
 
-                            let j = i + 1;
                             console.log('rr==',rr,'bb==',bb,'jilei15[i]==',jilei15[i],'jilei15==',jilei15);
                             $('div.danshigroup').append('' +
-                                '<div class="list-group-item beats" >' +
-                                '<label class="label smlabel">第<span class="smnum">'+j+'</span>注 </label>' +
+                                '<div class="list-group-item" >' +
+                                '<label class="label smlabel">第<span class="smnum">'+i+1+'</span>注 </label>' +
                                 '<span class="=redpart">'+rr+'</span> - <span class="bluepart">'+bb+'</span>' +
                                 '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
                                 '"></span>' +

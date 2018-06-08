@@ -6,11 +6,6 @@
  */
 
 require('./bootstrap');
-import VueRouter from 'vue-router';
-import Vuex from 'vuex'
-import  confirmHao from './components/confirmHao.vue';
-import  xuanhao from './components/xuanhaonew.vue';
-import  dantuo from './components/dantuo.vue';
 Array.prototype.indexOf = function(val) {
     for (var i = 0; i < this.length; i++) {
         if (this[i] == val) return i;
@@ -24,11 +19,17 @@ Array.prototype.remove = function(val) {
     }
 };
 Array.prototype.removeAll = function(arrval) {
-    for(let i = arrval[0];i<arrval.length;i++) {
+    for(let i =0;i<arrval.length;i++) {
         this.remove(arrval[i]);
     }
 
 };
+import VueRouter from 'vue-router';
+import Vuex from 'vuex'
+import  confirmHao from './components/confirmHao.vue';
+import  xuanhao from './components/xuanhao.vue';
+import  dantuo from './components/dantuo.vue';
+
 window.Vue = require('vue');
 
 window.Vue.use(VueRouter);

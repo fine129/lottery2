@@ -223,6 +223,7 @@
                 }else {
                     jilei15 = $('span.valuehere').data('jilei15');
                 }
+                console.log('jilei15=====',jilei15)
                 if(jilei15.length >=5) {
                     alert('最多只能有五组单选号码！');
                     return null;
@@ -230,32 +231,48 @@
 
                 $('div.ballholder div.circlebai').each(function (i,n) {
                     if($(this).hasClass('red')) {
-                        $(this).click();
+                        $(this).toggleClass('red');
+                        $(this).find('span').toggleClass('white');
+                        // $(this).click();
                     }
                 });
                 $('div.blueholder div.circlebai').each(function (i,n) {
                     if($(this).hasClass('blue')) {
-                        $(this).click();
+                        // $(this).click();
+                        $(this).toggleClass('blue');
+                        $(this).find('span').toggleClass('white');
                     }
                 });
                 let b= parseInt(Math.random()*16+1);
 
-                $('div.blueholder div.cirlbai'+b).click();
+                $('div.blueholder div.cirlbai'+b).toggleClass('blue');
+                $('div.blueholder div.cirlbai'+b).find('span').toggleClass('white');
+
                 this.blues.push(b);
 
                     console.log(this.reds,b);
                     for(let i =0 ;i < this.reds.length;i++) {
-                        $('div.ballholder div.cirlbai'+this.reds[i]).click();
+                        // $('div.ballholder div.cirlbai'+this.reds[i]).click();
+                        $('div.ballholder div.cirlbai'+this.reds[i]).toggleClass('red');
+                        $('div.ballholder div.cirlbai'+this.reds[i]).find('span').toggleClass('white');
+                    }
+                    if($('div.ballholder div.red').length>=6 && $('div.blueholder div.blue').length >=1) {
+                        $('button.confirm').removeClass('btn-dark');
+                        $('button.confirm').addClass('btn-btnsuccess');
+                        $('span.valuehere').data('redman','yes');
+                        $('span.valuehere').data('blueman','yes');
+
+
                     }
                     $('span.valuehere').data('reds',{red:this.reds,blue:this.blues}) ; //用reds存储所有红球蓝球号码
                 //存储形式，类似五组号码那样
                 let andrb = this.reds.concat(this.blues);
                 // let jilei15 =[];
-                if(  !$('span.valuehere').data('jilei15')) { //如果为空
-
-                }else {
-                     jilei15 = $('span.valuehere').data('jilei15');
-                }
+                // if(  !$('span.valuehere').data('jilei15')) { //如果为空
+                //
+                // }else {
+                //      jilei15 = $('span.valuehere').data('jilei15');
+                // }
                 // if(jilei15.length >=5) {
                 //     alert('最多只能有五组单选号码！');
                 //     return null;
@@ -327,7 +344,7 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                         //开始添加到共计五组列表
                         console.log('if heee');
                         let jilei15 =$('span.valuehere').data('jilei15');
-                        if(jilei15.length >=5) {
+                        if(jilei15.length >5) {
                             alert('您最多只能挑选五组号码');
                             return null;
                         }

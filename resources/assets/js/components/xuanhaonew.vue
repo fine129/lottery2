@@ -94,7 +94,9 @@
                 'confirmedred':confirmedred,
                 'confirmedblue':confirmedblue,
                 'onebeatred':onebeatred,
-                'onebeatblue':onebeatblue
+                'onebeatblue':onebeatblue,
+                'fivebeatsred':fivebeatsred,
+                'fivebeatsblue':fivebeatsblue
             }
         },
 
@@ -262,18 +264,24 @@
                 let b= parseInt(Math.random()*16+1);
 
                 $('div.blueholder div.cirlbai'+b).click();
-                this.onebeatblue.push(b);
+                onebeatblue.push(b);
 
 
                     for(let i =0 ;i < this.reds.length;i++) {
                         $('div.ballholder div.cirlbai' + this.reds[i]).click();
                     }
                 //存储形式，存储于onebeatred,onebeatblue
-                this.onebeatred.push([this.reds]);
-                $('span.valuehere').data('onebeatred',this.onebeatred);
-                $('span.valuehere').data('onebeatblue',this.onebeatblue);
-                    console.log('onebeatred==='+ $('span.valuehere').data('onebeatred').length);
+                onebeatred.push([this.reds]);
+                $('span.valuehere').data('onebeatred',onebeatred);
+                $('span.valuehere').data('onebeatblue',onebeatblue);
+                    console.log('onebeatred==='+ $('span.valuehere').data('onebeatred'));
                     console.log('onebeatblue==='+ $('span.valuehere').data('onebeatblue'));
+                $('span.valuehere').data('redman','yes');
+                $('span.valuehere').data('blueman','yes');
+                $('button.confirm').removeClass('btn-dark');
+                $('button.confirm').addClass('btn-success');
+                this.tempred = this.reds;
+                this.tempblue.push(b);
                 },
             selectFiveBeats: function() {
              let temptarblue = [parseInt(Math.random()*16+1)];
@@ -319,52 +327,46 @@
             confirmSelect:function() {
                 if($('span.valuehere').data('redman') === 'yes' &&
                 $('span.valuehere').data('blueman') === 'yes') {
-                    $(event.target).removeClass('btn-dark');
-                    $(event.target).addClass('btn-success');
-console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei15')));
-                    let redblue = $('span.valuehere').data('reds');
-                    if(redblue.red.length >6 || redblue.blue.length >1) {
-                        this.$router.push('confirm?type=fushi',onComplete=>{
+
+                    console.log('aaaaa', 'jilei15=', $.isEmptyObject($('span.valuehere').data('jilei15')));
+
+                    let fivebeatsred = $('span.valuehere').data('fivebeatsred');
+                    let fivebeatsblue = $('span.valuehere').data('fivebeatsblue');
+                    if (!$.isEmptyObject(fivebeatsred) && !$.isEmptyObject(fivebeatsblue)) {
+                        this.$router.push('confirm?type=fushi', onComplete => {
                             console.log('completeeeeeeeeeeee');
-                        },onAbort => {
+                        }, onAbort => {
                             console.log('aborttttttttttttt');
                         });
-                    } else if(redblue.red.length === 6 && redblue.blue.length === 1) {
+                    } else {
                         //开始添加到共计五组列表
                         console.log('if heee');
-                        let jilei15 =$('span.valuehere').data('jilei15');
-                        if(jilei15.length >=5) {
-                            alert('您最多只能挑选五组号码');
+                        let onered = $('span.valuehere').data('onebeatred');
+                        let oneblue = $('span.valuehere').data('onebeatblue');
+                        if(onered.length>5||oneblue.length >1) {
+                            alert('超出限额');
                             return null;
                         }
-                        if( $.isEmptyObject( $('span.valuehere').data('jilei15')))  {
-                            $('span.valuehere').data('jilei15',jilei15);
-                            alert('请选择确认红球蓝球数量');
-                            return null;
-                        } else {
-                           //处理确认手选一注逻辑
-                           //  jilei15.push(redblue.red.concat(redblue.blue));
-                           //  $('span.valuehere').data('jilei15',jilei15);
-                           //  console.log('jilei15',jilei15);
-                           //  let el = redblue.red.concat(redblue.blue);
-                           //  jilei15[jilei15.length] = el;
-                           //  $('span.valuehere').data('jilei15',jilei15);
-                            this.$router.push('confirm?type=danshi');
-                        }
-                      }
-                    else {
-                        this.$router.push('confirm?type=danshi',onComplete=>{
+
+                        //处理确认手选一注逻辑
+                        //  jilei15.push(redblue.red.concat(redblue.blue));
+                        //  $('span.valuehere').data('jilei15',jilei15);
+                        //  console.log('jilei15',jilei15);
+                        //  let el = redblue.red.concat(redblue.blue);
+                        //  jilei15[jilei15.length] = el;
+                        //  $('span.valuehere').data('jilei15',jilei15);
+                        // this.$router.push('confirm?type=danshi');
+
+
+                        this.$router.push('confirm?type=danshi', onComplete => {
                             console.log('completeeeeeeeeeeee');
-                        },onAbort => {
+                        }, onAbort => {
                             console.log('aborttttttttttttt');
                         });
+
                     }
-                } else {
-                    alert('请选择符合数量要求的红球蓝球');
-                    return null;
+
                 }
-
-
 // 带查询参数，变成 /register?plan=private
                     // axios.post('/api/confirmhao', {
                     //     'red':this.reds,
@@ -403,7 +405,29 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                     $(event.target).parent('div').toggleClass('red');
                     $(event.target).toggleClass('white');
                 } //若点击对象为span
+                //判断是否红蓝球满足数量
+                if(this.tempred.length >=6 && this.tempblue.length >= 1) {
+                    $('span.valuehere').data('redman','yes');
+                    $('span.valuehere').data('blueman','yes');
+                    $('button.confirm').removeClass('btn-dark');
+                    $('button.confirm').addClass('btn-success');
+                    if(this.tempred.length === 6 && this.tempblue.length === 1) {
+                        this.onebeatred.push([this.tempred]);
+                        this.onebeatblue.push(this.tempblue[0]);
+                    } else {
+                        //用fivebeatsred,blue保存复式号码
+                        this.fivebeatsred = this.tempred;
+                        this.fivebeatsblue = this.tempblue;
+                        $('span.valuehere').data('fivebeatsred',this.fivebeatsred);
+                        $('span.valuehere').data('fivebeatsblue',this.fivebeatsblue);
+                    }
 
+                }else  {
+                    $('span.valuehere').data('redman','no');
+                    $('span.valuehere').data('blueman','no');
+                    $('button.confirm').addClass('btn-dark');
+                    $('button.confirm').removeClass('btn-success');
+                }
 
             },
             machineSelect:function() {
