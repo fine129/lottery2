@@ -14286,7 +14286,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(40);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue__);
@@ -40045,7 +40045,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40159,15 +40159,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (jilei15 && jilei15.length > 0) {
                     for (var _i = 0; _i < jilei15.length; _i++) {
                         var rr = '';var bb = '';
+                        if (jilei15[_i].length < 8) {
+                            jilei15[_i].push(1);
+                        }
+                        $('span.valuehere').data('jilei15', jilei15);
                         var rb = jilei15[_i];
-                        // rb = rb.join(',');
                         console.log('rb[rb.length-1]=', rb[rb.length - 1]);
-                        bb = rb[rb.length - 1];
+                        bb = rb[rb.length - 2];
                         rr = rb.slice(0, 6);
 
                         var j = _i + 1;
                         console.log('rr==', rr, 'bb==', bb, 'jilei15[i]==', jilei15[_i], 'jilei15==', jilei15);
-                        $('div.danshigroup').append('' + '<div class="list-group-item beats" >' + '<label class="label smlabel">第<span class="smnum">' + j + '</span>注 </label>' + '<span class="=redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
+                        $('div.danshigroup').append('' + '<div class="list-group-item beats" >' + '<label class="label smlabel" data-valarr="' + rb + '">第<span class="smnum">' + j + '</span>注 </label>' + '<span class="redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=' + 1 + '  data-beishu=1  class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
+                        $('div.beats input.beishufu').each(function (i, n) {
+                            $(n).val($(n).data('beishu'));
+                        });
                     }
                 }
 
@@ -40201,6 +40207,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeBeishu: function changeBeishu(event) {
             console.log(222);
+            Array.prototype.indexOf = function (val) {
+                for (var i = 0; i < this.length; i++) {
+                    if (this[i] == val) return i;
+                }
+                return -1;
+            };
+            Array.prototype.remove = function (val) {
+                var index = this.indexOf(val);
+                if (index > -1) {
+                    this.splice(index, 1);
+                }
+            };
             var tempval = $(event.target).siblings('input').val();
             var reg = /^[1-9]\d*$|^0$/;
 
@@ -40209,16 +40227,39 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 return null;
             }
             var val = parseInt($(event.target).siblings('input').val());
-
+            var jilei15 = $('span.valuehere').data('jilei15');
+            var valarr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
+            var index = jilei15.indexOf(valarr);
             if ($(event.target).hasClass('minus')) {
                 if (val <= 1) {
                     $(event.target).parents('div.beats').remove();
                     this.xuliehao();
+                    console.log('hereeeeeeeee  jilei15====', jilei15);
+                    jilei15.remove(valarr);
+                    console.log('hereeeeeeeee  jilei15====', jilei15);
                     if ($('div.numhere').find('button.btn-addbeat').length < 1) $('div.numhere').append('<button class="btn btn-success offset-6 ' + 'btn-addbeat" >增加一注</button>');
                     return null;
-                } else $(event.target).siblings('input').val(val - 1);
+                } else {
+                    $(event.target).siblings('input').val(val - 1);
+                    var arr = $(event.target).siblings('label.smlabel').data('valarr');
+
+                    var arra = arr.split(',');
+                    var i = jilei15.indexOf(arra);
+                    console.log('arra==============', arra);
+                    arra.splice(7, 1, val - 1);
+                    jilei15.splice(i, 1, arra);
+                    $('span.valuehere').data('jilei15', jilei15);
+                }
             } else if ($(event.target).hasClass('plus')) {
                 $(event.target).siblings('input').val(val + 1);
+                var _arr = $(event.target).siblings('label.smlabel').data('valarr');
+
+                var _arra = _arr.split(',');
+                var _i2 = jilei15.indexOf(_arra);
+                console.log('arra==============', _arra, 'i=', _i2);
+                _arra.splice(7, 1, val + 1);
+                jilei15.splice(_i2, 1, _arra);
+                $('span.valuehere').data('jilei15', jilei15);
             } else if ($(event.target).hasClass('btn-addbeat')) {
                 this.$router.go(-1);
             }
@@ -40285,11 +40326,791 @@ if (false) {
 }
 
 /***/ }),
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(48)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(50)
+/* template */
+var __vue_template__ = __webpack_require__(51)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1fb44b65"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\xuanhao.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1fb44b65", Component.options)
+  } else {
+    hotAPI.reload("data-v-1fb44b65", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(49);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(4)("206bccbc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1fb44b65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhao.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1fb44b65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhao.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(3)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\ninput.rednum[data-v-1fb44b65],input.bluenum[data-v-1fb44b65] {\r\n    width:25px;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 50 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    name: "xuanhao",
+    components: {},
+    mounted: function mounted() {
+        $(function () {
+            for (var i = 1; i <= 33; i++) {
+                if (i % 7 == 0) $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
+            }
+            for (var _i = 1; _i <= 16; _i++) {
+                if (_i % 7 == 0) $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum"> ' + _i + '</span></div><br/>');else $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum">' + _i + '</span></div>');
+            }
+        });
+
+        console.log('gggggggg=' + Math.random());
+    },
+    data: function data() {
+        var reds = [parseInt(Math.random() * 33 + 1)]; //1-33的随机数
+        //定义一个数组 用来装蓝色球的随机数
+        var blues = [parseInt(Math.random() * 16 + 1)]; //1-16的随机数
+        return {
+            'reds': reds,
+            'blues': blues
+        };
+    },
+
+
+    // props: {
+    //     reds: this.reds ,
+    //     blues:this.blues
+    // },
+    methods: {
+        selectBlueBuchong: function selectBlueBuchong() {
+            var redall = [];
+            if (!$('span.valuehere').data('reds')) {
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                var tempall = $('span.valuehere').data('reds');
+                redall = [];
+                console.log('hhereee');
+            } else {
+                var _tempall = $('span.valuehere').data('reds');
+                redall = _tempall.red;
+                console.log('there');
+            }
+            var tempblue = [];
+            var bluenum = parseInt($('input[name=bluenum]').val());
+            var reg = /^[1-9]\d*$|^0$/; // 注意：故意限制了 0321 这种格式，如不需要，直接reg=/^\d+$/;
+
+            var bluenumin = $('input[name=bluenum]').val().trim();
+
+            if (bluenumin === '' || !reg.test(bluenumin) || bluenum < 1) {
+                alert('请至少输入机选补充的蓝球数目大于等于1');
+            }
+            //处理蓝球逻辑
+            for (var k = 1; k <= 16; k++) {
+                if ($('div.blueholder div.cirlbai' + k).hasClass('blue')) {
+                    tempblue.push(k);
+                }
+            }
+            if (tempblue.length < 1 || tempblue[0].constructor === Number) {
+                for (var j = 1; j <= bluenum; j++) {
+                    var m = parseInt(Math.random() * 16 + 1);
+                    while ($.inArray(m, tempblue) > -1) {
+                        if (tempblue.length < 16) {
+                            m = parseInt(Math.random() * 16 + 1);
+                        } else if (tempblue.length >= 16) {
+                            break;
+                        }
+                    }
+                    if (tempblue.length < 16) {
+                        tempblue.push(m);
+                        $('div.blueholder div.cirlbai' + m).click();
+                    } else if (j >= bluenum) {
+                        alert('您已经达到蓝球数目上限！');
+                    }
+
+                    console.log('new blues ===' + tempblue);
+                }
+            }
+            $('span.valuehere').data('blues', tempblue);
+            $('span.valuehere').data('reds').blue = tempblue;
+            console.log(' final   new blues =' + $('span.valuehere').data('reds').blue);
+        },
+        selectRedBuchong: function selectRedBuchong() {
+            var redall = [];
+            if (!$('span.valuehere').data('reds')) {
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                var tempall = $('span.valuehere').data('reds');
+                redall = [];
+                console.log('hhereee');
+            } else {
+                var _tempall2 = $('span.valuehere').data('reds');
+                redall = _tempall2.red;
+                console.log('there');
+            }
+            var re = this.reds;
+            var bl = this.blues;
+            var temp = [];
+            var tempred = [];
+            var tempblue = [];
+            var reg = /^[1-9]\d*$|^0$/; // 注意：故意限制了 0321 这种格式，如不需要，直接reg=/^\d+$/;
+
+            var rednumin = $('input[name=rednum]').val().trim();
+            var rednum = parseInt($('input[name=rednum]').val());
+            var bluenum = parseInt($('input[name=bluenum]').val());
+            if (rednumin === '' || !reg.test(rednumin) || rednum < 1) {
+                alert('请输入补充机选红球数目大于等于1');
+                return null;
+            }
+            for (var k = 1; k <= 33; k++) {
+                if ($('div.ballholder div.cirlbai' + k).hasClass('red')) {
+                    tempred.push(k);
+                }
+            }
+            if (tempred.length < 1 || tempred[0].constructor === Number) {
+                for (var i = 1; i <= rednum; i++) {
+                    var r = parseInt(Math.random() * 33 + 1);
+                    while ($.inArray(r, tempred) > -1) {
+                        if (tempred.length < 33) {
+                            r = parseInt(Math.random() * 33 + 1);
+                        } else if (tempred.length >= 33) {
+                            break;
+                        }
+                    }
+                    if (tempred.length < 33) {
+                        tempred.push(r);
+                        $('div.ballholder div.cirlbai' + r).click();
+                    } else if (i === rednum) {
+                        alert('您已经达到红球数目上限！');
+                    }
+
+                    console.log('new reds ===' + tempred);
+                }
+                // this.tempred.concat(temp);
+
+                $('span.valuehere').data('reds', { red: tempred, blue: [] });
+                console.log(' final   new reds =' + $('span.valuehere').data('reds').red);
+            } else {}
+        },
+        handleUploaded: function handleUploaded(resp) {
+            this.userAvatar = resp.relative_url;
+        },
+
+        selectOnebeat: function selectOnebeat() {
+            //定义一个数组 用来装红色球的随机数
+            // let  reds=[parseInt(Math.random()*33+1)]; //1-33的随机数
+            // //定义一个数组 用来装蓝色球的随机数
+            // let blues=[parseInt(Math.random()*16+1)]; //1-16的随机数
+            this.reds = [parseInt(Math.random() * 33 + 1)];
+            this.blues = [];
+
+            while (this.reds.length < 6) {
+                //双色球是6红1蓝，故长度小于6 说明会循环5次 因为前面reds已经有一次的默认值
+                var r = parseInt(Math.random() * 33 + 1); //定义r 随机数的取值与reds一致 用于与reds作比较
+                for (var i = 0; i < this.reds.length; i++) {
+                    if (this.reds[i] === r) {
+                        //若 reds中的随机值与r中的相等，则跳出，继续i++取值
+                        break; //若reds中的随机值与r中的不相等，则进入else if
+                    } else if (i === this.reds.length - 1) {
+                        //reds.length-1 --> 原先的reds.length为5，减1为4，而数组是从0 开始算，所以这里会循环5次，刚好与 reds.length<6 同步；且 i等于reds.length-1，是让随机数循环5次（另外就是让它找到定义中的最后一位数）
+                        this.reds.push(r); //将r中的值添加到reds中  push()：向数组中添加元素
+                        //值得注意是！r与reds作比较时，是以reds中现有的数作比较，因为 reds.push(r); 这句代码已经向reds中添加了数值，所以r不是以reds中自身产生的随机数作比较，而是原先r添加到reds中的值作比较
+                    }
+                }
+            }
+            var jilei15 = [];
+            if (!$('span.valuehere').data('jilei15')) {//如果为空
+
+            } else {
+                jilei15 = $('span.valuehere').data('jilei15');
+            }
+            console.log('jilei15=====', jilei15);
+            if (jilei15.length >= 5) {
+                alert('最多只能有五组单选号码！');
+                return null;
+            }
+
+            $('div.ballholder div.circlebai').each(function (i, n) {
+                if ($(this).hasClass('red')) {
+                    $(this).toggleClass('red');
+                    $(this).find('span').toggleClass('white');
+                    // $(this).click();
+                }
+            });
+            $('div.blueholder div.circlebai').each(function (i, n) {
+                if ($(this).hasClass('blue')) {
+                    // $(this).click();
+                    $(this).toggleClass('blue');
+                    $(this).find('span').toggleClass('white');
+                }
+            });
+            var b = parseInt(Math.random() * 16 + 1);
+
+            $('div.blueholder div.cirlbai' + b).toggleClass('blue');
+            $('div.blueholder div.cirlbai' + b).find('span').toggleClass('white');
+
+            this.blues.push(b);
+
+            console.log(this.reds, b);
+            for (var _i2 = 0; _i2 < this.reds.length; _i2++) {
+                // $('div.ballholder div.cirlbai'+this.reds[i]).click();
+                $('div.ballholder div.cirlbai' + this.reds[_i2]).toggleClass('red');
+                $('div.ballholder div.cirlbai' + this.reds[_i2]).find('span').toggleClass('white');
+            }
+            if ($('div.ballholder div.red').length >= 6 && $('div.blueholder div.blue').length >= 1) {
+                $('button.confirm').removeClass('btn-dark');
+                $('button.confirm').addClass('btn-btnsuccess');
+                $('span.valuehere').data('redman', 'yes');
+                $('span.valuehere').data('blueman', 'yes');
+            }
+            $('span.valuehere').data('reds', { red: this.reds, blue: this.blues }); //用reds存储所有红球蓝球号码
+            //存储形式，类似五组号码那样
+            var andrb = this.reds.concat(this.blues);
+            // let jilei15 =[];
+            // if(  !$('span.valuehere').data('jilei15')) { //如果为空
+            //
+            // }else {
+            //      jilei15 = $('span.valuehere').data('jilei15');
+            // }
+            // if(jilei15.length >=5) {
+            //     alert('最多只能有五组单选号码！');
+            //     return null;
+            // }
+            jilei15.push(andrb);
+            $('span.valuehere').data('blues', this.blues);
+            $('span.valuehere').data('jilei15', jilei15);
+
+            // let t = {a:[3,4,3,2,3,4],blue:[3,3,3,3,3]};
+            console.log('spanblues===' + $('span.valuehere').data('reds').red, $('span.valuehere').data('reds').blue, '合并后是数组==:', andrb, '积累数组是:', jilei15);
+        },
+        selectFiveBeats: function selectFiveBeats() {
+            var temptarblue = [parseInt(Math.random() * 16 + 1)];
+            var redall = [];
+            for (var i = 0; i < 5; i++) {
+                var temptarred = [parseInt(Math.random() * 33 + 1)];
+                while (temptarred.length < 6) {
+                    var r = parseInt(Math.random() * 33 + 1); //定义r 随机数的取值与reds一致 用于与reds作比较
+                    for (var j = 0; j < temptarred.length; j++) {
+                        if (temptarred[j] === r) {
+                            break;
+                        } else if (j === temptarred.length - 1) {
+                            temptarred.push(r);
+                        }
+                    }
+                }
+                var ab = parseInt(Math.random() * 16 + 1);
+                while (temptarblue.length <= 5) {
+                    if ($.inArray(ab, temptarblue) > -1) {
+                        ab = parseInt(Math.random() * 16 + 1);
+                    } else {
+
+                        temptarblue.push(ab);
+                        temptarred.push(ab);
+                        break;
+                    }
+                }
+
+                console.log('加入的红球组合', temptarred, '蓝球是', ab);
+                redall.push(temptarred);
+            }
+            console.log('final 五组号码为：', redall);
+            $('span.valuehere').data('allnum', redall);
+            this.$router.push('/confirm?type=five');
+        },
+
+        confirmSelect: function confirmSelect() {
+            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
+                $(event.target).removeClass('btn-dark');
+                $(event.target).addClass('btn-success');
+                console.log('aaaaa', 'jilei15=', $.isEmptyObject($('span.valuehere').data('jilei15')));
+                var redblue = $('span.valuehere').data('reds');
+                if (redblue.red.length > 6 || redblue.blue.length > 1) {
+                    this.$router.push('confirm?type=fushi', function (onComplete) {
+                        console.log('completeeeeeeeeeeee');
+                    }, function (onAbort) {
+                        console.log('aborttttttttttttt');
+                    });
+                } else if (redblue.red.length === 6 && redblue.blue.length === 1) {
+                    //开始添加到共计五组列表
+                    console.log('if heee');
+                    var jilei15 = $('span.valuehere').data('jilei15');
+                    if (jilei15.length > 5) {
+                        alert('您最多只能挑选五组号码');
+                        return null;
+                    }
+                    if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
+                        $('span.valuehere').data('jilei15', jilei15);
+                        alert('请选择确认红球蓝球数量');
+                        return null;
+                    } else {
+                        //处理确认手选一注逻辑
+                        //  jilei15.push(redblue.red.concat(redblue.blue));
+                        //  $('span.valuehere').data('jilei15',jilei15);
+                        //  console.log('jilei15',jilei15);
+                        //  let el = redblue.red.concat(redblue.blue);
+                        //  jilei15[jilei15.length] = el;
+                        //  $('span.valuehere').data('jilei15',jilei15);
+                        this.$router.push('confirm?type=danshi');
+                    }
+                } else {
+                    this.$router.push('confirm?type=danshi', function (onComplete) {
+                        console.log('completeeeeeeeeeeee');
+                    }, function (onAbort) {
+                        console.log('aborttttttttttttt');
+                    });
+                }
+            } else {
+                alert('请选择符合数量要求的红球蓝球');
+                return null;
+            }
+
+            // 带查询参数，变成 /register?plan=private
+            // axios.post('/api/confirmhao', {
+            //     'red':this.reds,
+            //     'blue':this.blues
+            // }).then(function(response){
+            //     // this.followed = response.data.followed;
+            //     console.log('====='+response);
+            // })
+        },
+        changeSelect: function changeSelect() {
+            /**
+             * 第一种情况，直接手选一注，然后确认，等待下一注。A,
+             * 第二种情况，直接手选加机选补充，然后确认，等待下一注B,
+             * 第三种情况，直接机选一注，然后手选修改，完善，补充，然后确认，等待下一注C,
+             * 第四种情况,直接机选补充几个红球，蓝球，然后手动修改，完善，然后确认，等待下一注。D,
+             * 上述情况都归结为jilei15,等待下一注
+             * @type {Array}
+             * jilei15需要改变
+             */
+            //重新编写代码逻辑，重头开始，
+            var redall = [];
+            var tempall = void 0;
+
+            //还是建立存储红球蓝球集体的逻辑
+            if ($.isEmptyObject($('span.valuehere').data('reds'))) {
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                tempall = $('span.valuehere').data('reds');
+            } else {
+                //开始返回后第二次手选号码
+                // $('span.valuehere').data('reds',{red:[],blue:[]});
+                var _tempall3 = $('span.valuehere').data('reds');
+                redall = _tempall3.red;
+                console.log('there');
+            }
+            // 如果是第二次增加手选单式球
+            // let jilei15 = new Array(new Array);
+            // if($('span.valuehere').data('jilei15').length>0) {
+            //     jilei15 = $('span.valuehere').data('jilei15');
+            //     let redall = jilei15[jilei15.length -1].splice(6,1);//删除最新一组号码蓝球号码
+            //     let blueall = jilei15[jilei15.length -1].splice(0,5);//删除红球号码
+            //     let tempall ={red:redall,blue:blueall};
+            //
+            // }
+            if ($(event.target).hasClass('circlebai')) {
+                if ($(event.target).hasClass('red')) {
+                    //若此球被点击前有色,删除此号码
+                    var rednum = parseInt($(event.target).find('span').text());
+                    var ta = [];
+                    for (var i = 0; i < redall.length; i++) {
+                        if (redall[i] !== rednum) {
+                            ta.push(redall[i]);
+                        }
+                    }
+                    $('span.valuehere').data('reds').red = ta;
+                } else {
+                    //被点击前无色 添加此号码
+                    var _rednum = parseInt($(event.target).find('span').text());
+                    $('span.valuehere').data('reds').red.push(_rednum);
+                }
+                $(event.target).toggleClass('red');
+                $(event.target).find('span').toggleClass('white');
+            }
+            if ($(event.target).hasClass('numnum')) {
+                if ($(event.target).hasClass('white')) {
+                    var _rednum2 = parseInt($(event.target).text());
+                    var _ta = [];
+                    for (var _i3 = 0; _i3 < redall.length; _i3++) {
+                        if (redall[_i3] !== _rednum2) {
+                            _ta.push(redall[_i3]);
+                        }
+                    }
+                    $('span.valuehere').data('reds').red = _ta;
+                } else {
+                    var _rednum3 = parseInt($(event.target).text());
+                    $('span.valuehere').data('reds').red.push(_rednum3);
+                }
+                $(event.target).parent('div').toggleClass('red');
+                $(event.target).toggleClass('white');
+            }
+            //开始A手选红球一注逻辑不断增加jilei15数组内容，形成[Array(7),Array(7),...]这样
+            var rednow = [];
+            var bluenow = [];
+
+            var rbnow = [];
+            if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
+                //如果jilei15为空,充值
+
+                rednow = $('span.valuehere').data('reds').red;
+                bluenow = $('span.valuehere').data('reds').blue;
+                var jilei15 = [];
+                jilei15.push(rednow.concat(bluenow));
+                $('span.valuehere').data('jilei15', jilei15);
+            } else {
+                //否则是第二次开始添加字符串数组
+                var _jilei = $('span.valuehere').data('jilei15');
+
+                rednow = $('span.valuehere').data('reds').red;
+                bluenow = $('span.valuehere').data('reds').blue;
+                var temp = rednow.concat(bluenow);
+                //判断是否在二维数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
+                if (_jilei[_jilei.length - 1].length <= 6) {
+                    _jilei[_jilei.length - 1] = temp;
+                } else {
+                    alert('enough!');
+                }
+
+                // for(let i=0;i<jilei15.length ; i++) {
+                //     if(i ===( jilei15.length -1))
+                //     jilei15[i] = rednow.concat(bluenow);
+                // }
+                // jilei15.push( rednow.concat(bluenow));
+                $('span.valuehere').data('jilei15', _jilei);
+                console.log('jilei15原始=', _jilei);
+                console.log('data.reds==', $('span.valuehere').data('reds'), 'jilei15==', _jilei);
+            }
+
+            if ($('span.valuehere').data('reds').red.length < 6) {
+                //不够数量，继续选择
+                console.log('不够数量，继续选择');
+                $('span.valuehere').data('redman', 'not');
+                $('button.confirm').removeClass('btn-success');
+                $('button.confirm').addClass('btn-dark');
+                rednow = $('span.valuehere').data('reds').red;
+            } else if ($('span.valuehere').data('reds').red.length === 6) {
+                //达到数量，可以蓝球一起确认选择
+                $('span.valuehere').data('redman', 'yes');
+                rednow = $('span.valuehere').data('reds').red;
+                console.log('change select jilei15==', $('span.valuehere').data('jilei15'), 'rednow=', rednow, 'bluenow=', bluenow, 'rbnow==', rbnow);
+            } else {
+                //达到数量，可以确认复式号码
+                $('span.valuehere').data('redman', 'yes');
+                rednow = $('span.valuehere').data('reds').red;
+            }
+            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
+                $('button.confirm').removeClass('btn-dark');
+                $('button.confirm').addClass('btn-success');
+                var _jilei2 = new Array(new Array());
+                if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
+                    _jilei2 = new Array(new Array());
+                } else {
+                    _jilei2 = $('span.valuehere').data('jilei15');
+                }
+                _jilei2[_jilei2.length] = rednow.concat(bluenow);
+                $('span.valuehere').data('jilei15', _jilei2);
+            }
+
+            console.log('红球数组变为:', $('span.valuehere').data('reds').red);
+        },
+        changeSelectBlue: function changeSelectBlue() {
+            var blueall = [];
+            if (!$('span.valuehere').data('reds')) {
+                //判断是否有reds值
+                $('span.valuehere').data('reds', { red: [], blue: [] });
+                var tempall = $('span.valuehere').data('reds');
+                blueall = [];
+            } else {
+                var _tempall4 = $('span.valuehere').data('reds');
+                blueall = _tempall4.blue;
+            }
+            var ta = [];
+            if ($(event.target).hasClass('circlebai')) {
+                var bluenum = parseInt($(event.target).find('span').text());
+                if ($(event.target).hasClass('blue')) {
+                    //点击div对象，删除blue号码
+
+                    for (var i = 0; i < blueall.length; i++) {
+                        if (bluenum !== blueall[i]) {
+                            ta.push(blueall[i]);
+                        }
+                    }
+                    blueall = ta;
+                    $('span.valuehere').data('reds').blue = blueall;
+                } else {
+                    //点击div对象，增加blue号码
+                    $('span.valuehere').data('reds').blue.push(bluenum);
+                }
+                $(event.target).toggleClass('blue');
+                $(event.target).find('span').toggleClass('white');
+            }
+            if ($(event.target).hasClass('numnum')) {
+                //若点击对象为span
+                var _bluenum = parseInt($(event.target).text());
+                if ($(event.target).hasClass('white')) {
+
+                    for (var _i4 = 0; _i4 < blueall.length; _i4++) {
+                        if (_bluenum !== blueall[_i4]) {
+                            ta.push(blueall[_i4]);
+                        }
+                    }
+                    blueall = ta;
+                    $('span.valuehere').data('reds').blue = blueall;
+                } else {
+                    var _bluenum2 = parseInt($(event.target).text());
+                    $('span.valuehere').data('reds').blue.push(_bluenum2);
+                }
+                // $('span.valuehere').data('reds').blue =ta;
+                $(event.target).parent('div').toggleClass('blue');
+                $(event.target).toggleClass('white');
+            }
+            //开始手选蓝球一注逻辑 A
+            var jilei15 = [];
+            var rednow = [];
+            var bluenow = [];
+            if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
+                //若为空
+                rednow = $('span.valuehere').data('reds').red;
+                bluenow = $('span.valuehere').data('reds').blue;
+                jilei15 = [];
+                jilei15.push(rednow.concat(bluenow));
+                $('span.valuehere').data('jilei15', jilei15);
+            } else {
+                rednow = $('span.valuehere').data('reds').red;
+                bluenow = $('span.valuehere').data('reds').blue;
+                jilei15 = $('span.valuehere').data('jilei15');
+                var temp = rednow.concat(bluenow);
+                //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
+                if (jilei15[jilei15.length - 1].length <= 7) {
+                    jilei15[jilei15.length - 1] = temp;
+                } else {
+                    alert('enough!' + jilei15[jilei15.length - 1]);
+                }
+                $('span.valuehere').data('jilei15', jilei15);
+            }
+
+            if ($('span.valuehere').data('reds').blue.length < 1) {
+                //蓝球不够
+                $('span.valuehere').data('blueman', 'not');
+                $('button.confirm').removeClass('btn-success');
+                $('button.confirm').addClass('btn-dark');
+            } else if ($('span.valuehere').data('reds').blue.length >= 1) {
+                $('span.valuehere').data('blueman', 'yes');
+            } else {
+                $('span.valuehere').data('blueman', 'not');
+                $('button.confirm').removeClass('btn-success');
+                $('button.confirm').addClass('btn-dark');
+            }
+            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
+                $('button.confirm').removeClass('btn-dark');
+                $('button.confirm').addClass('btn-success');
+                console.log('heeeeeeedd');
+            }
+            console.log('jilei15==', jilei15, '蓝球数组变为:', $('span.valuehere').data('reds').blue, '整体变为==', $('span.valuehere').data('reds'), 'redman=', $('span.valuehere').data('redman'), 'blueman=', $('span.valuehere').data('blueman'));
+        }
+    }
+});
+
+/***/ }),
+/* 51 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "text-center" }, [
+    _c("h4", { staticClass: "alert-info" }, [
+      _vm._v("红球区，请至少选择6个红球")
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "ballholder", on: { click: _vm.changeSelect } }),
+    _vm._v(" "),
+    _c("h4", { staticClass: "alert-info" }, [
+      _vm._v("蓝球区，请至少选择1个蓝球")
+    ]),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "blueholder",
+      on: { click: _vm.changeSelectBlue }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "btn-block" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info onebeat",
+          on: { click: _vm.selectOnebeat }
+        },
+        [_vm._v("机选一注")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info fivebeats",
+          on: { click: _vm.selectFiveBeats }
+        },
+        [_vm._v("机选五注")]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "d-inline" }, [
+        _c("label", { staticClass: "inputlabel" }, [_vm._v("补充机选红球")]),
+        _vm._v(" "),
+        _c("input", {
+          staticClass: " rednum",
+          attrs: { name: "rednum", value: "" }
+        }),
+        _vm._v("个\n           "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-info onebeat",
+            attrs: { title: "手选蓝球或者红球后，指定剩余球数目机选" },
+            on: { click: _vm.selectRedBuchong }
+          },
+          [_vm._v("红球机选补充")]
+        ),
+        _vm._v(" "),
+        _c("label", { staticClass: "inputlabel" }, [_vm._v("补充机选蓝球")]),
+        _c("input", { staticClass: " bluenum", attrs: { name: "bluenum" } }),
+        _vm._v("个\n            "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-info onebeat",
+            attrs: { title: "手选蓝球或者红球后，指定剩余球数目机选" },
+            on: { click: _vm.selectBlueBuchong }
+          },
+          [_vm._v("蓝球机选补充")]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info confirm btn-block btn-dark",
+          on: { click: _vm.confirmSelect }
+        },
+        [_vm._v("确认选择")]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1fb44b65", module.exports)
+  }
+}
+
+/***/ }),
 /* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -52459,794 +53280,6 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(74)
-}
-var normalizeComponent = __webpack_require__(2)
-/* script */
-var __vue_script__ = __webpack_require__(76)
-/* template */
-var __vue_template__ = __webpack_require__(77)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-1fb44b65"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\xuanhao.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1fb44b65", Component.options)
-  } else {
-    hotAPI.reload("data-v-1fb44b65", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 74 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(75);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("206bccbc", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1fb44b65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhao.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1fb44b65\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./xuanhao.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 75 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(3)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\ninput.rednum[data-v-1fb44b65],input.bluenum[data-v-1fb44b65] {\r\n    width:25px;\n}\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 76 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    name: "xuanhao",
-    components: {},
-    mounted: function mounted() {
-        $(function () {
-            for (var i = 1; i <= 33; i++) {
-                if (i % 7 == 0) $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
-            }
-            for (var _i = 1; _i <= 16; _i++) {
-                if (_i % 7 == 0) $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum"> ' + _i + '</span></div><br/>');else $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum">' + _i + '</span></div>');
-            }
-        });
-
-        console.log('gggggggg=' + Math.random());
-    },
-    data: function data() {
-        var reds = [parseInt(Math.random() * 33 + 1)]; //1-33的随机数
-        //定义一个数组 用来装蓝色球的随机数
-        var blues = [parseInt(Math.random() * 16 + 1)]; //1-16的随机数
-        return {
-            'reds': reds,
-            'blues': blues
-        };
-    },
-
-
-    // props: {
-    //     reds: this.reds ,
-    //     blues:this.blues
-    // },
-    methods: {
-        selectBlueBuchong: function selectBlueBuchong() {
-            var redall = [];
-            if (!$('span.valuehere').data('reds')) {
-                $('span.valuehere').data('reds', { red: [], blue: [] });
-                var tempall = $('span.valuehere').data('reds');
-                redall = [];
-                console.log('hhereee');
-            } else {
-                var _tempall = $('span.valuehere').data('reds');
-                redall = _tempall.red;
-                console.log('there');
-            }
-            var tempblue = [];
-            var bluenum = parseInt($('input[name=bluenum]').val());
-            var reg = /^[1-9]\d*$|^0$/; // 注意：故意限制了 0321 这种格式，如不需要，直接reg=/^\d+$/;
-
-            var bluenumin = $('input[name=bluenum]').val().trim();
-
-            if (bluenumin === '' || !reg.test(bluenumin) || bluenum < 1) {
-                alert('请至少输入机选补充的蓝球数目大于等于1');
-            }
-            //处理蓝球逻辑
-            for (var k = 1; k <= 16; k++) {
-                if ($('div.blueholder div.cirlbai' + k).hasClass('blue')) {
-                    tempblue.push(k);
-                }
-            }
-            if (tempblue.length < 1 || tempblue[0].constructor === Number) {
-                for (var j = 1; j <= bluenum; j++) {
-                    var m = parseInt(Math.random() * 16 + 1);
-                    while ($.inArray(m, tempblue) > -1) {
-                        if (tempblue.length < 16) {
-                            m = parseInt(Math.random() * 16 + 1);
-                        } else if (tempblue.length >= 16) {
-                            break;
-                        }
-                    }
-                    if (tempblue.length < 16) {
-                        tempblue.push(m);
-                        $('div.blueholder div.cirlbai' + m).click();
-                    } else if (j >= bluenum) {
-                        alert('您已经达到蓝球数目上限！');
-                    }
-
-                    console.log('new blues ===' + tempblue);
-                }
-            }
-            $('span.valuehere').data('blues', tempblue);
-            $('span.valuehere').data('reds').blue = tempblue;
-            console.log(' final   new blues =' + $('span.valuehere').data('reds').blue);
-        },
-        selectRedBuchong: function selectRedBuchong() {
-            var redall = [];
-            if (!$('span.valuehere').data('reds')) {
-                $('span.valuehere').data('reds', { red: [], blue: [] });
-                var tempall = $('span.valuehere').data('reds');
-                redall = [];
-                console.log('hhereee');
-            } else {
-                var _tempall2 = $('span.valuehere').data('reds');
-                redall = _tempall2.red;
-                console.log('there');
-            }
-            var re = this.reds;
-            var bl = this.blues;
-            var temp = [];
-            var tempred = [];
-            var tempblue = [];
-            var reg = /^[1-9]\d*$|^0$/; // 注意：故意限制了 0321 这种格式，如不需要，直接reg=/^\d+$/;
-
-            var rednumin = $('input[name=rednum]').val().trim();
-            var rednum = parseInt($('input[name=rednum]').val());
-            var bluenum = parseInt($('input[name=bluenum]').val());
-            if (rednumin === '' || !reg.test(rednumin) || rednum < 1) {
-                alert('请输入补充机选红球数目大于等于1');
-                return null;
-            }
-            for (var k = 1; k <= 33; k++) {
-                if ($('div.ballholder div.cirlbai' + k).hasClass('red')) {
-                    tempred.push(k);
-                }
-            }
-            if (tempred.length < 1 || tempred[0].constructor === Number) {
-                for (var i = 1; i <= rednum; i++) {
-                    var r = parseInt(Math.random() * 33 + 1);
-                    while ($.inArray(r, tempred) > -1) {
-                        if (tempred.length < 33) {
-                            r = parseInt(Math.random() * 33 + 1);
-                        } else if (tempred.length >= 33) {
-                            break;
-                        }
-                    }
-                    if (tempred.length < 33) {
-                        tempred.push(r);
-                        $('div.ballholder div.cirlbai' + r).click();
-                    } else if (i === rednum) {
-                        alert('您已经达到红球数目上限！');
-                    }
-
-                    console.log('new reds ===' + tempred);
-                }
-                // this.tempred.concat(temp);
-
-                $('span.valuehere').data('reds', { red: tempred, blue: [] });
-                console.log(' final   new reds =' + $('span.valuehere').data('reds').red);
-            } else {}
-        },
-        handleUploaded: function handleUploaded(resp) {
-            this.userAvatar = resp.relative_url;
-        },
-
-        selectOnebeat: function selectOnebeat() {
-            //定义一个数组 用来装红色球的随机数
-            // let  reds=[parseInt(Math.random()*33+1)]; //1-33的随机数
-            // //定义一个数组 用来装蓝色球的随机数
-            // let blues=[parseInt(Math.random()*16+1)]; //1-16的随机数
-            this.reds = [parseInt(Math.random() * 33 + 1)];
-            this.blues = [];
-
-            while (this.reds.length < 6) {
-                //双色球是6红1蓝，故长度小于6 说明会循环5次 因为前面reds已经有一次的默认值
-                var r = parseInt(Math.random() * 33 + 1); //定义r 随机数的取值与reds一致 用于与reds作比较
-                for (var i = 0; i < this.reds.length; i++) {
-                    if (this.reds[i] === r) {
-                        //若 reds中的随机值与r中的相等，则跳出，继续i++取值
-                        break; //若reds中的随机值与r中的不相等，则进入else if
-                    } else if (i === this.reds.length - 1) {
-                        //reds.length-1 --> 原先的reds.length为5，减1为4，而数组是从0 开始算，所以这里会循环5次，刚好与 reds.length<6 同步；且 i等于reds.length-1，是让随机数循环5次（另外就是让它找到定义中的最后一位数）
-                        this.reds.push(r); //将r中的值添加到reds中  push()：向数组中添加元素
-                        //值得注意是！r与reds作比较时，是以reds中现有的数作比较，因为 reds.push(r); 这句代码已经向reds中添加了数值，所以r不是以reds中自身产生的随机数作比较，而是原先r添加到reds中的值作比较
-                    }
-                }
-            }
-            var jilei15 = [];
-            if (!$('span.valuehere').data('jilei15')) {//如果为空
-
-            } else {
-                jilei15 = $('span.valuehere').data('jilei15');
-            }
-            console.log('jilei15=====', jilei15);
-            if (jilei15.length >= 5) {
-                alert('最多只能有五组单选号码！');
-                return null;
-            }
-
-            $('div.ballholder div.circlebai').each(function (i, n) {
-                if ($(this).hasClass('red')) {
-                    $(this).toggleClass('red');
-                    $(this).find('span').toggleClass('white');
-                    // $(this).click();
-                }
-            });
-            $('div.blueholder div.circlebai').each(function (i, n) {
-                if ($(this).hasClass('blue')) {
-                    // $(this).click();
-                    $(this).toggleClass('blue');
-                    $(this).find('span').toggleClass('white');
-                }
-            });
-            var b = parseInt(Math.random() * 16 + 1);
-
-            $('div.blueholder div.cirlbai' + b).toggleClass('blue');
-            $('div.blueholder div.cirlbai' + b).find('span').toggleClass('white');
-
-            this.blues.push(b);
-
-            console.log(this.reds, b);
-            for (var _i2 = 0; _i2 < this.reds.length; _i2++) {
-                // $('div.ballholder div.cirlbai'+this.reds[i]).click();
-                $('div.ballholder div.cirlbai' + this.reds[_i2]).toggleClass('red');
-                $('div.ballholder div.cirlbai' + this.reds[_i2]).find('span').toggleClass('white');
-            }
-            if ($('div.ballholder div.red').length >= 6 && $('div.blueholder div.blue').length >= 1) {
-                $('button.confirm').removeClass('btn-dark');
-                $('button.confirm').addClass('btn-btnsuccess');
-                $('span.valuehere').data('redman', 'yes');
-                $('span.valuehere').data('blueman', 'yes');
-            }
-            $('span.valuehere').data('reds', { red: this.reds, blue: this.blues }); //用reds存储所有红球蓝球号码
-            //存储形式，类似五组号码那样
-            var andrb = this.reds.concat(this.blues);
-            // let jilei15 =[];
-            // if(  !$('span.valuehere').data('jilei15')) { //如果为空
-            //
-            // }else {
-            //      jilei15 = $('span.valuehere').data('jilei15');
-            // }
-            // if(jilei15.length >=5) {
-            //     alert('最多只能有五组单选号码！');
-            //     return null;
-            // }
-            jilei15.push(andrb);
-            $('span.valuehere').data('blues', this.blues);
-            $('span.valuehere').data('jilei15', jilei15);
-
-            // let t = {a:[3,4,3,2,3,4],blue:[3,3,3,3,3]};
-            console.log('spanblues===' + $('span.valuehere').data('reds').red, $('span.valuehere').data('reds').blue, '合并后是数组==:', andrb, '积累数组是:', jilei15);
-        },
-        selectFiveBeats: function selectFiveBeats() {
-            var temptarblue = [parseInt(Math.random() * 16 + 1)];
-            var redall = [];
-            for (var i = 0; i < 5; i++) {
-                var temptarred = [parseInt(Math.random() * 33 + 1)];
-                while (temptarred.length < 6) {
-                    var r = parseInt(Math.random() * 33 + 1); //定义r 随机数的取值与reds一致 用于与reds作比较
-                    for (var j = 0; j < temptarred.length; j++) {
-                        if (temptarred[j] === r) {
-                            break;
-                        } else if (j === temptarred.length - 1) {
-                            temptarred.push(r);
-                        }
-                    }
-                }
-                var ab = parseInt(Math.random() * 16 + 1);
-                while (temptarblue.length <= 5) {
-                    if ($.inArray(ab, temptarblue) > -1) {
-                        ab = parseInt(Math.random() * 16 + 1);
-                    } else {
-
-                        temptarblue.push(ab);
-                        temptarred.push(ab);
-                        break;
-                    }
-                }
-
-                console.log('加入的红球组合', temptarred, '蓝球是', ab);
-                redall.push(temptarred);
-            }
-            console.log('final 五组号码为：', redall);
-            $('span.valuehere').data('allnum', redall);
-            this.$router.push('/confirm?type=five');
-        },
-
-        confirmSelect: function confirmSelect() {
-            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
-                $(event.target).removeClass('btn-dark');
-                $(event.target).addClass('btn-success');
-                console.log('aaaaa', 'jilei15=', $.isEmptyObject($('span.valuehere').data('jilei15')));
-                var redblue = $('span.valuehere').data('reds');
-                if (redblue.red.length > 6 || redblue.blue.length > 1) {
-                    this.$router.push('confirm?type=fushi', function (onComplete) {
-                        console.log('completeeeeeeeeeeee');
-                    }, function (onAbort) {
-                        console.log('aborttttttttttttt');
-                    });
-                } else if (redblue.red.length === 6 && redblue.blue.length === 1) {
-                    //开始添加到共计五组列表
-                    console.log('if heee');
-                    var jilei15 = $('span.valuehere').data('jilei15');
-                    if (jilei15.length > 5) {
-                        alert('您最多只能挑选五组号码');
-                        return null;
-                    }
-                    if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                        $('span.valuehere').data('jilei15', jilei15);
-                        alert('请选择确认红球蓝球数量');
-                        return null;
-                    } else {
-                        //处理确认手选一注逻辑
-                        //  jilei15.push(redblue.red.concat(redblue.blue));
-                        //  $('span.valuehere').data('jilei15',jilei15);
-                        //  console.log('jilei15',jilei15);
-                        //  let el = redblue.red.concat(redblue.blue);
-                        //  jilei15[jilei15.length] = el;
-                        //  $('span.valuehere').data('jilei15',jilei15);
-                        this.$router.push('confirm?type=danshi');
-                    }
-                } else {
-                    this.$router.push('confirm?type=danshi', function (onComplete) {
-                        console.log('completeeeeeeeeeeee');
-                    }, function (onAbort) {
-                        console.log('aborttttttttttttt');
-                    });
-                }
-            } else {
-                alert('请选择符合数量要求的红球蓝球');
-                return null;
-            }
-
-            // 带查询参数，变成 /register?plan=private
-            // axios.post('/api/confirmhao', {
-            //     'red':this.reds,
-            //     'blue':this.blues
-            // }).then(function(response){
-            //     // this.followed = response.data.followed;
-            //     console.log('====='+response);
-            // })
-        },
-        changeSelect: function changeSelect() {
-            /**
-             * 第一种情况，直接手选一注，然后确认，等待下一注。A,
-             * 第二种情况，直接手选加机选补充，然后确认，等待下一注B,
-             * 第三种情况，直接机选一注，然后手选修改，完善，补充，然后确认，等待下一注C,
-             * 第四种情况,直接机选补充几个红球，蓝球，然后手动修改，完善，然后确认，等待下一注。D,
-             * 上述情况都归结为jilei15,等待下一注
-             * @type {Array}
-             * jilei15需要改变
-             */
-            //重新编写代码逻辑，重头开始，
-            var redall = [];
-            var tempall = void 0;
-
-            //还是建立存储红球蓝球集体的逻辑
-            if ($.isEmptyObject($('span.valuehere').data('reds'))) {
-                $('span.valuehere').data('reds', { red: [], blue: [] });
-                tempall = $('span.valuehere').data('reds');
-            } else {
-                //开始返回后第二次手选号码
-                // $('span.valuehere').data('reds',{red:[],blue:[]});
-                var _tempall3 = $('span.valuehere').data('reds');
-                redall = _tempall3.red;
-                console.log('there');
-            }
-            // 如果是第二次增加手选单式球
-            // let jilei15 = new Array(new Array);
-            // if($('span.valuehere').data('jilei15').length>0) {
-            //     jilei15 = $('span.valuehere').data('jilei15');
-            //     let redall = jilei15[jilei15.length -1].splice(6,1);//删除最新一组号码蓝球号码
-            //     let blueall = jilei15[jilei15.length -1].splice(0,5);//删除红球号码
-            //     let tempall ={red:redall,blue:blueall};
-            //
-            // }
-            if ($(event.target).hasClass('circlebai')) {
-                if ($(event.target).hasClass('red')) {
-                    //若此球被点击前有色,删除此号码
-                    var rednum = parseInt($(event.target).find('span').text());
-                    var ta = [];
-                    for (var i = 0; i < redall.length; i++) {
-                        if (redall[i] !== rednum) {
-                            ta.push(redall[i]);
-                        }
-                    }
-                    $('span.valuehere').data('reds').red = ta;
-                } else {
-                    //被点击前无色 添加此号码
-                    var _rednum = parseInt($(event.target).find('span').text());
-                    $('span.valuehere').data('reds').red.push(_rednum);
-                }
-                $(event.target).toggleClass('red');
-                $(event.target).find('span').toggleClass('white');
-            }
-            if ($(event.target).hasClass('numnum')) {
-                if ($(event.target).hasClass('white')) {
-                    var _rednum2 = parseInt($(event.target).text());
-                    var _ta = [];
-                    for (var _i3 = 0; _i3 < redall.length; _i3++) {
-                        if (redall[_i3] !== _rednum2) {
-                            _ta.push(redall[_i3]);
-                        }
-                    }
-                    $('span.valuehere').data('reds').red = _ta;
-                } else {
-                    var _rednum3 = parseInt($(event.target).text());
-                    $('span.valuehere').data('reds').red.push(_rednum3);
-                }
-                $(event.target).parent('div').toggleClass('red');
-                $(event.target).toggleClass('white');
-            }
-            //开始A手选红球一注逻辑不断增加jilei15数组内容，形成[Array(7),Array(7),...]这样
-            var rednow = [];
-            var bluenow = [];
-
-            var rbnow = [];
-            if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                //如果jilei15为空,充值
-
-                rednow = $('span.valuehere').data('reds').red;
-                bluenow = $('span.valuehere').data('reds').blue;
-                var jilei15 = [];
-                jilei15.push(rednow.concat(bluenow));
-                $('span.valuehere').data('jilei15', jilei15);
-            } else {
-                //否则是第二次开始添加字符串数组
-                var _jilei = $('span.valuehere').data('jilei15');
-
-                rednow = $('span.valuehere').data('reds').red;
-                bluenow = $('span.valuehere').data('reds').blue;
-                var temp = rednow.concat(bluenow);
-                //判断是否在二维数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                if (_jilei[_jilei.length - 1].length <= 6) {
-                    _jilei[_jilei.length - 1] = temp;
-                } else {
-                    alert('enough!');
-                }
-
-                // for(let i=0;i<jilei15.length ; i++) {
-                //     if(i ===( jilei15.length -1))
-                //     jilei15[i] = rednow.concat(bluenow);
-                // }
-                // jilei15.push( rednow.concat(bluenow));
-                $('span.valuehere').data('jilei15', _jilei);
-                console.log('jilei15原始=', _jilei);
-                console.log('data.reds==', $('span.valuehere').data('reds'), 'jilei15==', _jilei);
-            }
-
-            if ($('span.valuehere').data('reds').red.length < 6) {
-                //不够数量，继续选择
-                console.log('不够数量，继续选择');
-                $('span.valuehere').data('redman', 'not');
-                $('button.confirm').removeClass('btn-success');
-                $('button.confirm').addClass('btn-dark');
-                rednow = $('span.valuehere').data('reds').red;
-            } else if ($('span.valuehere').data('reds').red.length === 6) {
-                //达到数量，可以蓝球一起确认选择
-                $('span.valuehere').data('redman', 'yes');
-                rednow = $('span.valuehere').data('reds').red;
-                console.log('change select jilei15==', $('span.valuehere').data('jilei15'), 'rednow=', rednow, 'bluenow=', bluenow, 'rbnow==', rbnow);
-            } else {
-                //达到数量，可以确认复式号码
-                $('span.valuehere').data('redman', 'yes');
-                rednow = $('span.valuehere').data('reds').red;
-            }
-            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
-                $('button.confirm').removeClass('btn-dark');
-                $('button.confirm').addClass('btn-success');
-                var _jilei2 = new Array(new Array());
-                if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                    _jilei2 = new Array(new Array());
-                } else {
-                    _jilei2 = $('span.valuehere').data('jilei15');
-                }
-                _jilei2[_jilei2.length] = rednow.concat(bluenow);
-                $('span.valuehere').data('jilei15', _jilei2);
-            }
-
-            console.log('红球数组变为:', $('span.valuehere').data('reds').red);
-        },
-        changeSelectBlue: function changeSelectBlue() {
-            var blueall = [];
-            if (!$('span.valuehere').data('reds')) {
-                //判断是否有reds值
-                $('span.valuehere').data('reds', { red: [], blue: [] });
-                var tempall = $('span.valuehere').data('reds');
-                blueall = [];
-            } else {
-                var _tempall4 = $('span.valuehere').data('reds');
-                blueall = _tempall4.blue;
-            }
-            var ta = [];
-            if ($(event.target).hasClass('circlebai')) {
-                var bluenum = parseInt($(event.target).find('span').text());
-                if ($(event.target).hasClass('blue')) {
-                    //点击div对象，删除blue号码
-
-                    for (var i = 0; i < blueall.length; i++) {
-                        if (bluenum !== blueall[i]) {
-                            ta.push(blueall[i]);
-                        }
-                    }
-                    blueall = ta;
-                    $('span.valuehere').data('reds').blue = blueall;
-                } else {
-                    //点击div对象，增加blue号码
-                    $('span.valuehere').data('reds').blue.push(bluenum);
-                }
-                $(event.target).toggleClass('blue');
-                $(event.target).find('span').toggleClass('white');
-            }
-            if ($(event.target).hasClass('numnum')) {
-                //若点击对象为span
-                var _bluenum = parseInt($(event.target).text());
-                if ($(event.target).hasClass('white')) {
-
-                    for (var _i4 = 0; _i4 < blueall.length; _i4++) {
-                        if (_bluenum !== blueall[_i4]) {
-                            ta.push(blueall[_i4]);
-                        }
-                    }
-                    blueall = ta;
-                    $('span.valuehere').data('reds').blue = blueall;
-                } else {
-                    var _bluenum2 = parseInt($(event.target).text());
-                    $('span.valuehere').data('reds').blue.push(_bluenum2);
-                }
-                // $('span.valuehere').data('reds').blue =ta;
-                $(event.target).parent('div').toggleClass('blue');
-                $(event.target).toggleClass('white');
-            }
-            //开始手选蓝球一注逻辑 A
-            var jilei15 = [];
-            var rednow = [];
-            var bluenow = [];
-            if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                //若为空
-                rednow = $('span.valuehere').data('reds').red;
-                bluenow = $('span.valuehere').data('reds').blue;
-                jilei15 = [];
-                jilei15.push(rednow.concat(bluenow));
-                $('span.valuehere').data('jilei15', jilei15);
-            } else {
-                rednow = $('span.valuehere').data('reds').red;
-                bluenow = $('span.valuehere').data('reds').blue;
-                jilei15 = $('span.valuehere').data('jilei15');
-                var temp = rednow.concat(bluenow);
-                //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                if (jilei15[jilei15.length - 1].length <= 7) {
-                    jilei15[jilei15.length - 1] = temp;
-                } else {
-                    alert('enough!' + jilei15[jilei15.length - 1]);
-                }
-                $('span.valuehere').data('jilei15', jilei15);
-            }
-
-            if ($('span.valuehere').data('reds').blue.length < 1) {
-                //蓝球不够
-                $('span.valuehere').data('blueman', 'not');
-                $('button.confirm').removeClass('btn-success');
-                $('button.confirm').addClass('btn-dark');
-            } else if ($('span.valuehere').data('reds').blue.length >= 1) {
-                $('span.valuehere').data('blueman', 'yes');
-            } else {
-                $('span.valuehere').data('blueman', 'not');
-                $('button.confirm').removeClass('btn-success');
-                $('button.confirm').addClass('btn-dark');
-            }
-            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
-                $('button.confirm').removeClass('btn-dark');
-                $('button.confirm').addClass('btn-success');
-                console.log('heeeeeeedd');
-            }
-            console.log('jilei15==', jilei15, '蓝球数组变为:', $('span.valuehere').data('reds').blue, '整体变为==', $('span.valuehere').data('reds'), 'redman=', $('span.valuehere').data('redman'), 'blueman=', $('span.valuehere').data('blueman'));
-        }
-    }
-});
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "text-center" }, [
-    _c("h4", { staticClass: "alert-info" }, [
-      _vm._v("红球区，请至少选择6个红球")
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "ballholder", on: { click: _vm.changeSelect } }),
-    _vm._v(" "),
-    _c("h4", { staticClass: "alert-info" }, [
-      _vm._v("蓝球区，请至少选择1个蓝球")
-    ]),
-    _vm._v(" "),
-    _c("div", {
-      staticClass: "blueholder",
-      on: { click: _vm.changeSelectBlue }
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "btn-block" }, [
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-info onebeat",
-          on: { click: _vm.selectOnebeat }
-        },
-        [_vm._v("机选一注")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-info fivebeats",
-          on: { click: _vm.selectFiveBeats }
-        },
-        [_vm._v("机选五注")]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "d-inline" }, [
-        _c("label", { staticClass: "inputlabel" }, [_vm._v("补充机选红球")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: " rednum",
-          attrs: { name: "rednum", value: "" }
-        }),
-        _vm._v("个\n           "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-info onebeat",
-            attrs: { title: "手选蓝球或者红球后，指定剩余球数目机选" },
-            on: { click: _vm.selectRedBuchong }
-          },
-          [_vm._v("红球机选补充")]
-        ),
-        _vm._v(" "),
-        _c("label", { staticClass: "inputlabel" }, [_vm._v("补充机选蓝球")]),
-        _c("input", { staticClass: " bluenum", attrs: { name: "bluenum" } }),
-        _vm._v("个\n            "),
-        _c(
-          "button",
-          {
-            staticClass: "btn btn-info onebeat",
-            attrs: { title: "手选蓝球或者红球后，指定剩余球数目机选" },
-            on: { click: _vm.selectBlueBuchong }
-          },
-          [_vm._v("蓝球机选补充")]
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-info confirm btn-block btn-dark",
-          on: { click: _vm.confirmSelect }
-        },
-        [_vm._v("确认选择")]
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1fb44b65", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
