@@ -223,7 +223,7 @@
                 }else {
                     jilei15 = $('span.valuehere').data('jilei15');
                 }
-                console.log('jilei15=====',jilei15)
+                console.log('jilei15 onebeat=====',jilei15)
                 if(jilei15.length >=5) {
                     alert('最多只能有五组单选号码！');
                     return null;
@@ -334,6 +334,10 @@
                     $(event.target).addClass('btn-success');
 console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei15')));
                     let redblue = $('span.valuehere').data('reds');
+                    let jilei15 = $('span.valuehere').data('jilei15');
+                    let temp = $('span.valuehere').data('temp');
+                    if(!$.isEmptyObject(temp))
+                    jilei15.push( temp);
                     if(redblue.red.length >6 || redblue.blue.length >1) {
                         this.$router.push('confirm?type=fushi',onComplete=>{
                             console.log('completeeeeeeeeeeee');
@@ -401,6 +405,7 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                 let tempall;
 
                //还是建立存储红球蓝球集体的逻辑
+              // if($.isEmptyObject($('span.valuehere').data('reds'))) {
               if($.isEmptyObject($('span.valuehere').data('reds'))) {
                     $('span.valuehere').data('reds',{red:[],blue:[]});
                      tempall = $('span.valuehere').data('reds');
@@ -461,25 +466,29 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                 let bluenow = [];
 
                 let rbnow = [];
-                if( $.isEmptyObject( $('span.valuehere').data('jilei15'))) { //如果jilei15为空,充值
+                if( $.isEmptyObject($('span.valuehere').data('jilei15'))) { //如果jilei15为空,充值
 
                      rednow = $('span.valuehere').data('reds').red;
                      bluenow = $('span.valuehere').data('reds').blue;
                     let jilei15 = [];
                     jilei15.push( rednow.concat(bluenow));
                     $('span.valuehere').data('jilei15',jilei15);
+                    console.log('diyici jilei15===',jilei15);
                 } else { //否则是第二次开始添加字符串数组
                     let jilei15 =  $('span.valuehere').data('jilei15');
+                    //删除一次点击过jilei15最后一项
 
                     rednow = $('span.valuehere').data('reds').red;
                     bluenow = $('span.valuehere').data('reds').blue;
                    let temp = rednow.concat(bluenow);
+                    $('span.valuehere').data('temp',temp);
                    //判断是否在二维数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                    if(jilei15[jilei15.length -1].length <=6) {
-                        jilei15[jilei15.length -1] = temp;
-                    } else {
-                        alert('enough!');
-                    }
+                    //判断是否调整红球
+
+
+
+                        console.log('enough!=='+jilei15);
+
 
                     // for(let i=0;i<jilei15.length ; i++) {
                     //     if(i ===( jilei15.length -1))

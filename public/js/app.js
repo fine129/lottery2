@@ -40045,7 +40045,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40154,7 +40154,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var all = $('span.valuehere').data('reds');
                 var _red = all.red.join(', ');
                 var _blue = all.blue.join(', ');
+
                 var jilei15 = $('span.valuehere').data('jilei15');
+                console.log('in confirm jilei15====', jilei15);
                 //处理A手选一注号码
                 if (jilei15 && jilei15.length > 0) {
                     for (var _i = 0; _i < jilei15.length; _i++) {
@@ -40167,10 +40169,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         console.log('rb[rb.length-1]=', rb[rb.length - 1]);
                         bb = rb[rb.length - 2];
                         rr = rb.slice(0, 6);
-
+                        var beishu = rb[rb.length - 1];
                         var j = _i + 1;
                         console.log('rr==', rr, 'bb==', bb, 'jilei15[i]==', jilei15[_i], 'jilei15==', jilei15);
-                        $('div.danshigroup').append('' + '<div class="list-group-item beats" >' + '<label class="label smlabel" data-valarr="' + rb + '">第<span class="smnum">' + j + '</span>注 </label>' + '<span class="redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=' + 1 + '  data-beishu=1  class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
+                        $('div.danshigroup').append('' + '<div class="list-group-item beats" >' + '<label class="label smlabel" data-valarr="' + rb + '">第<span class="smnum">' + j + '</span>注 </label>' + '<span class="redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=' + 1 + '  data-beishu=' + beishu + '  class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
                         $('div.beats input.beishufu').each(function (i, n) {
                             $(n).val($(n).data('beishu'));
                         });
@@ -40207,13 +40209,42 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
         changeBeishu: function changeBeishu(event) {
             console.log(222);
+            // Warn if overriding existing method
+            if (Array.prototype.equals) console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+            // attach the .equals method to Array's prototype to call it on any array
+            Array.prototype.equal = function (array) {
+                // if the other array is a falsy value, return
+                if (!array) return false;
+
+                // compare lengths - can save a lot of time
+                if (this.length != array.length) return false;
+
+                for (var i = 0, l = this.length; i < l; i++) {
+                    // Check if we have nested arrays
+                    if (this[i] instanceof Array && array[i] instanceof Array) {
+                        // recurse into the nested arrays
+                        if (!this[i].equal(array[i])) return false;
+                    } else if (this[i] != array[i]) {
+                        // Warning - two different object instances will never be equal: {x:20} != {x:20}
+                        return false;
+                    }
+                }
+                return true;
+            };
+            // Hide method from for-in loops
+            Object.defineProperty(Array.prototype, "equal", { enumerable: false });
             Array.prototype.indexOf = function (val) {
+
                 for (var i = 0; i < this.length; i++) {
+                    if (this[i] instanceof Array && val instanceof Array) {
+                        if (this[i].equal(val)) return i;
+                    }
                     if (this[i] == val) return i;
                 }
                 return -1;
             };
             Array.prototype.remove = function (val) {
+
                 var index = this.indexOf(val);
                 if (index > -1) {
                     this.splice(index, 1);
@@ -40245,8 +40276,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     var arra = arr.split(',');
                     var i = jilei15.indexOf(arra);
-                    console.log('arra==============', arra);
+
                     arra.splice(7, 1, val - 1);
+                    console.log('arra==============', arra);
                     jilei15.splice(i, 1, arra);
                     $('span.valuehere').data('jilei15', jilei15);
                 }
@@ -40254,11 +40286,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $(event.target).siblings('input').val(val + 1);
                 var _arr = $(event.target).siblings('label.smlabel').data('valarr');
 
-                var _arra = _arr.split(',');
+                var _arra = _arr.split(',').map(Number);
+
                 var _i2 = jilei15.indexOf(_arra);
-                console.log('arra==============', _arra, 'i=', _i2);
+                console.log('arra==============', _arra, 'i=', _i2, 'jilei15====', jilei15);
                 _arra.splice(7, 1, val + 1);
                 jilei15.splice(_i2, 1, _arra);
+                $(event.target).siblings('label.smlabel').data('valarr', _arra.toString());
                 $('span.valuehere').data('jilei15', jilei15);
             } else if ($(event.target).hasClass('btn-addbeat')) {
                 this.$router.go(-1);
@@ -40628,7 +40662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             } else {
                 jilei15 = $('span.valuehere').data('jilei15');
             }
-            console.log('jilei15=====', jilei15);
+            console.log('jilei15 onebeat=====', jilei15);
             if (jilei15.length >= 5) {
                 alert('最多只能有五组单选号码！');
                 return null;
@@ -40728,6 +40762,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $(event.target).addClass('btn-success');
                 console.log('aaaaa', 'jilei15=', $.isEmptyObject($('span.valuehere').data('jilei15')));
                 var redblue = $('span.valuehere').data('reds');
+                var jilei15 = $('span.valuehere').data('jilei15');
+                var temp = $('span.valuehere').data('temp');
+                if (!$.isEmptyObject(temp)) jilei15.push(temp);
                 if (redblue.red.length > 6 || redblue.blue.length > 1) {
                     this.$router.push('confirm?type=fushi', function (onComplete) {
                         console.log('completeeeeeeeeeeee');
@@ -40737,13 +40774,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else if (redblue.red.length === 6 && redblue.blue.length === 1) {
                     //开始添加到共计五组列表
                     console.log('if heee');
-                    var jilei15 = $('span.valuehere').data('jilei15');
-                    if (jilei15.length > 5) {
+                    var _jilei = $('span.valuehere').data('jilei15');
+                    if (_jilei.length > 5) {
                         alert('您最多只能挑选五组号码');
                         return null;
                     }
                     if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                        $('span.valuehere').data('jilei15', jilei15);
+                        $('span.valuehere').data('jilei15', _jilei);
                         alert('请选择确认红球蓝球数量');
                         return null;
                     } else {
@@ -40792,6 +40829,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var tempall = void 0;
 
             //还是建立存储红球蓝球集体的逻辑
+            // if($.isEmptyObject($('span.valuehere').data('reds'))) {
             if ($.isEmptyObject($('span.valuehere').data('reds'))) {
                 $('span.valuehere').data('reds', { red: [], blue: [] });
                 tempall = $('span.valuehere').data('reds');
@@ -40860,28 +40898,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var jilei15 = [];
                 jilei15.push(rednow.concat(bluenow));
                 $('span.valuehere').data('jilei15', jilei15);
+                console.log('diyici jilei15===', jilei15);
             } else {
                 //否则是第二次开始添加字符串数组
-                var _jilei = $('span.valuehere').data('jilei15');
+                var _jilei2 = $('span.valuehere').data('jilei15');
+                //删除一次点击过jilei15最后一项
 
                 rednow = $('span.valuehere').data('reds').red;
                 bluenow = $('span.valuehere').data('reds').blue;
                 var temp = rednow.concat(bluenow);
+                $('span.valuehere').data('temp', temp);
                 //判断是否在二维数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                if (_jilei[_jilei.length - 1].length <= 6) {
-                    _jilei[_jilei.length - 1] = temp;
-                } else {
-                    alert('enough!');
-                }
+                //判断是否调整红球
+
+
+                console.log('enough!==' + _jilei2);
 
                 // for(let i=0;i<jilei15.length ; i++) {
                 //     if(i ===( jilei15.length -1))
                 //     jilei15[i] = rednow.concat(bluenow);
                 // }
                 // jilei15.push( rednow.concat(bluenow));
-                $('span.valuehere').data('jilei15', _jilei);
-                console.log('jilei15原始=', _jilei);
-                console.log('data.reds==', $('span.valuehere').data('reds'), 'jilei15==', _jilei);
+                $('span.valuehere').data('jilei15', _jilei2);
+                console.log('jilei15原始=', _jilei2);
+                console.log('data.reds==', $('span.valuehere').data('reds'), 'jilei15==', _jilei2);
             }
 
             if ($('span.valuehere').data('reds').red.length < 6) {
@@ -40904,14 +40944,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
                 $('button.confirm').removeClass('btn-dark');
                 $('button.confirm').addClass('btn-success');
-                var _jilei2 = new Array(new Array());
+                var _jilei3 = new Array(new Array());
                 if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
-                    _jilei2 = new Array(new Array());
+                    _jilei3 = new Array(new Array());
                 } else {
-                    _jilei2 = $('span.valuehere').data('jilei15');
+                    _jilei3 = $('span.valuehere').data('jilei15');
                 }
-                _jilei2[_jilei2.length] = rednow.concat(bluenow);
-                $('span.valuehere').data('jilei15', _jilei2);
+                _jilei3[_jilei3.length] = rednow.concat(bluenow);
+                $('span.valuehere').data('jilei15', _jilei3);
             }
 
             console.log('红球数组变为:', $('span.valuehere').data('reds').red);

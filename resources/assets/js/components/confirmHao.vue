@@ -90,7 +90,9 @@
                     let all = $('span.valuehere').data('reds');
                     let red = all.red.join(', ');
                     let blue = all.blue.join(', ');
+
                     let jilei15 = $('span.valuehere').data('jilei15');
+                    console.log('in confirm jilei15====',jilei15);
                     //处理A手选一注号码
                     if(jilei15 && jilei15.length >0) {
                         for(let i =0 ;i <jilei15.length ;i++) {
@@ -103,7 +105,7 @@
                             console.log('rb[rb.length-1]=',rb[rb.length-1]);
                             bb = rb[rb.length-2];
                             rr = rb.slice(0,6);
-
+                            let beishu = rb[rb.length -1];
                             let j = i + 1;
                             console.log('rr==',rr,'bb==',bb,'jilei15[i]==',jilei15[i],'jilei15==',jilei15);
                             $('div.danshigroup').append('' +
@@ -112,7 +114,7 @@
                                 '<span class="redpart">'+rr+'</span> - <span class="bluepart">'+bb+'</span>' +
                                 '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
                                 '"></span>' +
-                                '<input type="text" name="beishu"  value='+1+'  data-beishu=1  class="beishufu" /> ' +
+                                '<input type="text" name="beishu"  value='+1+'  data-beishu='+beishu+'  class="beishufu" /> ' +
                                 '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
                                 '"></span>'+
                                 '</div>' );
@@ -154,13 +156,47 @@
             },
             changeBeishu: function (event) {
                 console.log(222);
+                // Warn if overriding existing method
+                if(Array.prototype.equals)
+                    console.warn("Overriding existing Array.prototype.equals. Possible causes: New API defines the method, there's a framework conflict or you've got double inclusions in your code.");
+// attach the .equals method to Array's prototype to call it on any array
+                Array.prototype.equal = function (array) {
+                    // if the other array is a falsy value, return
+                    if (!array)
+                        return false;
+
+                    // compare lengths - can save a lot of time
+                    if (this.length != array.length)
+                        return false;
+
+                    for (var i = 0, l = this.length; i < l; i++) {
+                        // Check if we have nested arrays
+                        if (this[i] instanceof Array && array[i] instanceof Array) {
+                            // recurse into the nested arrays
+                            if (!this[i].equal(array[i]))
+                                return false;
+                        }
+                        else if (this[i] != array[i]) {
+                            // Warning - two different object instances will never be equal: {x:20} != {x:20}
+                            return false;
+                        }
+                    }
+                    return true;
+                }
+// Hide method from for-in loops
+                Object.defineProperty(Array.prototype, "equal", {enumerable: false});
                 Array.prototype.indexOf = function(val) {
+
                     for (var i = 0; i < this.length; i++) {
+                        if(this[i] instanceof  Array && val instanceof  Array) {
+                            if(this[i].equal(val)) return i ;
+                        }
                         if (this[i] == val) return i;
                     }
                     return -1;
                 };
                 Array.prototype.remove = function(val) {
+
                     var index = this.indexOf(val);
                     if (index > -1) {
                         this.splice(index, 1);
@@ -194,8 +230,9 @@
 
                         let arra = arr.split(',');
                         let i = jilei15.indexOf(arra);
-                        console.log('arra==============',arra);
+
                         arra.splice(7,1,(val-1));
+                        console.log('arra==============',arra);
                         jilei15.splice(i,1,arra);
                         $('span.valuehere').data('jilei15',jilei15);
                     }
@@ -204,11 +241,13 @@
                     $(event.target).siblings('input').val(val+1);
                     let arr = $(event.target).siblings('label.smlabel').data('valarr');
 
-                    let arra = arr.split(',');
+                    let arra = arr.split(',').map(Number);
+
                     let i = jilei15.indexOf(arra);
-                    console.log('arra==============',arra,'i=',i);
+                    console.log('arra==============',arra,'i=',i,'jilei15====',jilei15);
                     arra.splice(7,1,(val+1));
                     jilei15.splice(i,1,arra);
+                    $(event.target).siblings('label.smlabel').data('valarr',arra.toString());
                     $('span.valuehere').data('jilei15',jilei15);
 
                 }else if($(event.target).hasClass('btn-addbeat')) {
