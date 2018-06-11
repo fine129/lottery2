@@ -277,7 +277,8 @@
                 //     alert('最多只能有五组单选号码！');
                 //     return null;
                 // }
-                jilei15.push(andrb);
+                $('span.valuehere').data('andrb',andrb);
+                // jilei15.push(andrb);
                 $('span.valuehere').data('blues',this.blues) ;
                     $('span.valuehere').data('jilei15',jilei15) ;
 
@@ -320,7 +321,15 @@
                     }
                 console.log('final 五组号码为：',redall);
                 $('span.valuehere').data('allnum',redall) ;
-                this.$router.push('/confirm?type=five');
+                $('span.valuehere').data('jilei15',redall) ;
+
+                this.$router.push('/confirm?type=five',onComplete=>{
+                    console.log('completeeeeeeeeeeee');
+                    // $('div.danshinotice').hide();
+                    $('button.oneagain').hide();
+                },onAbort => {
+                    console.log('aborttttttttttttt');
+                });
 
                 }
 
@@ -336,8 +345,17 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                     let redblue = $('span.valuehere').data('reds');
                     let jilei15 = $('span.valuehere').data('jilei15');
                     let temp = $('span.valuehere').data('temp');
-                    if(!$.isEmptyObject(temp))
-                    jilei15.push( temp);
+                    if(!$.isEmptyObject(temp)) {
+                        jilei15.push( temp);
+                        $('span.valuehere').data('temp',null);
+                        $('span.valuehere').data('jilei15',jilei15);
+                    }
+                    else {
+                        let andrb = $('span.valuehere').data('andrb');
+                        // jilei15.splice(jilei15.length-1,1,andrb);
+                        jilei15.push(andrb);
+                        // $('span.valuehere').data('andrb',undefined);
+                    }
                     if(redblue.red.length >6 || redblue.blue.length >1) {
                         this.$router.push('confirm?type=fushi',onComplete=>{
                             console.log('completeeeeeeeeeeee');
@@ -349,7 +367,7 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                         console.log('if heee');
                         let jilei15 =$('span.valuehere').data('jilei15');
                         if(jilei15.length >5) {
-                            alert('您最多只能挑选五组号码');
+                            // alert('您最多只能挑选五组号码');
                             return null;
                         }
                         if( $.isEmptyObject( $('span.valuehere').data('jilei15')))  {
@@ -495,7 +513,7 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                     //     jilei15[i] = rednow.concat(bluenow);
                     // }
                     // jilei15.push( rednow.concat(bluenow));
-                    $('span.valuehere').data('jilei15',jilei15);
+                    // $('span.valuehere').data('jilei15',jilei15);
                     console.log('jilei15原始=',jilei15);
                     console.log('data.reds==',$('span.valuehere').data('reds'),'jilei15==',jilei15);
 
@@ -525,8 +543,8 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                     } else {
                          jilei15 = $('span.valuehere').data('jilei15');
                     }
-                     jilei15[jilei15.length] = rednow.concat(bluenow);
-                        $('span.valuehere').data('jilei15', jilei15);
+                     // jilei15[jilei15.length] = rednow.concat(bluenow);
+                     //    $('span.valuehere').data('jilei15', jilei15);
 
                 }
 
@@ -597,11 +615,12 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                     bluenow = $('span.valuehere').data('reds').blue;
                     jilei15 = $('span.valuehere').data('jilei15');
                     let temp = rednow.concat(bluenow);
+                    $('span.valuehere').data('temp',temp);
                     //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
                     if(jilei15[jilei15.length -1].length <=7) {
                         jilei15[jilei15.length -1] = temp;
                     } else {
-                        alert('enough!'+jilei15[jilei15.length -1]);
+                        // alert('enough!'+jilei15[jilei15.length -1]);
                     }
                     $('span.valuehere').data('jilei15',jilei15);
                     }

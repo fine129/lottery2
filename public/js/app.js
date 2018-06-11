@@ -40045,7 +40045,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40126,28 +40126,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //     alert(999);
             // }
             // else { alert(1111)}
+
             var numhere = $('div.numhere');
             var allnum = $('span.valuehere').data('allnum');
             for (var i = 0; i < allnum.length; i++) {
-                var rednum = allnum[i].slice(0, allnum[i].length - 1).sort(function (a, b) {
+                if (allnum[i].length < 8) {
+                    allnum[i].push(1);
+                }
+                $('span.valuehere').data('allnum', allnum);
+                var rednum = allnum[i].slice(0, allnum[i].length - 2).map(Number).sort(function (a, b) {
                     return a - b;
                 });
-                var bluenum = allnum[i].slice(allnum[i].length - 1, allnum[i].length - 0);
+                var bluenum = allnum[i].slice(allnum[i].length - 2, allnum[i].length - 1);
+                var beishu = allnum[i][allnum[i].length - 1];
                 console.log('rednum===', rednum, 'bluenum==', bluenum);
-                numhere.append('<div class="list-group-item beats">' + '<label class=" label">第' + '<span class="imtitle">' + (i + 1) + '</span>注</label>' + '<div class="haonum">' + rednum.join(', ') + ', <span class="blueletter">' + bluenum + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + ' </div>' + ' </div>');
+                numhere.append('<div class="list-group-item beats">' + '<label class="smlabel label" data-valarr="' + allnum[i] + '"   >第' + '<span class="imtitle">' + (i + 1) + '</span>注</label>' + '<div class="haonum">' + rednum.join(', ') + ', <span class="blueletter">' + bluenum + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"    value=' + 1 + '  data-beishu=' + beishu + '    class="beishu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + ' </div>' + ' </div>');
             }
             console.log('allnum==', allnum);
             //填充第二个选择
             var redblue = $('span.valuehere').data('reds');
             var red = redblue.red;
             var blue = redblue.blue;
+
             $('div.danshinotice').hide();
             if (!red) {
                 return null;
             }
 
             if (red.length > 6 || blue.length > 1) {
-                $('div.fushigroup').append('' + '<div class="list-group-item">' + '<label class="label">红复</label>' + '<span class="redhere"> ' + red.join(", ") + '</span>' + '</div>' + '<div class="list-group-item">' + '<label class="label bluelabel">' + '蓝复' + '</label> ' + '<span class="bluehere">' + blue.join(", ") + '</span> ' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div> ');
+                $('div.fushigroup').append('' + '<div class="list-group-item">' + '<label class="label">红复</label>' + '<span class="redhere" data-redblue="' + redblue + '"> ' + red.join(", ") + '</span>' + '</div>' + '<div class="list-group-item">' + '<label class="label bluelabel">' + '蓝复' + '</label> ' + '<span class="bluehere">' + blue.join(", ") + '</span> ' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufushi" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div> ');
             } else {
                 //积累单式五组号码
 
@@ -40168,11 +40175,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                         var rb = jilei15[_i];
                         console.log('rb[rb.length-1]=', rb[rb.length - 1]);
                         bb = rb[rb.length - 2];
-                        rr = rb.slice(0, 6);
-                        var beishu = rb[rb.length - 1];
+                        rr = rb.slice(0, 6).sort(function (a, b) {
+                            return a - b;
+                        });
+                        var _beishu = rb[rb.length - 1];
                         var j = _i + 1;
                         console.log('rr==', rr, 'bb==', bb, 'jilei15[i]==', jilei15[_i], 'jilei15==', jilei15);
-                        $('div.danshigroup').append('' + '<div class="list-group-item beats" >' + '<label class="label smlabel" data-valarr="' + rb + '">第<span class="smnum">' + j + '</span>注 </label>' + '<span class="redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=' + 1 + '  data-beishu=' + beishu + '  class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
+                        $('div.danshigroup').append('' + '<div class="list-group-item beats" >' + '<label class="label smlabel" data-valarr="' + rb + '">第<span class="smnum">' + j + '</span>注 </label>' + '<span class="redpart">' + rr + '</span> - <span class="bluepart">' + bb + '</span>' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=' + 1 + '  data-beishu=' + _beishu + '  class="beishufu" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div>');
                         $('div.beats input.beishufu').each(function (i, n) {
                             $(n).val($(n).data('beishu'));
                         });
@@ -40180,9 +40189,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
 
                 var num = $('div.danshigroup div.group-list-item').length;
-                $('div.danshinotice').show();
 
-                if (num <= 4 && num >= 1) {}
+                if (num <= 4 && num >= 0) {
+                    $('div.danshinotice').show();
+                }
+                if (!jilei15) {
+                    jilei15 = $('span.valuehere').data('allnum');
+                }
+
                 if (jilei15.length >= 5) {
 
                     $('button.oneagain').hide();
@@ -40259,6 +40273,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             var val = parseInt($(event.target).siblings('input').val());
             var jilei15 = $('span.valuehere').data('jilei15');
+            if (!jilei15) {
+                jilei15 = $('span.valuehere').data('allnum');
+            }
             var valarr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
             var index = jilei15.indexOf(valarr);
             if ($(event.target).hasClass('minus')) {
@@ -40267,33 +40284,49 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     this.xuliehao();
                     console.log('hereeeeeeeee  jilei15====', jilei15);
                     jilei15.remove(valarr);
+                    $('span.valuehere').data('allnum', jilei15);
                     console.log('hereeeeeeeee  jilei15====', jilei15);
-                    if ($('div.numhere').find('button.btn-addbeat').length < 1) $('div.numhere').append('<button class="btn btn-success offset-6 ' + 'btn-addbeat" >增加一注</button>');
+                    $('div.danshinotice').show();
+                    $('button.oneagain').show();
+                    console.log('$(button.oneagain==', $('button.oneagain').length);
+                    console.log('$(\'div.numhere\').find(\'button.btn-addbeat\').length===', $('div.numhere').find('button.btn-addbeat').length);
+                    if ($(event.target).siblings('input').hasClass('beishufushi')) {
+                        $('div.fushigroup').html('');
+                    }
                     return null;
                 } else {
                     $(event.target).siblings('input').val(val - 1);
-                    var arr = $(event.target).siblings('label.smlabel').data('valarr');
+                    if ($('div.fushigroup span.redhere').length > 0) {} else {
+                        var arr = $(event.target).siblings('label.smlabel').data('valarr');
+                        if (!arr) {
+                            arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
+                        }
+                        console.log('arr==== in confirm', arr);
+                        var arra = arr.split(',');
+                        var i = jilei15.indexOf(arra);
 
-                    var arra = arr.split(',');
-                    var i = jilei15.indexOf(arra);
-
-                    arra.splice(7, 1, val - 1);
-                    console.log('arra==============', arra);
-                    jilei15.splice(i, 1, arra);
-                    $('span.valuehere').data('jilei15', jilei15);
+                        arra.splice(7, 1, val - 1);
+                        console.log('arra==============', arra);
+                        jilei15.splice(i, 1, arra);
+                        $('span.valuehere').data('jilei15', jilei15);
+                    }
                 }
             } else if ($(event.target).hasClass('plus')) {
                 $(event.target).siblings('input').val(val + 1);
-                var _arr = $(event.target).siblings('label.smlabel').data('valarr');
+                if ($('div.fushigroup span.redhere').length > 0) {} else {
+                    var _arr = $(event.target).siblings('label.smlabel').data('valarr');
+                    if (!_arr) {
+                        _arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
+                    }
+                    var _arra = _arr.split(',').map(Number);
 
-                var _arra = _arr.split(',').map(Number);
-
-                var _i2 = jilei15.indexOf(_arra);
-                console.log('arra==============', _arra, 'i=', _i2, 'jilei15====', jilei15);
-                _arra.splice(7, 1, val + 1);
-                jilei15.splice(_i2, 1, _arra);
-                $(event.target).siblings('label.smlabel').data('valarr', _arra.toString());
-                $('span.valuehere').data('jilei15', jilei15);
+                    var _i2 = jilei15.indexOf(_arra);
+                    console.log('arra==============', _arra, 'i=', _i2, 'jilei15====', jilei15);
+                    _arra.splice(7, 1, val + 1);
+                    jilei15.splice(_i2, 1, _arra);
+                    $(event.target).siblings('label.smlabel').data('valarr', _arra.toString());
+                    $('span.valuehere').data('jilei15', jilei15);
+                }
             } else if ($(event.target).hasClass('btn-addbeat')) {
                 this.$router.go(-1);
             }
@@ -40714,7 +40747,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             //     alert('最多只能有五组单选号码！');
             //     return null;
             // }
-            jilei15.push(andrb);
+            $('span.valuehere').data('andrb', andrb);
+            // jilei15.push(andrb);
             $('span.valuehere').data('blues', this.blues);
             $('span.valuehere').data('jilei15', jilei15);
 
@@ -40753,7 +40787,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             console.log('final 五组号码为：', redall);
             $('span.valuehere').data('allnum', redall);
-            this.$router.push('/confirm?type=five');
+            $('span.valuehere').data('jilei15', redall);
+
+            this.$router.push('/confirm?type=five', function (onComplete) {
+                console.log('completeeeeeeeeeeee');
+                // $('div.danshinotice').hide();
+                $('button.oneagain').hide();
+            }, function (onAbort) {
+                console.log('aborttttttttttttt');
+            });
         },
 
         confirmSelect: function confirmSelect() {
@@ -40764,7 +40806,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var redblue = $('span.valuehere').data('reds');
                 var jilei15 = $('span.valuehere').data('jilei15');
                 var temp = $('span.valuehere').data('temp');
-                if (!$.isEmptyObject(temp)) jilei15.push(temp);
+                if (!$.isEmptyObject(temp)) {
+                    jilei15.push(temp);
+                    $('span.valuehere').data('temp', null);
+                    $('span.valuehere').data('jilei15', jilei15);
+                } else {
+                    var andrb = $('span.valuehere').data('andrb');
+                    // jilei15.splice(jilei15.length-1,1,andrb);
+                    jilei15.push(andrb);
+                    // $('span.valuehere').data('andrb',undefined);
+                }
                 if (redblue.red.length > 6 || redblue.blue.length > 1) {
                     this.$router.push('confirm?type=fushi', function (onComplete) {
                         console.log('completeeeeeeeeeeee');
@@ -40776,7 +40827,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     console.log('if heee');
                     var _jilei = $('span.valuehere').data('jilei15');
                     if (_jilei.length > 5) {
-                        alert('您最多只能挑选五组号码');
+                        // alert('您最多只能挑选五组号码');
                         return null;
                     }
                     if ($.isEmptyObject($('span.valuehere').data('jilei15'))) {
@@ -40919,7 +40970,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 //     jilei15[i] = rednow.concat(bluenow);
                 // }
                 // jilei15.push( rednow.concat(bluenow));
-                $('span.valuehere').data('jilei15', _jilei2);
+                // $('span.valuehere').data('jilei15',jilei15);
                 console.log('jilei15原始=', _jilei2);
                 console.log('data.reds==', $('span.valuehere').data('reds'), 'jilei15==', _jilei2);
             }
@@ -40950,8 +41001,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 } else {
                     _jilei3 = $('span.valuehere').data('jilei15');
                 }
-                _jilei3[_jilei3.length] = rednow.concat(bluenow);
-                $('span.valuehere').data('jilei15', _jilei3);
+                // jilei15[jilei15.length] = rednow.concat(bluenow);
+                //    $('span.valuehere').data('jilei15', jilei15);
             }
 
             console.log('红球数组变为:', $('span.valuehere').data('reds').red);
@@ -41023,11 +41074,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 bluenow = $('span.valuehere').data('reds').blue;
                 jilei15 = $('span.valuehere').data('jilei15');
                 var temp = rednow.concat(bluenow);
+                $('span.valuehere').data('temp', temp);
                 //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
                 if (jilei15[jilei15.length - 1].length <= 7) {
                     jilei15[jilei15.length - 1] = temp;
                 } else {
-                    alert('enough!' + jilei15[jilei15.length - 1]);
+                    // alert('enough!'+jilei15[jilei15.length -1]);
                 }
                 $('span.valuehere').data('jilei15', jilei15);
             }

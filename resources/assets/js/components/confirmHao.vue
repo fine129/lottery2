@@ -38,22 +38,29 @@
                 //     alert(999);
                 // }
                 // else { alert(1111)}
+
                 let numhere = $('div.numhere');
                 let allnum = $('span.valuehere').data('allnum');
                 for(let i =0; i<allnum.length;i++) {
-                   let rednum = allnum[i].slice(0,allnum[i].length - 1).sort(function (a,b) {
+                    if(allnum[i].length <8) {
+                        allnum[i].push(1);
+                    }
+                    $('span.valuehere').data('allnum',allnum);
+                   let rednum = allnum[i].slice(0,allnum[i].length - 2).map(Number).sort(function (a,b) {
                        return a - b;
+
                    });
-                   let bluenum = allnum[i].slice(allnum[i].length - 1,allnum[i].length - 0);
+                   let bluenum = allnum[i].slice(allnum[i].length - 2,allnum[i].length - 1);
+                   let beishu = allnum[i][allnum[i].length-1];
                    console.log('rednum===',rednum,'bluenum==',bluenum);
                     numhere.append(  '<div class="list-group-item beats">'+
-                        '<label class=" label">第'+'<span class="imtitle">'+(i+1)+'</span>注</label>'+
+                        '<label class="smlabel label" data-valarr="'+allnum[i]+'"   >第'+'<span class="imtitle">'+(i+1)+'</span>注</label>'+
                         '<div class="haonum">'+
                         rednum.join(', ') +
                         ', <span class="blueletter">'+bluenum  +'</span>' +
                             '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
                         '"></span>' +
-                        '<input type="text" name="beishu"  value=1   class="beishu" /> ' +
+                        '<input type="text" name="beishu"    value='+1+'  data-beishu='+beishu+'    class="beishu" /> ' +
                         '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
                         '"></span>'+
                        ' </div>'+
@@ -64,6 +71,7 @@
                 let redblue = $('span.valuehere').data('reds');
                 let red = redblue.red;
                 let blue = redblue.blue;
+
                 $('div.danshinotice').hide();
                 if(!red) {
                     return  null;
@@ -73,14 +81,14 @@
                     $('div.fushigroup').append('' +
                         '<div class="list-group-item">' +
                         '<label class="label">红复</label>' +
-                        '<span class="redhere"> '+red.join(", ") +'</span>' +
+                        '<span class="redhere" data-redblue="'+redblue+'"> '+red.join(", ") +'</span>' +
                         '</div>' +
                         '<div class="list-group-item">' +
                         '<label class="label bluelabel">'+'蓝复'+ '</label> ' +
                         '<span class="bluehere">'+blue.join(", ")+'</span> ' +
                         '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' +
                         '"></span>' +
-                        '<input type="text" name="beishu"  value=1   class="beishufu" /> ' +
+                        '<input type="text" name="beishu"  value=1   class="beishufushi" /> ' +
                         '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
                         '"></span>'+
                         '</div> ')
@@ -104,7 +112,9 @@
                             let rb = jilei15[i];
                             console.log('rb[rb.length-1]=',rb[rb.length-1]);
                             bb = rb[rb.length-2];
-                            rr = rb.slice(0,6);
+                            rr = rb.slice(0,6).sort(function (a,b) {
+                                return a -b;
+                            });
                             let beishu = rb[rb.length -1];
                             let j = i + 1;
                             console.log('rr==',rr,'bb==',bb,'jilei15[i]==',jilei15[i],'jilei15==',jilei15);
@@ -126,11 +136,15 @@
                     }
 
                     let num = $('div.danshigroup div.group-list-item').length ;
-                    $('div.danshinotice').show();
 
-                    if( num <=4 && num >=1){
 
+                    if( num <=4 && num >=0){
+                        $('div.danshinotice').show();
                     }
+                    if(!jilei15) {
+                        jilei15 = $('span.valuehere').data('allnum');
+                    }
+
                     if(jilei15.length >=5) {
 
                         $('button.oneagain').hide();
@@ -139,6 +153,7 @@
                 }
             });
          },
+
         data() {
             return {msg:'aaaaaa'}
         },
@@ -211,6 +226,9 @@
                 }
                 let val = parseInt($(event.target).siblings('input').val());
                 let jilei15 =   $('span.valuehere').data('jilei15');
+                if(!jilei15) {
+                    jilei15 =   $('span.valuehere').data('allnum');
+                }
                 let valarr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
                 let index = jilei15.indexOf(valarr);
                 if($(event.target).hasClass('minus')) {
@@ -219,36 +237,58 @@
                         this.xuliehao();
                         console.log('hereeeeeeeee  jilei15====',jilei15);
                         jilei15.remove(valarr);
+                        $('span.valuehere').data('allnum',jilei15);
                         console.log('hereeeeeeeee  jilei15====',jilei15);
-                        if($('div.numhere').find('button.btn-addbeat').length < 1)
-                        $('div.numhere').append('<button class="btn btn-success offset-6 ' +
-                            'btn-addbeat" >增加一注</button>');
+                        $('div.danshinotice').show();
+                        $('button.oneagain').show();
+                            console.log('$(button.oneagain==',$('button.oneagain').length);
+                        console.log('$(\'div.numhere\').find(\'button.btn-addbeat\').length==='
+                            ,$('div.numhere').find('button.btn-addbeat').length);
+                        if($(event.target).siblings('input').hasClass('beishufushi')) {
+                            $('div.fushigroup').html('');
+                        }
                         return null;
                     } else {
                         $(event.target).siblings('input').val(val-1);
-                        let arr = $(event.target).siblings('label.smlabel').data('valarr');
+                        if($('div.fushigroup span.redhere').length > 0) {
 
-                        let arra = arr.split(',');
-                        let i = jilei15.indexOf(arra);
+                        } else {
+                            let arr = $(event.target).siblings('label.smlabel').data('valarr');
+                            if(!arr) {
+                                arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
 
-                        arra.splice(7,1,(val-1));
-                        console.log('arra==============',arra);
-                        jilei15.splice(i,1,arra);
-                        $('span.valuehere').data('jilei15',jilei15);
+                            }
+                            console.log('arr==== in confirm',arr);
+                            let arra = arr.split(',');
+                            let i = jilei15.indexOf(arra);
+
+                            arra.splice(7,1,(val-1));
+                            console.log('arra==============',arra);
+                            jilei15.splice(i,1,arra);
+                            $('span.valuehere').data('jilei15',jilei15);
+                        }
+
                     }
 
                 } else if($(event.target).hasClass('plus')) {
                     $(event.target).siblings('input').val(val+1);
-                    let arr = $(event.target).siblings('label.smlabel').data('valarr');
+                    if($('div.fushigroup span.redhere').length > 0) {
 
-                    let arra = arr.split(',').map(Number);
+                    } else {
+                        let arr = $(event.target).siblings('label.smlabel').data('valarr');
+                        if(!arr) {
+                            arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
+                        }
+                        let arra = arr.split(',').map(Number);
 
-                    let i = jilei15.indexOf(arra);
-                    console.log('arra==============',arra,'i=',i,'jilei15====',jilei15);
-                    arra.splice(7,1,(val+1));
-                    jilei15.splice(i,1,arra);
-                    $(event.target).siblings('label.smlabel').data('valarr',arra.toString());
-                    $('span.valuehere').data('jilei15',jilei15);
+                        let i = jilei15.indexOf(arra);
+                        console.log('arra==============',arra,'i=',i,'jilei15====',jilei15);
+                        arra.splice(7,1,(val+1));
+                        jilei15.splice(i,1,arra);
+                        $(event.target).siblings('label.smlabel').data('valarr',arra.toString());
+                        $('span.valuehere').data('jilei15',jilei15);
+                    }
+
 
                 }else if($(event.target).hasClass('btn-addbeat')) {
                     this.$router.go(-1);
