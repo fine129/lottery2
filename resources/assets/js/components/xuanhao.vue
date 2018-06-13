@@ -338,7 +338,7 @@
 
             confirmSelect:function() {
                 if($('span.valuehere').data('redman') === 'yes' &&
-                $('span.valuehere').data('blueman') === 'yes') {
+                $('span.valuehere').data('blueman') === 'yes' && !$('button.confirm').hasClass('btn-dark')) {
                     $(event.target).removeClass('btn-dark');
                     $(event.target).addClass('btn-success');
 console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei15')));

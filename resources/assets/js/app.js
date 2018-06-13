@@ -28,7 +28,7 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex'
 import  confirmHao from './components/confirmHao.vue';
 import  xuanhao from './components/xuanhao.vue';
-import  dantuo from './components/dantuo.vue';
+import  dantuo from './components/dantuonew.vue';
 
 window.Vue = require('vue');
 

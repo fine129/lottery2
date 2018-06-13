@@ -11,6 +11,9 @@
         <div class="list-group danshigroup grouphere"  @click="changeBeishu" v-if="type === 'danshi'">
 
         </div>
+        <div class="list-group dantuogroup grouphere"  @click="changeBeishu" v-if="type === 'dantuo'">
+
+        </div>
         <div class="list-group-item danshinotice">
             <span class="noticesm">一张订单最多只能有五组单式号码</span>
             <button class="btn btn-outline-success oneagain"  @click="beatagain">再来一注</button>
@@ -68,16 +71,17 @@
                 }
                 console.log('allnum==',allnum);
                 //填充第二个选择
+
                 let redblue = $('span.valuehere').data('reds');
                 let red = redblue.red;
                 let blue = redblue.blue;
 
                 $('div.danshinotice').hide();
                 if(!red) {
-                    return  null;
+
                 }
 
-                if( red.length>6 || blue.length >1) {
+                if( red&& blue&&(red.length>6 || blue.length >1)) {
                     $('div.fushigroup').append('' +
                         '<div class="list-group-item">' +
                         '<label class="label">红复</label>' +
@@ -92,7 +96,7 @@
                         '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' +
                         '"></span>'+
                         '</div> ')
-                } else {
+                } else if($('span.valuehere').data('reds')){
                     //积累单式五组号码
 
                     let all = $('span.valuehere').data('reds');
@@ -150,6 +154,16 @@
                         $('button.oneagain').hide();
                     }
                     console.log('dansih,,,,,,,,,,,,,,,',red,blue,'jilei15.length==',jilei15.length);
+                } else {
+                    let tempdan = $('span.valuehere').data('tempdan');
+                    let temptuo = $('span.valuehere').data('temptuo');
+                    let tempblue = $('span.valuehere').data('tempblue');
+                    $('div.danshinotice').hide();
+                    console.log('tempdan===',tempdan);
+                    if(tempdan) {
+
+                        $('div.dantuogroup').append('<label class="label bg-dark">胆号:</label>');
+                    }
                 }
             });
          },

@@ -14288,8 +14288,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuonew_vue__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_dantuonew_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_dantuonew_vue__);
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 /**
@@ -14339,7 +14339,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({
     // routes // （缩写）相当于 routes: routes
     routes: [{ path: '/confirm', component: __WEBPACK_IMPORTED_MODULE_2__components_confirmHao_vue___default.a, props: function props(route) {
             return { type: route.query.type };
-        } }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue___default.a, props: true }, { path: '/dantuo', component: __WEBPACK_IMPORTED_MODULE_4__components_dantuo_vue___default.a, props: true }]
+        } }, { path: '/', component: __WEBPACK_IMPORTED_MODULE_3__components_xuanhao_vue___default.a, props: true }, { path: '/dantuo', component: __WEBPACK_IMPORTED_MODULE_4__components_dantuonew_vue___default.a, props: true }]
 });
 
 var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
@@ -40045,7 +40045,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40113,6 +40113,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40144,18 +40147,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
             console.log('allnum==', allnum);
             //填充第二个选择
+
             var redblue = $('span.valuehere').data('reds');
             var red = redblue.red;
             var blue = redblue.blue;
 
             $('div.danshinotice').hide();
-            if (!red) {
-                return null;
-            }
+            if (!red) {}
 
-            if (red.length > 6 || blue.length > 1) {
+            if (red && blue && (red.length > 6 || blue.length > 1)) {
                 $('div.fushigroup').append('' + '<div class="list-group-item">' + '<label class="label">红复</label>' + '<span class="redhere" data-redblue="' + redblue + '"> ' + red.join(", ") + '</span>' + '</div>' + '<div class="list-group-item">' + '<label class="label bluelabel">' + '蓝复' + '</label> ' + '<span class="bluehere">' + blue.join(", ") + '</span> ' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufushi" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div> ');
-            } else {
+            } else if ($('span.valuehere').data('reds')) {
                 //积累单式五组号码
 
                 var all = $('span.valuehere').data('reds');
@@ -40202,6 +40204,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('button.oneagain').hide();
                 }
                 console.log('dansih,,,,,,,,,,,,,,,', _red, _blue, 'jilei15.length==', jilei15.length);
+            } else {
+                var tempdan = $('span.valuehere').data('tempdan');
+                var temptuo = $('span.valuehere').data('temptuo');
+                var tempblue = $('span.valuehere').data('tempblue');
+                $('div.danshinotice').hide();
+                console.log('tempdan===', tempdan);
+                if (tempdan) {
+
+                    $('div.dantuogroup').append('<label class="label bg-dark">胆号:</label>');
+                }
             }
         });
     },
@@ -40362,6 +40374,13 @@ var render = function() {
     _vm.type === "danshi"
       ? _c("div", {
           staticClass: "list-group danshigroup grouphere",
+          on: { click: _vm.changeBeishu }
+        })
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.type === "dantuo"
+      ? _c("div", {
+          staticClass: "list-group dantuogroup grouphere",
           on: { click: _vm.changeBeishu }
         })
       : _vm._e(),
@@ -40799,7 +40818,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         },
 
         confirmSelect: function confirmSelect() {
-            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes') {
+            if ($('span.valuehere').data('redman') === 'yes' && $('span.valuehere').data('blueman') === 'yes' && !$('button.confirm').hasClass('btn-dark')) {
                 $(event.target).removeClass('btn-dark');
                 $(event.target).addClass('btn-success');
                 console.log('aaaaa', 'jilei15=', $.isEmptyObject($('span.valuehere').data('jilei15')));
@@ -41221,7 +41240,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-32ad4874"
+var __vue_scopeId__ = "data-v-6fb3d8dc"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -41232,7 +41251,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\dantuo.vue"
+Component.options.__file = "resources\\assets\\js\\components\\dantuonew.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -41241,9 +41260,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-32ad4874", Component.options)
+    hotAPI.createRecord("data-v-6fb3d8dc", Component.options)
   } else {
-    hotAPI.reload("data-v-32ad4874", Component.options)
+    hotAPI.reload("data-v-6fb3d8dc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -41264,13 +41283,13 @@ var content = __webpack_require__(54);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(4)("8bc3063a", content, false, {});
+var update = __webpack_require__(4)("1bf388c2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-32ad4874\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dantuo.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-32ad4874\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dantuo.vue");
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6fb3d8dc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dantuonew.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-6fb3d8dc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./dantuonew.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -41288,7 +41307,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\ninput.rednum[data-v-32ad4874],input[name=bluenum] [data-v-32ad4874],input.dannum[data-v-32ad4874],input.tuonum[data-v-32ad4874]{\r\n    width:30px ;\r\n    height:30px;\n}\r\n", ""]);
+exports.push([module.i, "\ninput.rednum[data-v-6fb3d8dc],input[name=bluenum] [data-v-6fb3d8dc],input.dannum[data-v-6fb3d8dc],input.tuonum[data-v-6fb3d8dc]{\r\n    width:30px ;\r\n    height:30px;\n}\r\n", ""]);
 
 // exports
 
@@ -41357,7 +41376,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             for (var i = 1; i <= 33; i++) {
                 if (i % 7 == 0) $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
             }
-            $('div.danholder').append('<br/><button class="btn btn-danger' + ' confirmdan">确认使用</button> ');
+            // $('div.danholder').append('<br/><button class="btn btn-danger' +
+            //     ' confirmdan">确认使用</button> ');
             for (var _i = 1; _i <= 16; _i++) {
                 if (_i % 7 == 0) $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum"> ' + _i + '</span></div><br/>');else $('div.blueholder').append('<div class="circlebai text-center cirlbai' + _i + '" ' + '  ><span class="numnumb numnum">' + _i + '</span></div>');
             }
@@ -41531,16 +41551,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
              *
              * **/
 
-            if ($(event.target).hasClass('confirmdan')) {
-                //胆球确认键
-                $('span.valuehere').data('danusedall', 'yes');
-                $('div.danholder').addClass('danusedall');
-                $('div.tuoholder').removeClass('waitdan');
-                return null;
-            }
-            if ($('span.valuehere').data('danusedall') === 'yes') {
+            // if ($(event.target).hasClass('confirmdan')) {  //胆球确认键
+            //     $('span.valuehere').data('danusedall', 'yes');
+            //     $('div.danholder').addClass('danusedall');
+            //     $('div.tuoholder').removeClass('waitdan');
+            //     return null;
+            // }
+            if ($(event.target).hasClass('tuoused') || $(event.target).parent('div.circlebai').hasClass('tuoused')) {
                 //是否使用过胆球功能
-                alert('您已经使用过胆码功能!');
+                alert('此号码已被拖码使用!');
                 return null;
             }
             var tempdan = $('span.valuehere').data('tempdan'); //获得tempdan数组
@@ -41550,18 +41569,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 $('span.valuehere').data('tempdan', tempdan);
             }
             if (tempdan.length >= 5) {
-                if ($(event.target).hasClass('red') || $(event.target).find('span').hasClass('white') || $(event.target).parent('div').hasClass('red') || $(event.target).hasClass('white')) {//如果素组长度超过五个，再次点击已被点击过的球,这里不处理
-
+                if ($(event.target).hasClass('red') || $(event.target).find('span').hasClass('white') || $(event.target).parent('div.circlebai').hasClass('red') || $(event.target).hasClass('white')) {//如果素组长度超过五个，再次点击已被点击过的球,这里不处理
+                    // let tempnum = parseInt($(event.target).text());
+                    // if(tempnum.constructor !== Number) {
+                    //     tempnum = parseInt($(event.target).find('span').text());
+                    // }
+                    // tempdan.remove(tempnum);
+                    // console.log('tempdan==',tempdan,'removed ==',tempnum);
                 } else {
                     alert('您最多只能选择五个胆码!');
                     return null;
                 }
             }
-            var o = $('span.valuehere').data('danqiu') ? $('span.valuehere').data('danqiu') : new Array(40);
+
+            var o = $('span.valuehere').data('danqiu') ? $('span.valuehere').data('danqiu') : [];
             //找出O.
-
-
-            console.log('');
+            console.log('o==', o);
             if ($(event.target).hasClass('circlebai')) {
                 // 直接点击到div
                 var b = parseInt($(event.target).find('span.numnum').text());
@@ -41675,36 +41698,110 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             $('span.valuehere').data('tempdan', tempdan);
             $('span.valuehere').data('dannum', tempdan);
 
-            console.log('temp=', tempdan);
+            if (tempdan.length >= 1 && tempdan.length <= 5) {
+                $('span.valuehere').data('danok', 'yes');
+                if ($('span.valuehere').data('tuook') === 'yes' && $('span.valuehere').data('blueok') === 'yes') {
+                    $('button.confirm').removeClass('cannot');
+                }
+            } else {
+                $('span.valuehere').data('danok', 'no');
+                if (!$('button.confirm').hasClass('cannot')) $('button.confirm').addClass('cannot');
+            }
+
+            console.log('tempdan=', tempdan);
         },
 
         changeSelectTuo: function changeSelectTuo() {
-            if ($('span.valuehere').data('danusedall') !== 'yes') {
-                alert('请先挑选使用胆码功能！');
-                return null;
-            }
+            // if ($('span.valuehere').data('danusedall') !== 'yes') {
+            //     alert('请先挑选使用胆码功能！');
+            //     return null;
+            // }
+            var temptuo = $('span.valuehere').data('temptuo') ? $('span.valuehere').data('temptuo') : [];
+            var tuofinal = [];
+            var otuo = $('span.valuehere').data('otuo') ? $('span.valuehere').data('otuo') : [];
             if ($(event.target).hasClass('danused') || $(event.target).parent('div').hasClass('danused')) {
                 alert('胆码已经使用此号');
                 return null;
             }
             if ($(event.target).hasClass('circlebai')) {
+
+                if (!$(event.target).hasClass('red')) {
+                    var index = parseInt($(event.target).find('span').text());
+                    temptuo.push(index);
+                    $('div.danholder div.cirlbai' + index).addClass('tuoused');
+                } else {
+                    var _index = parseInt($(event.target).find('span').text());
+                    temptuo.remove(_index);
+                    $('div.danholder div.cirlbai' + _index).removeClass('tuoused');
+                }
                 $(event.target).toggleClass('red');
                 $(event.target).find('span').toggleClass('white');
+                console.log('temptuo===', temptuo);
             }
             if ($(event.target).hasClass('numnum')) {
+
+                if (!$(event.target).hasClass('white')) {
+                    //未变色时
+                    var _index2 = parseInt($(event.target).text());
+                    temptuo.push(_index2);
+                    $('div.danholder div.cirlbai' + _index2).addClass('tuoused');
+                } else {
+                    var _index3 = parseInt($(event.target).text());
+                    temptuo.remove(_index3);
+                    $('div.danholder div.cirlbai' + _index3).removeClass('tuoused');
+                }
                 $(event.target).parent('div').toggleClass('red');
                 $(event.target).toggleClass('white');
+                console.log('temptuo in span===', temptuo);
             }
+
+            if (temptuo.length >= 2) {
+                $('span.valuehere').data('tuook', 'yes');
+                if ($('span.valuehere').data('danok') === 'yes' && $('span.valuehere').data('blueok') === 'yes') {
+                    $('button.confirm').removeClass('cannot');
+                }
+            } else {
+                $('span.valuehere').data('tuook', 'no');
+                if (!$('button.confirm').hasClass('cannot')) $('button.confirm').addClass('cannot');
+            }
+
+            $('span.valuehere').data('temptuo', temptuo);
         },
         changeSelectBlue: function changeSelectBlue() {
+            var tempblue = $('span.valuehere').data('tempblue') ? $('span.valuehere').data('tempblue') : [];
             if ($(event.target).hasClass('circlebai')) {
+                if (!$(event.target).hasClass('blue')) {
+                    var index = parseInt($(event.target).find('span').text());
+                    tempblue.push(index);
+                } else {
+                    var _index4 = parseInt($(event.target).find('span').text());
+                    tempblue.remove(_index4);
+                }
                 $(event.target).toggleClass('blue');
                 $(event.target).find('span').toggleClass('white');
             }
             if ($(event.target).hasClass('numnum')) {
+                if (!$(event.target).hasClass('white')) {
+                    var _index5 = parseInt($(event.target).text());
+                    tempblue.push(_index5);
+                } else {
+                    var _index6 = parseInt($(event.target).text());
+                    tempblue.remove(_index6);
+                }
                 $(event.target).parent('div').toggleClass('blue');
                 $(event.target).toggleClass('white');
             }
+            $('span.valuehere').data('tempblue', tempblue);
+            if (tempblue.length >= 1) {
+                $('span.valuehere').data('blueok', 'yes');
+                if ($('span.valuehere').data('danok') === 'yes' && $('span.valuehere').data('tuook') === 'yes') {
+                    $('button.confirm').removeClass('cannot');
+                }
+            } else {
+                $('span.valuehere').data('blueok', 'no');
+                if (!$('button.confirm').hasClass('cannot')) $('button.confirm').addClass('cannot');
+            }
+            console.log('blue=== ', tempblue);
         },
         handleUploaded: function handleUploaded(resp) {
             this.userAvatar = resp.relative_url;
@@ -41712,7 +41809,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
         confirmSelect: function confirmSelect() {
-            this.$router.push('confirm', function (onComplete) {
+            this.$router.push('confirm?type=dantuo', function (onComplete) {
                 console.log('completeeeeeeeeeeee');
             }, function (onAbort) {
                 console.log('aborttttttttttttt');
@@ -41754,7 +41851,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", {
-      staticClass: "ballholder tuoholder waitdan",
+      staticClass: "ballholder tuoholder waitdan2 ",
       on: { click: _vm.changeSelectTuo }
     }),
     _vm._v(" "),
@@ -41825,7 +41922,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass: "btn btn-info confirm  btn-danger ",
+          staticClass: "btn btn-info confirm  btn-danger cannot",
           on: { click: _vm.confirmSelect }
         },
         [_vm._v("确认选择")]
@@ -41839,7 +41936,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-32ad4874", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6fb3d8dc", module.exports)
   }
 }
 

@@ -10155,8 +10155,13 @@ input.bluenum {
   height: 30px;
 }
 
-div.danused {
+div.danused,
+div.tuoused {
   background-color: grey;
+}
+
+button.cannot {
+  background-color: #b3b3b3;
 }
 
 div.danusedall,

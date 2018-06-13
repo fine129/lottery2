@@ -149,9 +149,12 @@ div.beats {
     width:30px;
     height:30px;
   }
-  div.danused {
+  div.danused,div.tuoused {
     background-color: grey;
 
+  }
+  button.cannot {
+    background-color: lighten(grey,20%);
   }
   div.danusedall ,div.waitdan{
     background-color: lighten(black,90%);
