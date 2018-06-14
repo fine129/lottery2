@@ -51,6 +51,10 @@
         components: {},
         mounted() {
             $(function () {
+                $('span.valuehere').data('tempdan',null);
+                $('span.valuehere').data('temptuo',null);
+                $('span.valuehere').data('tempblue',null);
+                $('span.valuehere').data('jilei15',null);
 
                 console.log('hhhhhhhhhhhhhhhhhhhhhhjjjjjjj');
                 for (let i = 1; i <= 33; i++) {
@@ -142,10 +146,10 @@
                 }
             },
             selectTuoBuchong: function () {
-                if ($('span.valuehere').data('danusedall') !== 'yes') {
-                    alert('请先挑选使用胆码功能！');
-                    return null;
-                }
+                // if ($('span.valuehere').data('danusedall') !== 'yes') {
+                //     alert('请先挑选使用胆码功能！');
+                //     return null;
+                // }
                 let temptuo = [];
                 let temptuonum = [];
                 let temptuofinal = [];
@@ -258,12 +262,11 @@
                     alert('此号码已被拖码使用!');
                     return null;
                 }
-                let tempdan = $('span.valuehere').data('tempdan'); //获得tempdan数组
-                if (tempdan.constructor !== Array) {
-                    console.log('heeeeeeeee');
-                    tempdan = [];
+                let tempdan = $('span.valuehere').data('tempdan')
+                    ? $('span.valuehere').data('tempdan'):[]; //获得tempdan数组
+
                     $('span.valuehere').data('tempdan', tempdan);
-                }
+
                 if (tempdan.length >= 5) {
                     if ($(event.target).hasClass('red') || $(event.target).find('span').hasClass('white') ||
                         $(event.target).parent('div.circlebai').hasClass('red') || $(event.target).hasClass('white')
@@ -275,7 +278,8 @@
                         // tempdan.remove(tempnum);
                         // console.log('tempdan==',tempdan,'removed ==',tempnum);
                     } else {
-                        alert('您最多只能选择五个胆码!');
+                        console.log('tempdan===222',tempdan);
+                        alert('您最多只能选择五个胆码!'+tempdan);
                         return null;
                     }
 
@@ -419,7 +423,7 @@
                         $('button.confirm').addClass('cannot');
                 }
 
-                console.log('tempdan=', tempdan);
+                console.log('tempdan final=', tempdan);
             } ,
 
         changeSelectTuo: function () {

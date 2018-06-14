@@ -40045,7 +40045,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -40116,6 +40116,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -40153,11 +40157,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var blue = redblue.blue;
 
             $('div.danshinotice').hide();
-            if (!red) {}
-
             if (red && blue && (red.length > 6 || blue.length > 1)) {
                 $('div.fushigroup').append('' + '<div class="list-group-item">' + '<label class="label">红复</label>' + '<span class="redhere" data-redblue="' + redblue + '"> ' + red.join(", ") + '</span>' + '</div>' + '<div class="list-group-item">' + '<label class="label bluelabel">' + '蓝复' + '</label> ' + '<span class="bluehere">' + blue.join(", ") + '</span> ' + '<span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=1   class="beishufushi" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span>' + '</div> ');
-            } else if ($('span.valuehere').data('reds')) {
+            } else if ($('span.valuehere').data('jilei15')) {
                 //积累单式五组号码
 
                 var all = $('span.valuehere').data('reds');
@@ -40204,28 +40206,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     $('button.oneagain').hide();
                 }
                 console.log('dansih,,,,,,,,,,,,,,,', _red, _blue, 'jilei15.length==', jilei15.length);
-            } else {
+            } else if ($('span.valuehere').data('tempdan')) {
                 var tempdan = $('span.valuehere').data('tempdan');
                 var temptuo = $('span.valuehere').data('temptuo');
                 var tempblue = $('span.valuehere').data('tempblue');
+                var _beishu2 = $('span.valuehere').data('dantuobeishu') ? $('span.valuehere').data('dantuobeishu') : 1;
                 $('div.danshinotice').hide();
-                console.log('tempdan===', tempdan);
+                console.log('tempdan==1111=', tempdan);
                 if (tempdan) {
 
-                    $('div.dantuogroup').append('<label class="label bg-dark">胆号:</label>');
+                    $('div.dantuogroup').append('<label class="nametitle">胆号:</label><span class="haoma"> ' + tempdan.sort(function (a, b) {
+                        return a - b;
+                    }).join(',') + '</span>' + '<label class="nametitle label">拖号:</label><span class="haoma">' + temptuo.sort(function (a, b) {
+                        return a - b;
+                    }).join(',') + '</span>' + '<label class="nametitle label">蓝球</label><span class="haoma">' + tempblue.sort(function (a, b) {
+                        return a - b;
+                    }).join(',') + '</span>' + '<div class="beishuholder"><span class="glyphicon glyphicon-minus-sign minus icon-minus-sign" ' + '"></span>' + '<input type="text" name="beishu"  value=' + 1 + '  data-beishu=' + _beishu2 + '  class="beishu beishudantuo" /> ' + '<span class="glyphicon glyphicon-plus-sign plus icon-plus-sign" ' + '"></span> </div>');
                 }
+            } else {
+                alert('没有内容，请重试！');
             }
+            // alert($('span.valuehere').data('tempdan'));
         });
     },
     data: function data() {
-        return { msg: 'aaaaaa' };
+        return {
+            msg: 'aaaaaa',
+            'red': [1, 2, 3],
+            'blue': [2, 3],
+            'beishu': 3
+        };
     },
 
 
     methods: {
+        senddata: function senddata() {
+            axios.get('/api/confirmhao', {
+                'red': this.red,
+                'blue': this.blue,
+                'beishu': this.beishu
+            }).then(function (response) {
+                // this.ok = response.data.ok;
+                alert(response.data);
+            });
+        },
         beatagain: function beatagain() {
             $('span.valuehere').data('reds', { red: [], blue: [] });
-            this.$router.push('/');
+            var url = window.location.href;
+            if (url.indexOf('dantuo') !== -1) this.$router.push('/dantuo');else this.$router.push('/');
         },
         xuliehao: function xuliehao() {
             $('div.numhere').find('div.beats').each(function (i, n) {
@@ -40291,53 +40319,70 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var valarr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
             var index = jilei15.indexOf(valarr);
             if ($(event.target).hasClass('minus')) {
+
                 if (val <= 1) {
-                    $(event.target).parents('div.beats').remove();
-                    this.xuliehao();
-                    console.log('hereeeeeeeee  jilei15====', jilei15);
-                    jilei15.remove(valarr);
-                    $('span.valuehere').data('allnum', jilei15);
-                    console.log('hereeeeeeeee  jilei15====', jilei15);
-                    $('div.danshinotice').show();
-                    $('button.oneagain').show();
-                    console.log('$(button.oneagain==', $('button.oneagain').length);
-                    console.log('$(\'div.numhere\').find(\'button.btn-addbeat\').length===', $('div.numhere').find('button.btn-addbeat').length);
-                    if ($(event.target).siblings('input').hasClass('beishufushi')) {
-                        $('div.fushigroup').html('');
+                    if ($(event.target).siblings('input').hasClass('beishudantuo')) {
+                        $(event.target).parents('div.dantuogroup').html('');
+                        $('button.oneagain').show();
+                        $('span.noticesm').hide();
+                        $('div.danshinotice').show();
+                    } else {
+                        $(event.target).parents('div.beats').remove();
+                        this.xuliehao();
+                        console.log('hereeeeeeeee  jilei15====', jilei15);
+                        jilei15.remove(valarr);
+                        $('span.valuehere').data('allnum', jilei15);
+                        console.log('hereeeeeeeee  jilei15====', jilei15);
+                        $('div.danshinotice').show();
+                        $('button.oneagain').show();
+                        console.log('$(button.oneagain==', $('button.oneagain').length);
+                        console.log('$(\'div.numhere\').find(\'button.btn-addbeat\').length===', $('div.numhere').find('button.btn-addbeat').length);
+                        if ($(event.target).siblings('input').hasClass('beishufushi')) {
+                            $('div.fushigroup').html('');
+                        }
+                        return null;
                     }
-                    return null;
                 } else {
                     $(event.target).siblings('input').val(val - 1);
-                    if ($('div.fushigroup span.redhere').length > 0) {} else {
-                        var arr = $(event.target).siblings('label.smlabel').data('valarr');
-                        if (!arr) {
-                            arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
-                        }
-                        console.log('arr==== in confirm', arr);
-                        var arra = arr.split(',');
-                        var i = jilei15.indexOf(arra);
 
-                        arra.splice(7, 1, val - 1);
-                        console.log('arra==============', arra);
-                        jilei15.splice(i, 1, arra);
-                        $('span.valuehere').data('jilei15', jilei15);
+                    if ($('div.fushigroup span.redhere').length > 0) {} else {
+                        if ($(event.target).siblings('input').hasClass('beishudantuo')) {
+                            $('span.valuehere').data('dantuobeishu', val - 1);
+                        } else {
+                            var arr = $(event.target).siblings('label.smlabel').data('valarr');
+                            if (!arr) {
+                                arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
+                            }
+                            console.log('arr==== in confirm', arr);
+                            var arra = arr.split(',');
+                            var i = jilei15.indexOf(arra);
+
+                            arra.splice(7, 1, val - 1);
+                            console.log('arra==============', arra);
+                            jilei15.splice(i, 1, arra);
+                            $('span.valuehere').data('jilei15', jilei15);
+                        }
                     }
                 }
             } else if ($(event.target).hasClass('plus')) {
                 $(event.target).siblings('input').val(val + 1);
                 if ($('div.fushigroup span.redhere').length > 0) {} else {
-                    var _arr = $(event.target).siblings('label.smlabel').data('valarr');
-                    if (!_arr) {
-                        _arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
-                    }
-                    var _arra = _arr.split(',').map(Number);
+                    if ($(event.target).siblings('input').hasClass('beishudantuo')) {
+                        $('span.valuehere').data('dantuobeishu', val + 1);
+                    } else {
+                        var _arr = $(event.target).siblings('label.smlabel').data('valarr');
+                        if (!_arr) {
+                            _arr = $(event.target).parents('div.beats').find('label.smlabel').data('valarr');
+                        }
+                        var _arra = _arr.split(',').map(Number);
 
-                    var _i2 = jilei15.indexOf(_arra);
-                    console.log('arra==============', _arra, 'i=', _i2, 'jilei15====', jilei15);
-                    _arra.splice(7, 1, val + 1);
-                    jilei15.splice(_i2, 1, _arra);
-                    $(event.target).siblings('label.smlabel').data('valarr', _arra.toString());
-                    $('span.valuehere').data('jilei15', jilei15);
+                        var _i2 = jilei15.indexOf(_arra);
+                        console.log('arra==============', _arra, 'i=', _i2, 'jilei15====', jilei15);
+                        _arra.splice(7, 1, val + 1);
+                        jilei15.splice(_i2, 1, _arra);
+                        $(event.target).siblings('label.smlabel').data('valarr', _arra.toString());
+                        $('span.valuehere').data('jilei15', jilei15);
+                    }
                 }
             } else if ($(event.target).hasClass('btn-addbeat')) {
                 this.$router.go(-1);
@@ -40384,6 +40429,14 @@ var render = function() {
           on: { click: _vm.changeBeishu }
         })
       : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "testaxios" }, [
+      _c(
+        "button",
+        { staticClass: "btn btn-success", on: { click: _vm.senddata } },
+        [_vm._v("确认发送")]
+      )
+    ]),
     _vm._v(" "),
     _c("div", { staticClass: "list-group-item danshinotice" }, [
       _c("span", { staticClass: "noticesm" }, [
@@ -40549,6 +40602,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
     mounted: function mounted() {
         $(function () {
+            $('span.valuehere').data('tempdan', null);
+            $('span.valuehere').data('temptuo', null);
+            $('span.valuehere').data('tempblue', null);
+
             for (var i = 1; i <= 33; i++) {
                 if (i % 7 == 0) $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum"> ' + i + '</span></div><br/>');else $('div.ballholder').append('<div class="circlebai text-center cirlbai' + i + '" ' + '  ><span class="numnum">' + i + '</span></div>');
             }
@@ -41095,10 +41152,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 var temp = rednow.concat(bluenow);
                 $('span.valuehere').data('temp', temp);
                 //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                if (jilei15[jilei15.length - 1].length <= 7) {
+                if (jilei15[jilei15.length - 1] && jilei15[jilei15.length - 1].length <= 7) {
                     jilei15[jilei15.length - 1] = temp;
                 } else {
-                    // alert('enough!'+jilei15[jilei15.length -1]);
+                    console.log('enough! in blue ' + jilei15[jilei15.length - 1]);
                 }
                 $('span.valuehere').data('jilei15', jilei15);
             }
@@ -41371,6 +41428,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     components: {},
     mounted: function mounted() {
         $(function () {
+            $('span.valuehere').data('tempdan', null);
+            $('span.valuehere').data('temptuo', null);
+            $('span.valuehere').data('tempblue', null);
+            $('span.valuehere').data('jilei15', null);
 
             console.log('hhhhhhhhhhhhhhhhhhhhhhjjjjjjj');
             for (var i = 1; i <= 33; i++) {
@@ -41448,10 +41509,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         },
         selectTuoBuchong: function selectTuoBuchong() {
-            if ($('span.valuehere').data('danusedall') !== 'yes') {
-                alert('请先挑选使用胆码功能！');
-                return null;
-            }
+            // if ($('span.valuehere').data('danusedall') !== 'yes') {
+            //     alert('请先挑选使用胆码功能！');
+            //     return null;
+            // }
             var temptuo = [];
             var temptuonum = [];
             var temptuofinal = [];
@@ -41562,12 +41623,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 alert('此号码已被拖码使用!');
                 return null;
             }
-            var tempdan = $('span.valuehere').data('tempdan'); //获得tempdan数组
-            if (tempdan.constructor !== Array) {
-                console.log('heeeeeeeee');
-                tempdan = [];
-                $('span.valuehere').data('tempdan', tempdan);
-            }
+            var tempdan = $('span.valuehere').data('tempdan') ? $('span.valuehere').data('tempdan') : []; //获得tempdan数组
+
+            $('span.valuehere').data('tempdan', tempdan);
+
             if (tempdan.length >= 5) {
                 if ($(event.target).hasClass('red') || $(event.target).find('span').hasClass('white') || $(event.target).parent('div.circlebai').hasClass('red') || $(event.target).hasClass('white')) {//如果素组长度超过五个，再次点击已被点击过的球,这里不处理
                     // let tempnum = parseInt($(event.target).text());
@@ -41577,7 +41636,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     // tempdan.remove(tempnum);
                     // console.log('tempdan==',tempdan,'removed ==',tempnum);
                 } else {
-                    alert('您最多只能选择五个胆码!');
+                    console.log('tempdan===222', tempdan);
+                    alert('您最多只能选择五个胆码!' + tempdan);
                     return null;
                 }
             }
@@ -41708,7 +41768,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (!$('button.confirm').hasClass('cannot')) $('button.confirm').addClass('cannot');
             }
 
-            console.log('tempdan=', tempdan);
+            console.log('tempdan final=', tempdan);
         },
 
         changeSelectTuo: function changeSelectTuo() {

@@ -10121,32 +10121,55 @@ div.blueholder span.numnum.white {
   color: white;
 }
 
-div.beats {
+div.beishuholder {
+  width: 500px;
+  height: 80px;
+  position: relative;
+  top: -50px;
+  left: 320px;
+}
+
+div.beishuholder span.glyphicon {
+  display: inline-block;
+  color: #333333;
+}
+
+div.beishuholder input.beishudantuo {
+  display: inline-block;
+}
+
+div.beats,
+div.dantuogroup {
   font-size: 20px;
 }
 
-div.beats div.haonum {
+div.beats div.haonum,
+div.dantuogroup div.haonum {
   color: red;
 }
 
-div.beats div.haonum span.blueletter {
+div.beats div.haonum span.blueletter,
+div.dantuogroup div.haonum span.blueletter {
   color: blue;
   margin-right: 18px;
 }
 
-div.beats input.beishu {
+div.beats input.beishu,
+div.dantuogroup input.beishu {
   width: 60px;
   height: 30px;
   margin: 0 4px;
 }
 
-div.beats span.glyphicon {
+div.beats span.glyphicon,
+div.dantuogroup span.glyphicon {
   font-size: 30px;
   width: 60px;
   height: 30px;
 }
 
-div.beats button.btn-addbeat {
+div.beats button.btn-addbeat,
+div.dantuogroup button.btn-addbeat {
   width: 50px;
 }
 
@@ -10179,9 +10202,16 @@ button.closebtn {
   top: 20%;
 }
 
-input.beishufu {
+input.beishufu,
+input.beishudantuo {
   width: 60px;
   height: 30px;
   margin: 0 5px;
+}
+
+span.haoma {
+  font-size: 18px;
+  font-weight: bold;
+  color: #4d4c4c;
 }
 

@@ -36,7 +36,7 @@
 
                 <div class="card-body"  >
                     <div class="alert-danger">{!! empty($errormsg)?'':$errormsg !!}</div>
-                    <router-link class="firstsel btn btn-success " to="/">选号</router-link>
+                    <router-link class="firstsel   " to="/">选号</router-link>
                     <router-link to="/dantuo">胆拖选号</router-link>
                     <router-view></router-view>
                 </div>

@@ -39,6 +39,10 @@
         components: {   },
         mounted(){
             $(function () {
+                $('span.valuehere').data('tempdan',null);
+                $('span.valuehere').data('temptuo',null);
+                $('span.valuehere').data('tempblue',null);
+
                 for(let i = 1;i<=33;i++) {
                     if(i%7 ==0)
                         $('div.ballholder').append('<div class="circlebai text-center cirlbai'+i +'" '+
@@ -617,10 +621,10 @@ console.log('aaaaa','jilei15=',$.isEmptyObject( $('span.valuehere').data('jilei1
                     let temp = rednow.concat(bluenow);
                     $('span.valuehere').data('temp',temp);
                     //判断是否在数组里 jilei15类似这个['1,2,3,4','5,5,5,5']
-                    if(jilei15[jilei15.length -1].length <=7) {
+                    if(jilei15[jilei15.length -1]&& jilei15[jilei15.length -1].length <=7) {
                         jilei15[jilei15.length -1] = temp;
                     } else {
-                        // alert('enough!'+jilei15[jilei15.length -1]);
+                        console.log('enough! in blue '+jilei15[jilei15.length -1]);
                     }
                     $('span.valuehere').data('jilei15',jilei15);
                     }
