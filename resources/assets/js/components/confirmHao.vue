@@ -15,7 +15,7 @@
 
         </div>
         <div class="testaxios">
-            <button class="btn btn-success" @click="senddata">确认发送</button>
+            <button class="btn btn-success" @click="senddata">确认支付</button>
         </div>
 
         <div class="list-group-item danshinotice">
@@ -199,13 +199,15 @@
 
         methods: {
             senddata: function() {
-                axios.get('/api/confirmhao', {
+                let self= this;
+                axios.post('/api/confirmhao', {
                     'red':this.red,
                     'blue':this.blue,
                     'beishu':this.beishu
                 }).then(function(response){
                     // this.ok = response.data.ok;
-                    alert(response.data);
+                    self.beishu =response.data;
+                    console.log('self.beishu==',self.beishu);
                 });
             },
             beatagain: function () {

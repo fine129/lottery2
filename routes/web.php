@@ -23,6 +23,7 @@ Route::get('/iamshop', 'ShopController@becomeshop')->name('beshop');
 Route::post('upload', 'HomeController@postUpload');
 Route::post('crop', 'HomeController@postCrop');
 Route::post('postshop', 'ShopController@postShop');
+Route::post('/api/confirmhao', 'ShopController@querenhao');
 Route::get('/personalshop', 'ShopController@personalshop')->name('personalshop');
 Route::get('/emotions', 'ShopController@emotions')->name('emotions');
 Route::get('/xuanpiao', 'ShopController@xuanpiao')->name('xuanpiao');

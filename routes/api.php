@@ -16,9 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware('auth:api')->get('/api/confirmhao', function (Request $request) {
-
-    return view('queren')->with(['red'=>\Illuminate\Support\Facades\Input::get('red'),
-        'blue'=>\Illuminate\Support\Facades\Input::get('blue'),
-        'beishu'=>\Illuminate\Support\Facades\Input::get('beishu')]);
-});
+//Route::middleware('auth:api')->get('/api/confirmhao', function (Request $request) {
+//
+//    return view('queren')->with(['red'=>\Illuminate\Support\Facades\Input::get('red'),
+//        'blue'=>\Illuminate\Support\Facades\Input::get('blue'),
+//        'beishu'=>\Illuminate\Support\Facades\Input::get('beishu')]);
+//});
+//Route::middleware('auth:api')->get('/api/confirmhao', 'ShopController@querenhao');

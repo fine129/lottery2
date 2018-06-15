@@ -19,7 +19,7 @@
                            我是彩票店主
                        </a>
                    </h3>
-                        <example-component v-bind:title="msg"></example-component>
+                        {{--<example-component v-bind:title="msg"></example-component>--}}
 
                 </div>
 

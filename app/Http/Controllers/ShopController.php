@@ -47,5 +47,12 @@ class ShopController extends Controller
     public  function  xuanpiao(Request $request) {
         return view('xuanpiao');
     }
+   public function  querenhao(Request $request) {
+        $red = $request->get('red');
+        $blue = $request->get('blue');
+        $beishu = $request->get('beishu');
+        return $red;
 
+
+   }
 }

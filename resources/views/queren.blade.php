@@ -16,7 +16,7 @@
 
                    <h3 class="bg-success text-center">
                        <a class="alert-dark" href="{!! url('iamshop') !!}">
-                         变量是：   {!! $red.'==='.$blue.'===---==='.$beishu !!}
+                         变量是：
                        </a>
                    </h3>
                         <example-component v-bind:title="msg"></example-component>
